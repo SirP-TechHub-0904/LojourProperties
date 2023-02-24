@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojourProperties.Web", "LojourProperties.Web\LojourProperties.Web.csproj", "{8C3C1774-B517-47CA-A5B2-D6F6218770E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojourProperties.Domain", "LojourProperties.Domain\LojourProperties.Domain.csproj", "{F3A6A417-157F-44FE-A16D-6A74736332BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C3C1774-B517-47CA-A5B2-D6F6218770E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C3C1774-B517-47CA-A5B2-D6F6218770E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C3C1774-B517-47CA-A5B2-D6F6218770E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C3C1774-B517-47CA-A5B2-D6F6218770E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A6A417-157F-44FE-A16D-6A74736332BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A6A417-157F-44FE-A16D-6A74736332BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A6A417-157F-44FE-A16D-6A74736332BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A6A417-157F-44FE-A16D-6A74736332BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31630E0A-D883-4CFA-971F-3FBFE9FF7C77}
+	EndGlobalSection
+EndGlobal
