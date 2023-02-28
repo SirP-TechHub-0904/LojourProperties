@@ -46,7 +46,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.FileManager
 
             var s3Obj = new Domain.Dtos.AwsDtos.S3Object()
             {
-                BucketName = "code4humans0904",
+                BucketName = "lojourxyz",
                 InputStream = memoryStream,
                 Name = docName
             };

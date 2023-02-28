@@ -37,7 +37,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string key)
         {
 
-            //string bucketName = "code4humans0904";
+            //string bucketName = "lojourxyz";
             //var bucketExists = await _s3Client.DoesS3BucketExistAsync(bucketName);
             ////if (!bucketExists) return NotFound($"Bucket {bucketName} does not exist.");
             //var s3Object = await _s3Client.GetObjectAsync(bucketName, key);
@@ -53,7 +53,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
 
             var s3Obj = new LojourProperties.Domain.Dtos.AwsDtos.S3GetObjectDto()
             {
-                Bucket = "code4humans0904",
+                Bucket = "lojourxyz",
                 Key = key
             };
 

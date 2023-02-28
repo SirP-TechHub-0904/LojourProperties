@@ -1,0 +1,90 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.RegionPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].Show)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].MainText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].SubText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].PlainText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].ButtonText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slider[0].ButtonLink)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Slider) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Show)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlainText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ButtonText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ButtonLink)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

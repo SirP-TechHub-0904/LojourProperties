@@ -1,0 +1,80 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.RegionPage.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Slider</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Slider.Id" />
+            <div class="form-group">
+                <label asp-for="Slider.Url" class="control-label"></label>
+                <input asp-for="Slider.Url" class="form-control" />
+                <span asp-validation-for="Slider.Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.Date" class="control-label"></label>
+                <input asp-for="Slider.Date" class="form-control" />
+                <span asp-validation-for="Slider.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.StartDate" class="control-label"></label>
+                <input asp-for="Slider.StartDate" class="form-control" />
+                <span asp-validation-for="Slider.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.EndDate" class="control-label"></label>
+                <input asp-for="Slider.EndDate" class="form-control" />
+                <span asp-validation-for="Slider.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Slider.Show" /> @Html.DisplayNameFor(model => model.Slider.Show)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.MainText" class="control-label"></label>
+                <input asp-for="Slider.MainText" class="form-control" />
+                <span asp-validation-for="Slider.MainText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.SubText" class="control-label"></label>
+                <input asp-for="Slider.SubText" class="form-control" />
+                <span asp-validation-for="Slider.SubText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.PlainText" class="control-label"></label>
+                <input asp-for="Slider.PlainText" class="form-control" />
+                <span asp-validation-for="Slider.PlainText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.ButtonText" class="control-label"></label>
+                <input asp-for="Slider.ButtonText" class="form-control" />
+                <span asp-validation-for="Slider.ButtonText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.ButtonLink" class="control-label"></label>
+                <input asp-for="Slider.ButtonLink" class="form-control" />
+                <span asp-validation-for="Slider.ButtonLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

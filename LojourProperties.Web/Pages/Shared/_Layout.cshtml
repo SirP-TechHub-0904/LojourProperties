@@ -3,7 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LojourProperties.Web</title>
+
+    <meta name="description" content="@ViewBag.MetaTitle">
+    <meta name="description" content="@ViewBag.MetaKeyword">
+    <meta name="description" content="@ViewBag.MetaDescription">
+
+    <title>LOJOUR PROPERTIES | SMARTHOMES | APARTMENTS | HOTELS | LANDS</title>
+    <link rel="icon" href="~/img/icon.png" type="image/x-icon" />
+
+    <meta property="og:url" content="@ViewBag.url" />
+    <meta property="og:title" content="@ViewBag.title">
+    <meta property="og:description" content="@ViewBag.description">
+    <meta property="og:image" content="@ViewBag.image">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LojourProperties.Web.styles.css" asp-append-version="true" />
