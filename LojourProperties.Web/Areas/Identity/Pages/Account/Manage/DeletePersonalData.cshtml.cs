@@ -14,13 +14,13 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account.Manage
 {
     public class DeletePersonalDataModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
+        private readonly SignInManager<LojourProperties.Domain.Models.Profile> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
 
         public DeletePersonalDataModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<LojourProperties.Domain.Models.Profile> userManager,
+            SignInManager<LojourProperties.Domain.Models.Profile> signInManager,
             ILogger<DeletePersonalDataModel> logger)
         {
             _userManager = userManager;

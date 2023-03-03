@@ -100,10 +100,133 @@ namespace LojourProperties.Domain.Services.AWS
                 Expires = DateTime.UtcNow.AddYears(3)
             };
             using var client = new AmazonS3Client(credentials, config);
-             var url = client.GetPreSignedURL(preurl);
+            var url = client.GetPreSignedURL(preurl);
 
             return url;
         }
 
+        public async Task<FileReturnResponseDto> UploadFileReturnUrlAsync(Dtos.AwsDtos.S3Object obj, AwsCredentials awsCredentialsValues, string old_key)
+        {
+            var credentials = new BasicAWSCredentials(awsCredentialsValues.AccessKey, awsCredentialsValues.SecretKey);
+
+            var config = new AmazonS3Config()
+            {
+                RegionEndpoint = Amazon.RegionEndpoint.USEast1
+            };
+            var response = new FileReturnResponseDto();
+            // initialise client
+            using var client = new AmazonS3Client(credentials, config);
+
+            try
+            {
+                //delete object
+                var deleteObjectRequest = new DeleteObjectRequest
+                {
+                    BucketName = obj.BucketName,
+                    Key = old_key
+                };
+
+                Console.WriteLine("Deleting an object");
+                await client.DeleteObjectAsync(deleteObjectRequest);
+            }
+            catch (AmazonS3Exception e)
+            {
+                Console.WriteLine("Error encountered on server. Message:'{0}' when deleting an object", e.Message);
+            }
+            catch (Exception c)
+            {
+
+            }
+            try
+            {
+                var uploadRequest = new TransferUtilityUploadRequest()
+                {
+                    InputStream = obj.InputStream,
+                    Key = obj.Name,
+                    BucketName = obj.BucketName,
+                    CannedACL = S3CannedACL.NoACL
+                };
+
+
+                // initialise the transfer/upload tools
+                var transferUtility = new TransferUtility(client);
+
+                // initiate the file upload
+                await transferUtility.UploadAsync(uploadRequest);
+
+                //response.StatusCode = 201;
+                //response.Message = $"{obj.Name} has been uploaded sucessfully";
+
+                var request = new GetObjectRequest
+                {
+                    BucketName = obj.BucketName,
+                    Key = "obj.Name",
+                };
+
+                var preurl = new GetPreSignedUrlRequest
+                {
+                    BucketName = obj.BucketName,
+                    Key = obj.Name,
+                    Expires = DateTime.UtcNow.AddYears(3)
+                };
+
+                var url = client.GetPreSignedURL(preurl);
+                response.Message = "200";
+                response.Key = obj.Name;
+                response.Url = url;
+                return response;
+
+            }
+            catch (AmazonS3Exception s3Ex)
+            {
+                response.Message = s3Ex.StatusCode.ToString() + "<br>" + s3Ex.Message;
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Message = "error 500 <br>" + ex.Message;
+            }
+            return response;
+        }
+
+        public async Task<FileReturnResponseDto> DeleteObjectAsync(AwsCredentials awsCredentialsValues, string bucket, string key)
+        {
+
+            var credentials = new BasicAWSCredentials(awsCredentialsValues.AccessKey, awsCredentialsValues.SecretKey);
+
+            var config = new AmazonS3Config()
+            {
+                RegionEndpoint = Amazon.RegionEndpoint.USEast1
+            };
+            var response = new FileReturnResponseDto();
+            // initialise client
+            using var client = new AmazonS3Client(credentials, config);
+
+            try
+            {
+                //delete object
+                var deleteObjectRequest = new DeleteObjectRequest
+                {
+                    BucketName = bucket,
+                    Key = key
+                };
+
+                //Console.WriteLine("Deleting an object");
+                await client.DeleteObjectAsync(deleteObjectRequest);
+                response.Message = "200";
+            }
+            catch (AmazonS3Exception e)
+            {
+                //Console.WriteLine("Error encountered on server. Message:'{0}' when deleting an object", e.Message);
+            }
+            catch (Exception c)
+            {
+
+            }
+            return response;
+
+
+        }
     }
 }

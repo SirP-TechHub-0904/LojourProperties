@@ -13,11 +13,11 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account.Manage
 {
     public class Disable2faModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
         private readonly ILogger<Disable2faModel> _logger;
 
         public Disable2faModel(
-            UserManager<IdentityUser> userManager,
+            UserManager<LojourProperties.Domain.Models.Profile> userManager,
             ILogger<Disable2faModel> logger)
         {
             _userManager = userManager;

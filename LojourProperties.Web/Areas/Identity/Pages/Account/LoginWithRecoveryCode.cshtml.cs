@@ -14,13 +14,13 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class LoginWithRecoveryCodeModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<LojourProperties.Domain.Models.Profile> _signInManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
         private readonly ILogger<LoginWithRecoveryCodeModel> _logger;
 
         public LoginWithRecoveryCodeModel(
-            SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager,
+            SignInManager<LojourProperties.Domain.Models.Profile> signInManager,
+            UserManager<LojourProperties.Domain.Models.Profile> userManager,
             ILogger<LoginWithRecoveryCodeModel> logger)
         {
             _signInManager = signInManager;

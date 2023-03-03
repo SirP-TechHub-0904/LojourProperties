@@ -55,18 +55,18 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Date Registered")]
         public DateTime DateRegistered { get; set; }
         [Display(Name = "Facebook Profile")]
-        public string FacebookLink { get; set; }
+        public string? FacebookLink { get; set; }
         [Display(Name = "Twitter Profile")]
-        public string TwitterLink { get; set; }
+        public string? TwitterLink { get; set; }
         [Display(Name = "Linkedin Profile")]
-        public string LinkedinLink { get; set; }
+        public string? LinkedinLink { get; set; }
         [Display(Name = "InstagramProfile")]
-        public string InstagramLink { get; set; }
+        public string? InstagramLink { get; set; }
         [Display(Name = "Passport")]
-        public string PhotoUrl { get; set; }
+        public string? PhotoUrl { get; set; }
 
         [Display(Name = "Operating Region ID")]
-        public long OperatingRegionId { get; set; }
+        public long? OperatingRegionId { get; set; }
         [Display(Name = "Operating Region")]
         public OperatingRegion OperatingRegion { get; set; }
         [Display(Name = "Lojour Id")]

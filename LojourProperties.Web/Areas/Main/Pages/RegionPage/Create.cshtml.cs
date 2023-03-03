@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
 {
+    [Authorize(Roles = "Admin,mSuperAdmin")]
+
     public class CreateModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
@@ -25,7 +29,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
         }
 
         [BindProperty]
-        public Slider Slider { get; set; }
+        public OperatingRegion OperatingRegion { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +39,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
                 return Page();
             }
 
-            _context.Sliders.Add(Slider);
+            _context.OperatingRegions.Add(OperatingRegion);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

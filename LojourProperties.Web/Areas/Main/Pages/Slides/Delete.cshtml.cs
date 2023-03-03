@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using LojourProperties.Domain.Dtos.AwsDtos;
+using LojourProperties.Domain.Services.AWS;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Slides
 {
     public class DeleteModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
+        private readonly IConfiguration _config;
+        private readonly IStorageService _storageService;
 
-        public DeleteModel(LojourProperties.Domain.Data.ApplicationDbContext context)
+        public DeleteModel(LojourProperties.Domain.Data.ApplicationDbContext context, IConfiguration config, IStorageService storageService)
         {
             _context = context;
+            _config = config;
+            _storageService = storageService;
         }
 
         [BindProperty]
@@ -49,10 +55,18 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
 
             if (Slider != null)
             {
+                var cred = new AwsCredentials()
+                {
+                    AccessKey = _config["AwsConfiguration:AWSAccessKey"],
+                    SecretKey = _config["AwsConfiguration:AWSSecretKey"]
+                };
+
+                var result = await _storageService.DeleteObjectAsync(cred, "lojourxyz", Slider.Key);
+                var result2 = await _storageService.DeleteObjectAsync(cred, "lojourxyz", Slider.MainImageKey);
                 _context.Sliders.Remove(Slider);
                 await _context.SaveChangesAsync();
             }
-
+            TempData["success"] = "Deleted";
             return RedirectToPage("./Index");
         }
     }

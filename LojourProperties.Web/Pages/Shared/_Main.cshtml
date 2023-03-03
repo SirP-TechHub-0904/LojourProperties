@@ -92,7 +92,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="~/img/icon.png alt="AANI" height="60" width="60">
+            <img class="animation__shake" src="~/img/icon.png" alt="AANI" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -132,7 +132,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="~/img/lojour-logo-web.png alt="LOJOUR" class="" style="">
+                <img src="~/img/lojour-logo-web.png" alt="LOJOUR" class="" style="">
                 @*<img src="~/img/icon.jpg" alt="AANI" class="brand-image img-circle elevation-3" style="opacity: .8">*@
                 @*<span class="brand-text font-weight-light" style="font-weight: bolder !important;">A A N I</span>*@
             </a>
@@ -158,87 +158,108 @@
                              with font-awesome or any other icon font library -->
                         <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">DASHBOARD</li>
                         <li class="nav-item">
-                            <a asp-page="/Dashboard/Index" asp-area="Main" class="nav-link">
+                            <a asp-page="/Admin/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Statistic
+                                    Dashboard
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                      @*  <li class="nav-item">
                             <a asp-page="/Dashboard/Funds" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fa fa-money"></i>
                                 <p>
-                                    Fund Statistics
+                                    Statistics
                                 </p>
                             </a>
-                        </li>
-                         <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Authorization</li>
-                        <li class="nav-item">
-                            <a asp-page="/Roles/List" asp-area="Identity" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Roles
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-page="/Roles/UserRoles" asp-area="Identity" class="nav-link">
-                                <i class="nav-icon fa fa-money"></i>
-                                <p>
-                                    Users
-                                </p>
-                            </a>
-                        </li>
+                        </li>*@
+
+                            <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Authorization</li>
+                            <li class="nav-item">
+                                <a asp-page="/Roles/List" asp-area="Identity" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Roles
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-page="/Roles/UserRoles" asp-area="Identity" class="nav-link">
+                                    <i class="nav-icon fa fa-money"></i>
+                                    <p>
+                                        Users
+                                    </p>
+                                </a>
+                            </li>
+                        
                         <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">NAVIGATION</li>
                         <li class="nav-item">
-                            <a asp-page="/SecPage/Index" asp-area="Main" class="nav-link">
+                            <a asp-page="/RegionPage/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    SECs
+                                    Regions
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-page="/ParticipantPage/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a asp-page="/Slides/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-image"></i>
                                 <p>
-                                    Alumni
+                                   Web Slider
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">PROPERTY MANAGER</li>
+                        <li class="nav-item">
+                            <a asp-page="/PropertySection/Category/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Category
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-page="/AaniChapters/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a asp-page="/PropertySection/privacyPage/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-lock"></i>
                                 <p>
-                                    AANI Chapters
+                                    Privacy
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-page="/AaniNec/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a asp-page="/PropertySection/FeatureCategory/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
                                 <p>
-                                    AANI NEC Member
+                                    Feature Category
+                                </p>
+                            </a>
+                        </li>
+
+                         <li class="nav-item">
+                            <a asp-page="/PropertySection/PType/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-lock"></i>
+                                <p>
+                                    Property Types
+                                </p>
+                            </a>
+                        </li>
+                          <li class="nav-item">
+                            <a asp-page="/PropertySection/Section/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Properties
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-page="/PatronPage/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                            <a asp-page="/PropertySection/Features/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-lock"></i>
                                 <p>
-                                    AANI Patron
+                                    Property Features
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-page="/HeritageCouncilPage/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    AANI Heritage Council
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-columns"></i>
@@ -579,7 +600,13 @@
     <script>
         $(function () {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true, "lengthChange": false, "autoWidth": false, "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

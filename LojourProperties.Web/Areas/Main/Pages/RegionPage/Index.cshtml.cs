@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
 {
+    [Authorize(Roles = "Admin,mSuperAdmin")]
+
     public class IndexModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
@@ -19,11 +23,11 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
             _context = context;
         }
 
-        public IList<Slider> Slider { get;set; }
+        public IList<OperatingRegion> OperatingRegion { get;set; }
 
         public async Task OnGetAsync()
         {
-            Slider = await _context.Sliders.ToListAsync();
+            OperatingRegion = await _context.OperatingRegions.ToListAsync();
         }
     }
 }

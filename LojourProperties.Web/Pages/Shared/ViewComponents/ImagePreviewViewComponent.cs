@@ -15,7 +15,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
 {
     public class ImagePreviewViewComponent : ViewComponent
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
         //private readonly IAmazonS3 _s3Client;
         private readonly ApplicationDbContext _context;
         private readonly IStorageService _storageService;
@@ -23,7 +23,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
 
 
         public ImagePreviewViewComponent(
-            UserManager<IdentityUser> userManager, ApplicationDbContext context/*, IAmazonS3 s3Client*/, IStorageService storageService, IConfiguration config)
+            UserManager<LojourProperties.Domain.Models.Profile> userManager, ApplicationDbContext context/*, IAmazonS3 s3Client*/, IStorageService storageService, IConfiguration config)
         {
             _userManager = userManager;
             _context = context;

@@ -14,18 +14,21 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using LojourProperties.Domain.Models;
 
 namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<Profile> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<Profile> _userManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<Profile> signInManager, ILogger<LoginModel> logger, UserManager<Profile> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -103,33 +106,54 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
+            //returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
+
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+                if (user != null)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+
+                    var passcheck = await _userManager.CheckPasswordAsync(user, Input.Password);
+                    if (passcheck == true)
+                    {
+
+
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        var xAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+                        var xSuper = await _userManager.IsInRoleAsync(user, "mSuperAdmin");
+
+                        if (returnUrl != null)
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else if(xAdmin == true)
+                        {
+                            return RedirectToPage("/Admin/Index", new { area = "Main" });
+                        }
+                        else if (xSuper == true)
+                        {
+                            return RedirectToPage("/Admin/Index", new { area = "Main" });
+                        }
+                        else
+                        {
+                            return RedirectToPage("/Index", new { area = "" });
+
+                        }
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    }
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
                 }
             }
 

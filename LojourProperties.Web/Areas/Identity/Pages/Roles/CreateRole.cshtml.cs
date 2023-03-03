@@ -41,7 +41,7 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Roles
 
             await _roleManager.CreateAsync(Role);
 
-            return RedirectToPage("./Roles");
+            return RedirectToPage("./List");
         }
     }
 }

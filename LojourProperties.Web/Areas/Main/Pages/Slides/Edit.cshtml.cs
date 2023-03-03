@@ -8,16 +8,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using LojourProperties.Domain.Services.AWS;
+using LojourProperties.Domain.Dtos.AwsDtos;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Slides
 {
     public class EditModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+        private readonly IConfiguration _config;
+        private readonly IStorageService _storageService;
 
-        public EditModel(LojourProperties.Domain.Data.ApplicationDbContext context)
+        public EditModel(LojourProperties.Domain.Data.ApplicationDbContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IConfiguration config, IStorageService storageService)
         {
             _context = context;
+            _environment = environment;
+            _config = config;
+            _storageService = storageService;
         }
 
         [BindProperty]
@@ -38,7 +46,11 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
             }
             return Page();
         }
+        [BindProperty]
+        public IFormFile file { get; set; }
 
+        [BindProperty]
+        public IFormFile smallfile { get; set; }
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -46,6 +58,88 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+            try
+            {
+                // Process file
+                await using var memoryStream = new MemoryStream();
+                await file.CopyToAsync(memoryStream);
+
+                var fileExt = Path.GetExtension(file.FileName);
+                var docName = $"{Guid.NewGuid()}{fileExt}";
+                // call server
+
+                var s3Obj = new Domain.Dtos.AwsDtos.S3Object()
+                {
+                    BucketName = "lojourxyz",
+                    InputStream = memoryStream,
+                    Name = docName
+                };
+
+                var cred = new AwsCredentials()
+                {
+                    AccessKey = _config["AwsConfiguration:AWSAccessKey"],
+                    SecretKey = _config["AwsConfiguration:AWSSecretKey"]
+                };
+
+                var result = await _storageService.UploadFileReturnUrlAsync(s3Obj, cred, Slider.MainImageKey);
+                // 
+                if (result.Message.Contains("200"))
+                {
+                    Slider.MainImageUrl = result.Url;
+                    Slider.MainImageKey = result.Key;
+                }
+                else
+                {
+                    //TempData["error"] = "unable to upload image";
+                    //return Page();
+                }
+            }
+            catch (Exception c)
+            {
+
+            }
+
+            //
+            try
+            {
+                // Process file
+                await using var memoryStream = new MemoryStream();
+                await smallfile.CopyToAsync(memoryStream);
+
+                var fileExt = Path.GetExtension(smallfile.FileName);
+                var docName = $"{Guid.NewGuid()}{fileExt}";
+                // call server
+
+                var s3Obj = new Domain.Dtos.AwsDtos.S3Object()
+                {
+                    BucketName = "lojourxyz",
+                    InputStream = memoryStream,
+                    Name = docName
+                };
+
+                var cred = new AwsCredentials()
+                {
+                    AccessKey = _config["AwsConfiguration:AWSAccessKey"],
+                    SecretKey = _config["AwsConfiguration:AWSSecretKey"]
+                };
+
+                var result = await _storageService.UploadFileReturnUrlAsync(s3Obj, cred, Slider.Key);
+                // 
+                if (result.Message.Contains("200"))
+                {
+                    Slider.Url = result.Url;
+                    Slider.Key = result.Key;
+                }
+                else
+                {
+                    //TempData["error"] = "unable to upload image";
+                    //return Page();
+                }
+            }
+            catch (Exception c)
+            {
+
             }
 
             _context.Attach(Slider).State = EntityState.Modified;
@@ -65,7 +159,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
                     throw;
                 }
             }
-
+            TempData["success"] = "Updated";
             return RedirectToPage("./Index");
         }
 

@@ -16,9 +16,9 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
 
-        public ResetPasswordModel(UserManager<IdentityUser> userManager)
+        public ResetPasswordModel(UserManager<LojourProperties.Domain.Models.Profile> userManager)
         {
             _userManager = userManager;
         }

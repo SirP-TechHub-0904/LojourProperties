@@ -1,11 +1,12 @@
 ﻿using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace LojourProperties.Domain.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<Profile, IdentityRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -14,6 +15,15 @@ namespace LojourProperties.Domain.Data
 
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<OperatingRegion> OperatingRegions { get; set; }
+        public DbSet<FeaturesCategory> FeaturesCategories { get; set; }
+        public DbSet<PrivacyCategory> PrivacyCategories { get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<PropertyCategory> PropertyCategories { get; set; }
+        public DbSet<PropertyFeature> PropertyFeatures { get; set; }
+        public DbSet<PropertyImage> PropertyImages { get; set; }
+        public DbSet<PropertyType> PropertyTypes { get; set; }
+        public DbSet<PropertyVideo> PropertyVideos { get; set; }
+
     }
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {

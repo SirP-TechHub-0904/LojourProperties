@@ -5,86 +5,125 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">WEB SLIDERS</h3>
+       
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].Url)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].Show)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].MainText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].SubText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].PlainText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].ButtonText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider[0].ButtonLink)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Slider) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Show)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MainText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlainText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ButtonText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ButtonLink)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Slider</a>
+        
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                           Big
+                        </th>
+                        <th>
+                            Small
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].EndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].Show)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].MainText)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].SubText)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].PlainText)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].ButtonText)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Slider[0].ButtonLink)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.Slider)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a href="@item.MainImageUrl" target="_blank">
+                                    <img src="@item.MainImageUrl" class="img-fluid" style="max-height:80px" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@item.Url" target="_blank">
+                                    <img src="@item.Url" class="img-fluid" style="max-height:80px" />
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Show)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MainText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlainText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ButtonText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ButtonLink)
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Action</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

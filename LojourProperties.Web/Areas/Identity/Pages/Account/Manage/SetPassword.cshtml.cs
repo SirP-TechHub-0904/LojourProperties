@@ -13,12 +13,12 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
+        private readonly SignInManager<LojourProperties.Domain.Models.Profile> _signInManager;
 
         public SetPasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<LojourProperties.Domain.Models.Profile> userManager,
+            SignInManager<LojourProperties.Domain.Models.Profile> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -1,0 +1,126 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.PropertySection.Section.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">NEW PROPERTY </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Property.Title" class="control-label"></label>
+                <input asp-for="Property.Title" class="form-control" />
+                <span asp-validation-for="Property.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.PropertyRefID" class="control-label"></label>
+                <input asp-for="Property.PropertyRefID" class="form-control" />
+                <span asp-validation-for="Property.PropertyRefID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.ShortDescription" class="control-label"></label>
+                <input asp-for="Property.ShortDescription" class="form-control" />
+                <span asp-validation-for="Property.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.FullDescription" class="control-label"></label>
+                <input asp-for="Property.FullDescription" class="form-control" />
+                <span asp-validation-for="Property.FullDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.Date" class="control-label"></label>
+                <input asp-for="Property.Date" class="form-control" />
+                <span asp-validation-for="Property.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.DateAdded" class="control-label"></label>
+                <input asp-for="Property.DateAdded" class="form-control" />
+                <span asp-validation-for="Property.DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.LastUpdated" class="control-label"></label>
+                <input asp-for="Property.LastUpdated" class="form-control" />
+                <span asp-validation-for="Property.LastUpdated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.Map" class="control-label"></label>
+                <input asp-for="Property.Map" class="form-control" />
+                <span asp-validation-for="Property.Map" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.AreaGuide" class="control-label"></label>
+                <input asp-for="Property.AreaGuide" class="form-control" />
+                <span asp-validation-for="Property.AreaGuide" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.PropertyUsage" class="control-label"></label>
+                <input asp-for="Property.PropertyUsage" class="form-control" />
+                <span asp-validation-for="Property.PropertyUsage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.StreetNumber" class="control-label"></label>
+                <input asp-for="Property.StreetNumber" class="form-control" />
+                <span asp-validation-for="Property.StreetNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.StreetName" class="control-label"></label>
+                <input asp-for="Property.StreetName" class="form-control" />
+                <span asp-validation-for="Property.StreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.City" class="control-label"></label>
+                <input asp-for="Property.City" class="form-control" />
+                <span asp-validation-for="Property.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.State" class="control-label"></label>
+                <input asp-for="Property.State" class="form-control" />
+                <span asp-validation-for="Property.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.Country" class="control-label"></label>
+                <input asp-for="Property.Country" class="form-control" />
+                <span asp-validation-for="Property.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.PropertyCategoryId" class="control-label"></label>
+                <select asp-for="Property.PropertyCategoryId" class ="form-control" asp-items="ViewBag.PropertyCategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.PrivacyCategoryId" class="control-label"></label>
+                <select asp-for="Property.PrivacyCategoryId" class ="form-control" asp-items="ViewBag.PrivacyCategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.PropertyTypeId" class="control-label"></label>
+                <select asp-for="Property.PropertyTypeId" class ="form-control" asp-items="ViewBag.PropertyTypeId"></select>
+            </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

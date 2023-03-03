@@ -14,13 +14,13 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
+        private readonly SignInManager<LojourProperties.Domain.Models.Profile> _signInManager;
         private readonly ILogger<ChangePasswordModel> _logger;
 
         public ChangePasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<LojourProperties.Domain.Models.Profile> userManager,
+            SignInManager<LojourProperties.Domain.Models.Profile> signInManager,
             ILogger<ChangePasswordModel> logger)
         {
             _userManager = userManager;

@@ -8,9 +8,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
 {
+    [Authorize(Roles = "Admin,mSuperAdmin")]
+
     public class EditModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
@@ -21,7 +25,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
         }
 
         [BindProperty]
-        public Slider Slider { get; set; }
+        public OperatingRegion OperatingRegion { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -30,9 +34,9 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
                 return NotFound();
             }
 
-            Slider = await _context.Sliders.FirstOrDefaultAsync(m => m.Id == id);
+            OperatingRegion = await _context.OperatingRegions.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Slider == null)
+            if (OperatingRegion == null)
             {
                 return NotFound();
             }
@@ -48,7 +52,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
                 return Page();
             }
 
-            _context.Attach(Slider).State = EntityState.Modified;
+            _context.Attach(OperatingRegion).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +60,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SliderExists(Slider.Id))
+                if (!OperatingRegionExists(OperatingRegion.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +73,9 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
             return RedirectToPage("./Index");
         }
 
-        private bool SliderExists(long id)
+        private bool OperatingRegionExists(long id)
         {
-            return _context.Sliders.Any(e => e.Id == id);
+            return _context.OperatingRegions.Any(e => e.Id == id);
         }
     }
 }

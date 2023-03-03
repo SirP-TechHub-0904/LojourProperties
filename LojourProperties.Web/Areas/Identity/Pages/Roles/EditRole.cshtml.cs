@@ -60,7 +60,7 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Roles
 
             }
 
-            return RedirectToPage("./Roles");
+            return RedirectToPage("./List");
         }
 
     }

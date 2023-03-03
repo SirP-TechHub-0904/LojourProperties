@@ -16,13 +16,13 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class LoginWith2faModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<LojourProperties.Domain.Models.Profile> _signInManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
         private readonly ILogger<LoginWith2faModel> _logger;
 
         public LoginWith2faModel(
-            SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager,
+            SignInManager<LojourProperties.Domain.Models.Profile> signInManager,
+            UserManager<LojourProperties.Domain.Models.Profile> userManager,
             ILogger<LoginWith2faModel> logger)
         {
             _signInManager = signInManager;

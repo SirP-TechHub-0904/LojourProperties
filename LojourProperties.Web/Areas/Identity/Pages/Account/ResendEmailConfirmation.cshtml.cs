@@ -19,10 +19,10 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResendEmailConfirmationModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ResendEmailConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        public ResendEmailConfirmationModel(UserManager<LojourProperties.Domain.Models.Profile> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;

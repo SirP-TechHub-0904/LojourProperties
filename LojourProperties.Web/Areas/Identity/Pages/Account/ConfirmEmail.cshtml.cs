@@ -16,9 +16,9 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
 
-        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
+        public ConfirmEmailModel(UserManager<LojourProperties.Domain.Models.Profile> userManager)
         {
             _userManager = userManager;
         }

@@ -15,10 +15,10 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailChangeModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
+        private readonly SignInManager<LojourProperties.Domain.Models.Profile> _signInManager;
 
-        public ConfirmEmailChangeModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public ConfirmEmailChangeModel(UserManager<LojourProperties.Domain.Models.Profile> userManager, SignInManager<LojourProperties.Domain.Models.Profile> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

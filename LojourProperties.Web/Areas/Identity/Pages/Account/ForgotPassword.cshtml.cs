@@ -18,10 +18,10 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
 {
     public class ForgotPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<LojourProperties.Domain.Models.Profile> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<LojourProperties.Domain.Models.Profile> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;
