@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Others.Images
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

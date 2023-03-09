@@ -51,5 +51,30 @@ namespace LojourProperties.Domain.Models
             Hide = 4,
 
         }
+
+        public enum NotificationStatus
+        {
+            [Description("NotDefind")]
+            NotDefind = 0,
+            [Description("Sent")]
+            Sent = 1,
+
+            [Description("NotSent")]
+            NotSent = 2,
+
+
+        }
+        public enum NotificationType
+        {
+            [Description("NotDefind")]
+            NotDefind = 0,
+            [Description("SMS")]
+            SMS = 1,
+
+            [Description("Email")]
+            Email = 2
+
+
+        }
     }
 }

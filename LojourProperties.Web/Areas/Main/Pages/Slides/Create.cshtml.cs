@@ -1,11 +1,14 @@
 ﻿using LojourProperties.Domain.Dtos.AwsDtos;
 using LojourProperties.Domain.Models;
 using LojourProperties.Domain.Services.AWS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Slides
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class CreateModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

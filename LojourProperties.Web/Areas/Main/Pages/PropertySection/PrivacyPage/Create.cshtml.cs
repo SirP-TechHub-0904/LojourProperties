@@ -12,6 +12,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.PrivacyPage
 {
     public class CreateModel : PageModel
     {
+        [Authorize(Roles = "mSuperAdmin,Admin")]
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
 
         public CreateModel(LojourProperties.Domain.Data.ApplicationDbContext context)

@@ -30,6 +30,8 @@ namespace LojourProperties.Domain.Data
         public DbSet<PropertyAgency> PropertyAgencies { get; set; }
         public DbSet<DocumentCategory> DocumentCategories { get; set; }
         public DbSet<WebPage> WebPages { get; set; }
+        public DbSet<FAQ> FAQs { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
     }
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>

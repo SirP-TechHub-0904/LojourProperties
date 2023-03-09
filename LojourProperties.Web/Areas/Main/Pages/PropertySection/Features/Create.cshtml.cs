@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Features
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class CreateModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

@@ -2,11 +2,14 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using LojourProperties.Domain.Dtos.AwsDtos;
 using LojourProperties.Domain.Services.AWS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.FileManager
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class IndexModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

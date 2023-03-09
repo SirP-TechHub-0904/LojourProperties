@@ -13,6 +13,7 @@ using LojourProperties.Domain.Dtos.AwsDtos;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Slides
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class EditModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

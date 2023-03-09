@@ -10,7 +10,7 @@
         <h3 class="card-title">WEB PAGES LIST</h3>
 
 
-        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Slider</a>
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
 
     </div>
     <!-- /.card-header -->
@@ -85,7 +85,7 @@
 
                                             <a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>
                                             <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                            @*<a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
 
                                         </div>
                                     </div>

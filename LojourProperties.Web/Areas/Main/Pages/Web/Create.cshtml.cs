@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Web
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class CreateModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
@@ -30,10 +33,17 @@ namespace LojourProperties.Web.Areas.Main.Pages.Web
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            Guid d = Guid.NewGuid();
+            WebPage.Key = d.ToString();
+
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+            
+
 
             _context.WebPages.Add(WebPage);
             await _context.SaveChangesAsync();

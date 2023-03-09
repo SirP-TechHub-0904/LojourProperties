@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class UpdateImageModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

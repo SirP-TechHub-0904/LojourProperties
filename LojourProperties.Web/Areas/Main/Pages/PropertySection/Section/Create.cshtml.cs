@@ -9,9 +9,12 @@ using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class CreateModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

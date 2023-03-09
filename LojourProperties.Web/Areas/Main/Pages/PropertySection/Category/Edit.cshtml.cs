@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Category
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class EditModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

@@ -10,6 +10,7 @@ using LojourProperties.Domain.Models;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Features
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class DetailsModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

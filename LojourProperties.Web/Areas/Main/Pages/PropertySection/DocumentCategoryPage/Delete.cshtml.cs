@@ -10,6 +10,7 @@ using LojourProperties.Domain.Models;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.DocumentCategoryPage
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

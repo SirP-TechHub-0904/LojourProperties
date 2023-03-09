@@ -11,6 +11,7 @@ using LojourProperties.Domain.Models;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.AgencyPage
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class EditModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

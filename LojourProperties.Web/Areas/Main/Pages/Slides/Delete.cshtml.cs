@@ -9,9 +9,12 @@ using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
 using LojourProperties.Domain.Dtos.AwsDtos;
 using LojourProperties.Domain.Services.AWS;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Slides
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
