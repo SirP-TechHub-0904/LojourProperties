@@ -4,6 +4,7 @@ using LojourProperties.Domain.Services.AWS;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 {

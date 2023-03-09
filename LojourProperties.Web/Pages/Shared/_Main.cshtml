@@ -286,7 +286,16 @@
                                     </p>
                                 </a>
                             </li>
-
+                        <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Security</li>
+                        <li class="nav-item">
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
+                        
                        @* <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-columns"></i>
@@ -364,7 +373,8 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-
+    <form asp-area="Identity" id="logoutForm" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Account/Login", new { area = "" })" method="post">
+    </form>
 
 
     <!-- ./wrapper -->

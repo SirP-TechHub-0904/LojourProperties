@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.AgencyPage
 {
-    [Authorize(Roles = "mSuperAdmin,Admin")]
+using Microsoft.AspNetCore.Authorization;
     public class IndexModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;

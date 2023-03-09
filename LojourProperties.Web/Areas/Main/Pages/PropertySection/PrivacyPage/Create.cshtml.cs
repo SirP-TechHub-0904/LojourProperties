@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.PrivacyPage
 {
+    [Authorize(Roles = "mSuperAdmin,Admin")]
+
     public class CreateModel : PageModel
     {
-        [Authorize(Roles = "mSuperAdmin,Admin")]
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
 
         public CreateModel(LojourProperties.Domain.Data.ApplicationDbContext context)

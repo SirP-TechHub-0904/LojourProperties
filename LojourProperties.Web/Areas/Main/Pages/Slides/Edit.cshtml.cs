@@ -10,6 +10,7 @@ using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
 using LojourProperties.Domain.Services.AWS;
 using LojourProperties.Domain.Dtos.AwsDtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LojourProperties.Web.Areas.Main.Pages.Slides
 {
