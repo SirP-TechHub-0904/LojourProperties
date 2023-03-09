@@ -49,8 +49,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
         [BindProperty]
         public IFormFile file { get; set; }
 
-        [BindProperty]
-        public IFormFile smallfile { get; set; }
+
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -66,48 +65,6 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
                 await file.CopyToAsync(memoryStream);
 
                 var fileExt = Path.GetExtension(file.FileName);
-                var docName = $"{Guid.NewGuid()}{fileExt}";
-                // call server
-
-                var s3Obj = new Domain.Dtos.AwsDtos.S3Object()
-                {
-                    BucketName = "lojourxyz",
-                    InputStream = memoryStream,
-                    Name = docName
-                };
-
-                var cred = new AwsCredentials()
-                {
-                    AccessKey = _config["AwsConfiguration:AWSAccessKey"],
-                    SecretKey = _config["AwsConfiguration:AWSSecretKey"]
-                };
-
-                var result = await _storageService.UploadFileReturnUrlAsync(s3Obj, cred, Slider.MainImageKey);
-                // 
-                if (result.Message.Contains("200"))
-                {
-                    Slider.MainImageUrl = result.Url;
-                    Slider.MainImageKey = result.Key;
-                }
-                else
-                {
-                    //TempData["error"] = "unable to upload image";
-                    //return Page();
-                }
-            }
-            catch (Exception c)
-            {
-
-            }
-
-            //
-            try
-            {
-                // Process file
-                await using var memoryStream = new MemoryStream();
-                await smallfile.CopyToAsync(memoryStream);
-
-                var fileExt = Path.GetExtension(smallfile.FileName);
                 var docName = $"{Guid.NewGuid()}{fileExt}";
                 // call server
 
@@ -142,6 +99,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
 
             }
 
+            
             _context.Attach(Slider).State = EntityState.Modified;
 
             try

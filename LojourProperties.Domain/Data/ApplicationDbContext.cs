@@ -23,6 +23,13 @@ namespace LojourProperties.Domain.Data
         public DbSet<PropertyImage> PropertyImages { get; set; }
         public DbSet<PropertyType> PropertyTypes { get; set; }
         public DbSet<PropertyVideo> PropertyVideos { get; set; }
+        public DbSet<LocalGoverment> LocalGoverments { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<Agency> Agencies { get; set; }
+        public DbSet<PropertyDocument> PropertyDocuments { get; set; }
+        public DbSet<PropertyAgency> PropertyAgencies { get; set; }
+        public DbSet<DocumentCategory> DocumentCategories { get; set; }
+        public DbSet<WebPage> WebPages { get; set; }
 
     }
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>

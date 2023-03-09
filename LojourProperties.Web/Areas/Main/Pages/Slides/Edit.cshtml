@@ -19,10 +19,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Slider.Id" />
                     <input type="hidden" asp-for="Slider.Url" />
-                    <input type="hidden" asp-for="Slider.MainImageUrl" />
                     <input type="hidden" asp-for="Slider.Date" />
                     <input type="hidden" asp-for="Slider.Key" />
-                    <input type="hidden" asp-for="Slider.MainImageKey" />
             
 
            
@@ -67,18 +65,7 @@
                 <span asp-validation-for="Slider.ButtonLink" class="text-danger"></span>
             </div>
 
-                    <div class="form-group">
-                        <label asp-for="Slider.MainImageUrl" class="control-label">Main Image</label>
-                        <br />
-                        <a href="@Model.Slider.MainImageUrl" target="_blank">
-                            <img src="@Model.Slider.MainImageUrl" class="img-fluid" style="max-height:120px" />
-                        </a>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Slider.MainImageUrl" class="control-label">Upload to Replace Main Image</label>
-                        <input type="file" class="control-label" asp-for="file" required="" />
-                    </div>
-                   <hr />
+                   
                     <div class="form-group">
                         <label asp-for="Slider.Url" class="control-label">Image</label>
                         <br />
@@ -88,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Slider.Url" class="control-label">Upload to Replace Image</label>
-                        <input type="file" class="control-label" asp-for="smallfile" required="" />
+                        <input type="file" class="control-label" asp-for="file" required="" />
                     </div>
 
                     <div class="form-group">

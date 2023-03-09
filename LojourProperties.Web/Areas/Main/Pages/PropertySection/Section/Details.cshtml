@@ -5,145 +5,268 @@
     ViewData["Title"] = "Details";
 }
 
-
-<div class="card card-default">
-    <div class="card-header">
-        <h3 class="card-title">DETAILS </h3>
-
-
-    </div>
-    <!-- /.card-header -->
+<!-- Default box -->
+<div class="card card-solid">
     <div class="card-body">
         <div class="row">
-            <div class="col-md-12">
-<div>
-    <h4>Property</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.PropertyRefID)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.PropertyRefID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.ShortDescription)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.ShortDescription)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.FullDescription)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.FullDescription)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Date)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.Date)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.DateAdded)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.DateAdded)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.LastUpdated)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.LastUpdated)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Map)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.Map)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.AreaGuide)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.AreaGuide)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.PropertyUsage)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.PropertyUsage)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.StreetNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.StreetNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.StreetName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.StreetName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.City)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.City)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.State)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.State)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Country)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.Country)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.PropertyCategory)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.PropertyCategory.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.PrivacyCategory)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.PrivacyCategory.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.PropertyType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.PropertyType.Name)
-        </dd>
-    </dl>
-</div>
-                <div class="form-group">
-                    <a asp-page="./Edit" asp-route-id="@Model.Property.Id" class="btn bg-gradient-warning btn-sm">Edit</a> 
+            <div class="col-12 col-sm-12">
+                <h4 style="font-weight:900;text-align:center;"><span style="border-bottom:2px solid black">PROPERTY DETAILS</span></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <h3 class="d-inline-block d-sm-none">@Model.Property.Title</h3>
+                <div class="col-12" style="margin-top:9px;">
+                    @if (Model.Property.PropertyImages.FirstOrDefault(c => c.Default == true) != null)
+                    {
+                        <img src="@Model.Property.PropertyImages.FirstOrDefault(c=>c.Default ==true).ImageUrl" class="product-image" alt="Propery Image">
+                        <h6 style="text-align:center;">@Model.Property.PropertyImages.FirstOrDefault(c=>c.Default ==true).Description</h6>
+                    }
+                </div>
+                <div class="col-12 product-image-thumbs">
+                    @foreach (var x in Model.Property.PropertyImages.Where(c => c.Default == true))
+                    {
 
-                    <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+                        <div class="product-image-thumb active" style="display: grid;">
+                            <img src="@x.ImageUrl" alt="Product Image">
+                            <p style="margin-bottom:auto;">@x.Description</p>
+                        </div>
+                    }
+                    @foreach (var x in Model.Property.PropertyImages.Where(c => c.Default == false))
+                    {
+                        <div class="product-image-thumb" style="display: grid;">
+                            <img src="@x.ImageUrl" alt="Product Image">
+                            <p style="margin-bottom:auto;">@x.Description</p>
+                        </div>
+                    }
+                </div>
+                <hr />
+                <div class="col-12 col-md-12">
+                    <h3 style="font-weight:900;text-align:center;margin-bottom:10px;">Property Video</h3>
+                    @foreach (var x in Model.Property.PropertyVideos.Where(x => x.Active == true))
+                    {
+                        <div class="float-left">
+                            <video controls="controls" autoplay="autoplay" style="max-height:120px;margin:4px;">
+                                <source src="@x.VideoUrl" type="video/mp4" />
+                            </video>
+                            <br>
+                            <h6 style="font-weight:900;text-align:center;">
+                                @x.Description @if (x.VR == true)
+                                {
+                                    <span>(VR Video)</span>
+                                }
+                                else
+                                {
+                                    <span>(Normal Video)</span>
+                                }
+                            </h6>
+                        </div>
+                    }
 
+                </div>
+
+            </div>
+            <div class="col-12 col-sm-6">
+                <h3 class="my-3" style="margin-top:0px !important;">@Model.Property.Title</h3>
+                <p>
+                    @Model.Property.ShortDescription
+                </p>
+
+                <hr>
+                <h4 style="font-weight:900;">Property Features</h4>
+                @foreach (var x in Model.Property.PropertyFeatures)
+                {
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-default text-center active">
+                            @x.FeaturesCategory.Name
+                            <br>
+                            <i class="fas fa-check text-green">
+                                @x.Description
+                            </i>
+                        </label>
+
+                    </div>
+                }
+
+                <hr>
+                <h4 style="font-weight:900;">Property Documents</h4>
+                @foreach (var x in Model.Property.PropertyDocuments)
+                {
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-default text-center active">
+                            <a href="@x.Url" target="_blank">
+                                @x.DocumentCategory.Name
+                            </a>
+
+                        </label>
+
+                    </div>
+                }
+
+                <hr>
+                <h4 style="font-weight:900;">Property Agency Documents</h4>
+                @foreach (var x in Model.Property.PropertyAgencies)
+                {
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-default text-center active">
+                            <a href="@x.Url" target="_blank">
+                                @x.Agency.Name
+                            </a>
+                        </label>
+
+                    </div>
+                }
+
+
+
+                <div class="mt-4">
+                    <a class="btn btn-primary btn-xs btn-flat" style="border-radius:4px;margin-right:4px;margin-bottom:4px;" asp-page="./UpdateImage" asp-route-id="@Model.Property.Id">
+                        <i class="fas fa-check fa-lg mr-2"></i>
+                        Update Image
+                    </a>
+                    <a class="btn btn-warning btn-xs btn-flat" style="border-radius:4px;margin-right:4px;margin-bottom:4px;" asp-page="./UpdateVideo" asp-route-id="@Model.Property.Id">
+                        <i class="fas fa-check fa-lg mr-2"></i>
+                        Update Video
+                    </a>
+                    <a class="btn btn-danger btn-xs btn-flat" style="border-radius:4px;margin-right:4px;margin-bottom:4px;" asp-page="./UpdateFeatures" asp-route-id="@Model.Property.Id">
+                        <i class="fas fa-check fa-lg mr-2"></i>
+                        Update Features
+                    </a>
+                    <a class="btn btn-info btn-xs btn-flat" style="border-radius:4px;margin-right:4px;margin-bottom:4px;" asp-page="./UpdateDocument" asp-route-id="@Model.Property.Id">
+                        <i class="fas fa-check fa-lg mr-2"></i>
+                        Update Document
+                    </a>
+                    <a class="btn btn-success btn-xs btn-flat" style="border-radius:4px;margin-right:4px;margin-bottom:4px;" asp-page="./UpdateAgency" asp-route-id="@Model.Property.Id">
+                        <i class="fas fa-check fa-lg mr-2"></i>
+                        Update Agency File
+                    </a>
+                    @*<a class="btn btn-primary btn-lg btn-flat">
+                    <i class="fas fa-check fa-lg mr-2"></i>
+                    Update Agent
+                    </a>*@
+
+                </div>
+
+                <div class="mt-4 product-share">
+                    <a href="#" class="text-gray">
+                        <i class="fab fa-facebook-square fa-2x"></i>
+                    </a>
+                    <a href="#" class="text-gray">
+                        <i class="fab fa-twitter-square fa-2x"></i>
+                    </a>
+                    <a href="#" class="text-gray">
+                        <i class="fas fa-envelope-square fa-2x"></i>
+                    </a>
+                    <a href="#" class="text-gray">
+                        <i class="fas fa-rss-square fa-2x"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <nav class="w-100">
+                <div class="nav nav-tabs" id="product-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">
+                        Details
+                    </a>
+                    <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">
+                        Full Description
+                    </a>
+                    <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">
+                        Area Guide
+                    </a>
+                    <a class="nav-item nav-link" id="product-usage-tab" data-toggle="tab" href="#product-usage" role="tab" aria-controls="product-usage" aria-selected="false">
+                        Property Possible Ussage
+                    </a>
+                    <a class="nav-item nav-link" id="product-map-tab" data-toggle="tab" href="#product-map" role="tab" aria-controls="product-map" aria-selected="false">
+                        Map
+                    </a>
+                </div>
+            </nav>
+            <div class="tab-content p-3" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th colspan="2">
+                                Property Information
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Property ID</th>
+                            <td>@Model.Property.PropertyRefID</td>
+                        </tr>
+                        <tr>
+                            <th>Date </th>
+                            <td>@Model.Property.DateAdded</td>
+                        </tr>
+                        <tr>
+                            <th>Last Updated </th>
+                            <td>@Model.Property.LastUpdated</td>
+                        </tr>
+
+                        <tr>
+                            <th>Street Number </th>
+                            <td>@Model.Property.StreetNumber</td>
+                        </tr>
+                        <tr>
+                            <th>Street Name </th>
+                            <td>@Model.Property.StreetName</td>
+                        </tr>
+
+                        <tr>
+                            <th>City </th>
+                            <td>@Model.Property.City</td>
+                        </tr>
+                        <tr>
+                            <th>State </th>
+                            <td>@Model.Property.State</td>
+                        </tr>
+
+                        <tr>
+                            <th>Country </th>
+                            <td>@Model.Property.Country</td>
+                        </tr>
+                        <tr>
+                            <th>Activity </th>
+                            <td>@Model.Property.PrivacyCategory.Name</td>
+                        </tr>
+
+                        <tr>
+                            <th>Privacy </th>
+                            <td>@Model.Property.PrivacyCategory.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Category </th>
+                            <td>@Model.Property.PropertyType.Name</td>
+                        </tr>
+
+                        <tr>
+                            <th>Region </th>
+                            <td>@Model.Property.OperatingRegion.RegionOfOperation</td>
+                        </tr>
+                        <tr>
+                            <th>Agent </th>
+                            <td>@Model.Property.Agent.Fullname <a asp-page="./AgentProfile" asp-route-id="@Model.Property.AgentId" class="btn btn-success btn-xs">View Profile</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                    @Html.Raw(Model.Property.FullDescription)
+                </div>
+                <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
+                    @Html.Raw(Model.Property.AreaGuide)
+                </div>
+                <div class="tab-pane fade" id="product-usage" role="tabpanel" aria-labelledby="product-usage-tab">
+                    @Html.Raw(Model.Property.PropertyUsage)
+                </div>
+                <div class="tab-pane fade" id="product-map" role="tabpanel" aria-labelledby="product-map-tab">
+                    @Html.Raw(Model.Property.Map)
                 </div>
             </div>
         </div>
-
-
-        <!-- /.row -->
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
-    </div>
 </div>
-
+<!-- /.card -->

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using LojourProperties.Domain.Dtos;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 {
@@ -21,9 +23,27 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 
         public IActionResult OnGet()
         {
-        ViewData["PrivacyCategoryId"] = new SelectList(_context.PrivacyCategories, "Id", "Name");
-        ViewData["PropertyCategoryId"] = new SelectList(_context.PropertyCategories, "Id", "Id");
-        ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
+            ViewData["PrivacyCategoryId"] = new SelectList(_context.PrivacyCategories, "Id", "Name");
+
+            ViewData["PropertyCategoryId"] = new SelectList(_context.PropertyCategories, "Id", "Name");
+
+            ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
+
+            ViewData["OperatingRegionId"] = new SelectList(_context.OperatingRegions, "Id", "RegionOfOperation");
+
+           
+            ViewData["StateId"] = new SelectList(_context.States.OrderBy(x=>x.StateName), "Id", "StateName");
+
+
+            var data = _context.Users.Include(x => x.OperatingRegion).Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
+            var output = data.Select(x => new AgentInfo
+            {
+                Id = x.Id,
+                Name = x.Fullname + "   [" + x.OperatingRegion.RegionOfOperation + "]"
+            });
+
+            ViewData["AgentId"] = new SelectList(output, "Id", "Name");
+
             return Page();
         }
 
@@ -33,15 +53,25 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+            Property.Date = DateTime.UtcNow.AddHours(1);
+            Property.DateAdded = DateTime.UtcNow.AddHours(1);
+            Property.LastUpdated = DateTime.UtcNow.AddHours(1);
+            Property.PropertyRefID = "X";
+
 
             _context.Properties.Add(Property);
             await _context.SaveChangesAsync();
+            ///
+            var updateid = await _context.Properties.FindAsync(Property.Id);
+            updateid.PropertyRefID = "LOJ" + updateid.Id.ToString("0000");
+            _context.Attach(updateid).State = EntityState.Modified;
 
-            return RedirectToPage("./Index");
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Details", new {id = updateid.Id});
         }
     }
 }

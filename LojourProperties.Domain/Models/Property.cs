@@ -26,13 +26,13 @@ namespace LojourProperties.Domain.Models
         public string FullDescription { get; set; }
 
         [Display(Name = "Date")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         [Display(Name = "Date Added")]
-        public string DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
 
         [Display(Name = "Last Updated")]
-        public string LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
 
         [Display(Name = "Map Location")]
         public string Map { get; set; }
@@ -58,10 +58,10 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Country")]
         public string Country { get; set; }
 
-        [Display(Name = "Property Category ID")]
+        [Display(Name = "Property Activity ID")]
         public long PropertyCategoryId { get; set; }
 
-        [Display(Name = "Property Category")]
+        [Display(Name = "Property Activity")]
         public PropertyCategory PropertyCategory { get; set; }
 
         [Display(Name = "Property Category ID")]
@@ -70,14 +70,33 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Privacy Category")]
         public PrivacyCategory PrivacyCategory { get; set; }
 
-        [Display(Name = "Property Type ID")]
+        [Display(Name = "Property Category ID")]
         public long PropertyTypeId { get; set; }
 
-        [Display(Name = "Property Type")]
+        [Display(Name = "Property Category")]
         public PropertyType PropertyType { get; set; }
+
+        [Display(Name = "Property Region ID")]
+        public long OperatingRegionId { get; set; }
+
+        [Display(Name = "Property Region")]
+        public OperatingRegion OperatingRegion { get; set; }
+
+        [Display(Name = "Property Agent ID")]
+        public string AgentId { get; set; }
+
+        [Display(Name = "Property Agent")]
+        public Profile Agent { get; set; }
+
+
+
+        [Display(Name = "land Area")]
+        public string landArea { get; set; }
 
         public ICollection<PropertyVideo> PropertyVideos { get; set; }
         public ICollection<PropertyImage> PropertyImages { get; set; }
         public ICollection<PropertyFeature> PropertyFeatures { get; set; }
+        public ICollection<PropertyDocument> PropertyDocuments { get; set; }
+        public ICollection<PropertyAgency> PropertyAgencies { get; set; }
     }
 }

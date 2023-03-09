@@ -31,6 +31,15 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             Property = await _context.Properties
                 .Include(x => x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
+                .Include(x => x.OperatingRegion)
+                .Include(x => x.PropertyDocuments)
+                .ThenInclude(x=>x.DocumentCategory)
+                .Include(x => x.PropertyImages)
+                .Include(x => x.PropertyVideos)
+                .Include(x => x.PropertyAgencies)
+                .ThenInclude(x=>x.Agency)
+                .Include(x=>x.Agent)
+                .Include(x=>x.PropertyFeatures).ThenInclude(x=>x.FeaturesCategory)
                 .Include(x => x.PropertyType).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Property == null)

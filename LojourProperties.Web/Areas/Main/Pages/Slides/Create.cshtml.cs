@@ -23,8 +23,6 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
         [BindProperty]
         public IFormFile file { get; set; }
 
-        [BindProperty]
-        public IFormFile smallfile { get; set; }
         public IActionResult OnGet()
         {
             return Page();
@@ -69,8 +67,8 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
                 // 
                 if (result.Message.Contains("200"))
                 {
-                    Slider.MainImageUrl = result.Url;
-                    Slider.MainImageKey = result.Key;
+                    Slider.Url = result.Url;
+                    Slider.Key = result.Key;
                 }
                 else
                 {
@@ -82,46 +80,6 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
 
             }
 
-            try
-            {
-                // Process file
-                await using var memoryStream = new MemoryStream();
-                await smallfile.CopyToAsync(memoryStream);
-
-                var fileExt = Path.GetExtension(smallfile.FileName);
-                var docName = $"{Guid.NewGuid()}{fileExt}";
-                // call server
-
-                var xs3Obj = new Domain.Dtos.AwsDtos.S3Object()
-                {
-                    BucketName = "lojourxyz",
-                    InputStream = memoryStream,
-                    Name = docName
-                };
-
-                var cred = new AwsCredentials()
-                {
-                    AccessKey = _config["AwsConfiguration:AWSAccessKey"],
-                    SecretKey = _config["AwsConfiguration:AWSSecretKey"]
-                };
-
-                var xresult = await _storageService.UploadFileReturnUrlAsync(xs3Obj, cred, "");
-                // 
-                if (xresult.Message.Contains("200"))
-                {
-                    Slider.Url = xresult.Url;
-                    Slider.Key = xresult.Key;
-                }
-                else
-                {
-                    TempData["error"] = "unable to upload image";
-                    //return Page();
-                }
-            }
-            catch (Exception c)
-            {
-
-            }
             Slider.Date = DateTime.UtcNow.AddHours(1);
             _context.Sliders.Add(Slider);
             await _context.SaveChangesAsync();

@@ -1,0 +1,141 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.PropertySection.Section.UpdateVideoModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title text-uppercase">VIDEOS OF [@Model.Property.Title] </h3>
+
+        <a asp-page="./Details" asp-route-id="@Model.Property.Id" class="btn bg-gradient-warning btn-sm" style="float:right;">Back To Property Details</a>
+
+    </div>
+</div>
+<!-- /.card-header -->
+<div class="card card-default">
+
+    <div class="card-body" style="margin-bottom:10px;">
+        <div class="card-header">
+            <h6 class="card-title ">Video List </h6>
+
+        </div>
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyVideo[0].VideoUrl)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyVideo[0].Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyVideo[0].Active)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.PropertyVideo)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <video controls="controls" autoplay="autoplay" style="max-height:120px;">
+                                    <source src="@item.VideoUrl" type="video/mp4" />
+                                </video>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Active )
+                            </td>
+                            <td>
+
+                                <form asp-page-handler="Delete" method="post">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input type="hidden" name="pid" value="@item.PropertyId" />
+
+                                    <button type="submit" class="btn btn-danger">X</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="card card-default">
+
+
+    <div class="card-body">
+        <div class="card-header">
+            <h6 class="card-title ">Upload New Video </h6>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Video.PropertyId" value="@Model.Property.Id" />
+
+                    <div class="form-group">
+                        <label asp-for="Video.Description" class="control-label"></label>
+                        <input asp-for="Video.Description" class="form-control" />
+                        <span asp-validation-for="Video.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Video.Active" /> Make Image Active
+                        </label>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label asp-for="Video.VideoUrl" class="control-label">Video</label><br />
+                        <input type="file" class="control-label" asp-for="file" />
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div> 
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

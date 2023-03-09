@@ -20,11 +20,9 @@
                 <thead>
                     <tr>
                         <th>S/N</th>
+                        
                         <th>
-                           Big
-                        </th>
-                        <th>
-                            Small
+                            Image
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Slider[0].StartDate)
@@ -66,11 +64,7 @@
                                 }
                                 @sn
                             </td>
-                            <td>
-                                <a href="@item.MainImageUrl" target="_blank">
-                                    <img src="@item.MainImageUrl" class="img-fluid" style="max-height:80px" />
-                                </a>
-                            </td>
+                           
                             <td>
                                 <a href="@item.Url" target="_blank">
                                     <img src="@item.Url" class="img-fluid" style="max-height:80px" />

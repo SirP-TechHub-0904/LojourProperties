@@ -62,7 +62,6 @@ namespace LojourProperties.Web.Areas.Main.Pages.Slides
                 };
 
                 var result = await _storageService.DeleteObjectAsync(cred, "lojourxyz", Slider.Key);
-                var result2 = await _storageService.DeleteObjectAsync(cred, "lojourxyz", Slider.MainImageKey);
                 _context.Sliders.Remove(Slider);
                 await _context.SaveChangesAsync();
             }

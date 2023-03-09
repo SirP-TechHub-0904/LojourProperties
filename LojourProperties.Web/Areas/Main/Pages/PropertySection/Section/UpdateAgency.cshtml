@@ -1,0 +1,143 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.PropertySection.Section.UpdateAgencyModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title text-uppercase">AGENCY DOCUMENTS OF [@Model.Property.Title] </h3>
+
+        <a asp-page="./Details" asp-route-id="@Model.Property.Id" class="btn bg-gradient-warning btn-sm" style="float:right;">Back To Property Details</a>
+
+    </div>
+</div>
+<!-- /.card-header -->
+<div class="card card-default">
+
+    <div class="card-body" style="margin-bottom:10px;">
+        <div class="card-header">
+            <h6 class="card-title ">Agency Document List </h6>
+
+        </div>
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            View Permision
+                        </th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.PropertyAgency)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a href="@item.Url" download="@item.Agency.Name">
+                                    @item.Agency.Name
+                                </a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Note)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DocumentPermission)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                
+                                <form asp-page-handler="Delete" method="post">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input type="hidden" name="pid" value="@item.PropertyId" />
+
+                                    <button type="submit" class="btn btn-danger">X</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="card card-default">
+
+
+    <div class="card-body">
+        <div class="card-header">
+            <h6 class="card-title ">Upload Agency Document </h6>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Agency.PropertyId" value="@Model.Property.Id" />
+
+
+                    <div class="form-group">
+                        <label asp-for="Agency.AgencyId" class="control-label">Document</label>
+                        <select asp-for="Agency.AgencyId" class="form-control" asp-items="ViewBag.AgencyId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Agency.Note" class="control-label">Description</label>
+                        <input asp-for="Agency.Note" class="form-control" />
+                        <span asp-validation-for="Agency.Note" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Agency.Url" class="control-label">Upload Agency Document</label><br />
+                        <input type="file" class="control-label" asp-for="file" />
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

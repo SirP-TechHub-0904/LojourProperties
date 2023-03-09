@@ -1,0 +1,151 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.Accounts.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">ADD A USER </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+
+                    <div class="form-group">
+                        <label asp-for="Profile.Title" class="control-label"></label>
+                        <input asp-for="Profile.Title" class="form-control" />
+                        <span asp-validation-for="Profile.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.SurName" class="control-label"></label>
+                        <input asp-for="Profile.SurName" class="form-control" />
+                        <span asp-validation-for="Profile.SurName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.FirstName" class="control-label"></label>
+                        <input asp-for="Profile.FirstName" class="form-control" />
+                        <span asp-validation-for="Profile.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.LastName" class="control-label"></label>
+                        <input asp-for="Profile.LastName" class="form-control" />
+                        <span asp-validation-for="Profile.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.DateOfBirth" class="control-label"></label>
+                        <input asp-for="Profile.DateOfBirth" class="form-control" />
+                        <span asp-validation-for="Profile.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.Gender" class="control-label"></label>
+                        <select asp-for="Profile.Gender" class="form-control">
+                            <option>None</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>                <span asp-validation-for="Profile.Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.MaritalStatus" class="control-label"></label>
+                        <select asp-for="Profile.MaritalStatus" class="form-control">
+                            <option>None</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>                <span asp-validation-for="Profile.MaritalStatus" class="text-danger"></span>
+                    </div>
+
+                 @*   <div class="form-group">
+                        <label asp-for="Profile.Biography" class="control-label"></label>
+                        <textarea id="summernote" asp-for="Profile.Biography" class="form-control" />
+                        <span asp-validation-for="Profile.Biography" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="Profile.Email" class="control-label"></label>
+                        <input asp-for="Profile.Email" class="form-control" />
+                        <span asp-validation-for="Profile.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Profile.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="Profile.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.AltPhone" class="control-label"></label>
+                        <input asp-for="Profile.AltPhone" class="form-control" />
+                        <span asp-validation-for="Profile.AltPhone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.StreetNumber" class="control-label"></label>
+                        <input asp-for="Profile.StreetNumber" class="form-control" />
+                        <span asp-validation-for="Profile.StreetNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.StreetName" class="control-label"></label>
+                        <input asp-for="Profile.StreetName" class="form-control" />
+                        <span asp-validation-for="Profile.StreetName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.City" class="control-label"></label>
+                        <input asp-for="Profile.City" class="form-control" />
+                        <span asp-validation-for="Profile.City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.State" class="control-label"></label>
+                        <select asp-for="Profile.State" class="form-control" asp-items="ViewBag.StateId"></select>
+                        <span asp-validation-for="Profile.State" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.ZipCode" class="control-label"></label>
+                        <input asp-for="Profile.ZipCode" class="form-control" />
+                        <span asp-validation-for="Profile.ZipCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.Country" class="control-label"></label>
+                        <input asp-for="Profile.Country" value="NIGERIA" class="form-control" />
+                        <span asp-validation-for="Profile.Country" class="text-danger"></span>
+                    </div>
+                  @*  <div class="form-group">
+                        <label asp-for="Profile.Description" class="control-label"></label>
+                        <textarea id="summernote2" asp-for="Profile.Description" class="form-control" />
+                        <span asp-validation-for="Profile.Description" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="Profile.OperatingRegionId" class="control-label"></label>
+                        <select asp-for="Profile.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profile.ProfileType" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Profile.ProfileType, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.ProfileType))), new { @class = "form-control" })
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

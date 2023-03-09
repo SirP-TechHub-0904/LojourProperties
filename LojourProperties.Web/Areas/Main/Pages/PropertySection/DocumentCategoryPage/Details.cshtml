@@ -1,0 +1,46 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.PropertySection.DocumentCategoryPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">DETAILS </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+<div>
+    <h4>DocumentCategory</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocumentCategory.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocumentCategory.Name)
+        </dd>
+    </dl>
+</div>
+ 
+ <div class="form-group">
+                    <a asp-page="./Edit" class="btn bg-gradient-warning btn-sm" asp-route-id="@Model.DocumentCategory.Id">Edit</a>
+                    <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>

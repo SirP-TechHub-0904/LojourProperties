@@ -90,10 +90,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <!-- Preloader -->
+       @* <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="~/img/icon.png" alt="AANI" height="60" width="60">
-        </div>
+        </div>*@
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -184,8 +184,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a asp-page="/Roles/UserRoles" asp-area="Identity" class="nav-link">
-                                    <i class="nav-icon fa fa-money"></i>
+                                <a asp-page="/Accounts/Index" asp-area="Main" class="nav-link">
+                                    <i class="nav-icon fa fa-users"></i>
                                     <p>
                                         Users
                                     </p>
@@ -214,7 +214,7 @@
                             <a asp-page="/PropertySection/Category/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Category
+                                    Activity
                                 </p>
                             </a>
                         </li>
@@ -223,6 +223,14 @@
                                 <i class="nav-icon fas fa-lock"></i>
                                 <p>
                                     Privacy
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/PropertySection/AgencyPage/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-globe"></i>
+                                <p>
+                                    Agency
                                 </p>
                             </a>
                         </li>
@@ -239,7 +247,15 @@
                             <a asp-page="/PropertySection/PType/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-lock"></i>
                                 <p>
-                                    Property Types
+                                    Category
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/PropertySection/DocumentCategoryPage/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-lock"></i>
+                                <p>
+                                   Document Category
                                 </p>
                             </a>
                         </li>
@@ -251,20 +267,31 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-page="/PropertySection/Features/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-lock"></i>
-                                <p>
-                                    Property Features
-                                </p>
-                            </a>
-                        </li>
+                       
+                        
+                            <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Others</li>
+                            <li class="nav-item">
+                                <a asp-page="/Web/Index" asp-area="Main" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Pages
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-page="/FaqPage/Index" asp-area="Main" class="nav-link">
+                                    <i class="nav-icon fa fa-users"></i>
+                                    <p>
+                                        FAQs
+                                    </p>
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
+                       @* <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-columns"></i>
                                 <p>
-                                    Contributors
+                                    menu
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -272,230 +299,20 @@
                                 <li class="nav-item">
                                     <a asp-page="/ContributorsPage/Category/Index" asp-area="Main" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Category</p>
+                                        <p>xxxx</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-page="/ContributorsPage/ContributorList/Index" asp-area="Main" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>All Contributors</p>
+                                        <p>xxx</p>
                                     </a>
                                 </li>
 
                             </ul>
-                        </li>
+                        </li>*@
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Families on SEC
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/SecFamilies/Category/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Family Type</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/SecFamilies/SubCategory/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Families</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/SecFamilies/ParticipantMember/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Family Members</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Principal Officer
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/PrincipalOfficePage/Office/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Office</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/PrincipalOfficePage/Officer/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Officers</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    NIPSS Board of Gov.
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Board/Year/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Year</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/Board/member/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Members</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Event Manager
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/EventPage/EventManager/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Events</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/EventPage/Committee/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Committee</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a asp-page="/EventPage/Attendance/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Attendance</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/EventPage/Comments/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Funds</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>
-                                    Papers
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/PaperPage/category/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Category</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/PaperPage/PaperList/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Papers</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-money"></i>
-                                <p>
-                                    Funds
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/Funding/category/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fund Category</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/Funding/FundPage/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Funds</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Executive
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/ExecutivePage/ActiveExecutive/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Executive</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/ExecutivePage/Year/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Year</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/ExecutivePage/Members/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Members</p>
-                                    </a>
-                                </li>
-
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-page="/GalleryPage/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-image"></i>
-                                <p>
-                                    Gallery Page
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-page="/BlogNews/Index" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>
-                                    Blog
-                                </p>
-                            </a>
-                        </li>
+                    
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -534,7 +351,7 @@
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2022 <a href="#">LOOUR</a>.</strong>
+            <strong>Copyright &copy; 2018 <a href="#">LOJOUR</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 2.0
@@ -606,6 +423,7 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "responsive": true,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
@@ -617,8 +435,26 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             });
         });
+    </script>
+    <script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote();
+    $('#summernote2').summernote();
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.product-image-thumb').on('click', function () {
+                var $image_element = $(this).find('img')
+                $('.product-image').prop('src', $image_element.attr('src'))
+                $('.product-image-thumb.active').removeClass('active')
+                $(this).addClass('active')
+            })
+        })
     </script>
     @await RenderSectionAsync("Scripts", required: false)
     <!-- SweetAlert2 -->
@@ -673,10 +509,7 @@
             toastr.success('@TempData["info"]')
         </script>
     }
-    <script>
-        $('#summernote').summernote()
-    </script>
-
+     
     <script>
         $(document).ready(function () {
             $('.js-example-basic-single').select2();

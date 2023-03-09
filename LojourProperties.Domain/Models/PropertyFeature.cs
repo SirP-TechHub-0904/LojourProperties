@@ -22,7 +22,7 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Property ID")]
         public long? PropertyId { get; set; }
 
-        [Display(Name = "Features Category")]
+        [Display(Name = "Property")]
         public Property Property { get; set; }
 
         [Display(Name = "Description")]

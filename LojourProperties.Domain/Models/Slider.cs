@@ -13,12 +13,7 @@ namespace LojourProperties.Domain.Models
         public long Id { get; set; }
         public string? Url { get; set; }
         public string? Key { get; set; }
-        [Display(Name = "Main Image")]
-        public string? MainImageUrl { get; set; }
-
-        [Display(Name = "Main Key")]
-        public string? MainImageKey { get; set; }
-
+        
 
         public DateTime Date { get; set; }
 

@@ -22,6 +22,40 @@ namespace LojourProperties.Domain.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("LojourProperties.Domain.Models.Agency", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agencies");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.DocumentCategory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentCategories");
+                });
+
             modelBuilder.Entity("LojourProperties.Domain.Models.FeaturesCategory", b =>
                 {
                     b.Property<long>("Id")
@@ -39,6 +73,28 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FeaturesCategories");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.LocalGoverment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("LGAName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("StatesId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StatesId");
+
+                    b.ToTable("LocalGoverments");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.OperatingRegion", b =>
@@ -98,6 +154,14 @@ namespace LojourProperties.Domain.Data.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("AltPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Biography")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -186,6 +250,9 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProfileType")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -246,6 +313,10 @@ namespace LojourProperties.Domain.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
+                    b.Property<string>("AgentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("AreaGuide")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -258,25 +329,25 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("DateAdded")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FullDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastUpdated")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Map")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("OperatingRegionId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("PrivacyCategoryId")
                         .HasColumnType("bigint");
@@ -315,7 +386,15 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("landArea")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
+
+                    b.HasIndex("OperatingRegionId");
 
                     b.HasIndex("PrivacyCategoryId");
 
@@ -324,6 +403,47 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasIndex("PropertyTypeId");
 
                     b.ToTable("Properties");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.PropertyAgency", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long?>("AgencyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DocumentPermission")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("PropertyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgencyId");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyAgencies");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.PropertyCategory", b =>
@@ -340,6 +460,47 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PropertyCategories");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.PropertyDocument", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DocumentCategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Permitted")
+                        .HasColumnType("bit");
+
+                    b.Property<long?>("PropertyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentCategoryId");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyDocuments");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.PropertyFeature", b =>
@@ -375,6 +536,15 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Default")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -419,6 +589,12 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -465,12 +641,6 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.Property<string>("Key")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MainImageKey")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MainImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MainText")
                         .HasColumnType("nvarchar(max)");
 
@@ -492,6 +662,217 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.State", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("StateName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("States");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.WebPage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageEight")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageEighteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageEleven")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageFiften")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageFive")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageFour")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageFourteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageNine")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageNineteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageOne")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageSeven")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageSeventeen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageSix")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageSixteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageThirteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageThree")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTwelve")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTwenty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTwo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PagePosition")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Publish")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TextEight")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextEighteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextEleven")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFiften")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFive")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFour")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFourteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextNine")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextNineteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextOne")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextSeven")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextSeventeen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextSix")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextSixteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextTen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextThirteen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextThree")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextTwelve")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextTwenty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextTwo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WebPages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -627,6 +1008,17 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("LojourProperties.Domain.Models.LocalGoverment", b =>
+                {
+                    b.HasOne("LojourProperties.Domain.Models.State", "States")
+                        .WithMany("LocalGov")
+                        .HasForeignKey("StatesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("States");
+                });
+
             modelBuilder.Entity("LojourProperties.Domain.Models.Profile", b =>
                 {
                     b.HasOne("LojourProperties.Domain.Models.OperatingRegion", "OperatingRegion")
@@ -638,6 +1030,18 @@ namespace LojourProperties.Domain.Data.Migrations
 
             modelBuilder.Entity("LojourProperties.Domain.Models.Property", b =>
                 {
+                    b.HasOne("LojourProperties.Domain.Models.Profile", "Agent")
+                        .WithMany()
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LojourProperties.Domain.Models.OperatingRegion", "OperatingRegion")
+                        .WithMany()
+                        .HasForeignKey("OperatingRegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("LojourProperties.Domain.Models.PrivacyCategory", "PrivacyCategory")
                         .WithMany()
                         .HasForeignKey("PrivacyCategoryId")
@@ -656,11 +1060,45 @@ namespace LojourProperties.Domain.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Agent");
+
+                    b.Navigation("OperatingRegion");
+
                     b.Navigation("PrivacyCategory");
 
                     b.Navigation("PropertyCategory");
 
                     b.Navigation("PropertyType");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.PropertyAgency", b =>
+                {
+                    b.HasOne("LojourProperties.Domain.Models.Agency", "Agency")
+                        .WithMany()
+                        .HasForeignKey("AgencyId");
+
+                    b.HasOne("LojourProperties.Domain.Models.Property", "Property")
+                        .WithMany("PropertyAgencies")
+                        .HasForeignKey("PropertyId");
+
+                    b.Navigation("Agency");
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.PropertyDocument", b =>
+                {
+                    b.HasOne("LojourProperties.Domain.Models.DocumentCategory", "DocumentCategory")
+                        .WithMany()
+                        .HasForeignKey("DocumentCategoryId");
+
+                    b.HasOne("LojourProperties.Domain.Models.Property", "Property")
+                        .WithMany("PropertyDocuments")
+                        .HasForeignKey("PropertyId");
+
+                    b.Navigation("DocumentCategory");
+
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.PropertyFeature", b =>
@@ -755,11 +1193,20 @@ namespace LojourProperties.Domain.Data.Migrations
 
             modelBuilder.Entity("LojourProperties.Domain.Models.Property", b =>
                 {
+                    b.Navigation("PropertyAgencies");
+
+                    b.Navigation("PropertyDocuments");
+
                     b.Navigation("PropertyFeatures");
 
                     b.Navigation("PropertyImages");
 
                     b.Navigation("PropertyVideos");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.State", b =>
+                {
+                    b.Navigation("LocalGov");
                 });
 #pragma warning restore 612, 618
         }

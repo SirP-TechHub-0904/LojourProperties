@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static LojourProperties.Domain.Models.Enum;
 
 namespace LojourProperties.Domain.Models
 {
@@ -22,6 +23,11 @@ namespace LojourProperties.Domain.Models
 
       
         public string LastName { get; set; }
+
+        
+        [Display(Name = "Biography")]
+        public string Biography { get; set; }
+
         [Display(Name = "FullName")]
         public string Fullname
         {
@@ -30,6 +36,11 @@ namespace LojourProperties.Domain.Models
                 return SurName + " " + FirstName + " " + LastName;
             }
         }
+
+        [Display(Name = "Alternative Phone Number")]
+        public string AltPhone { get; set; }
+
+
         [Display(Name = "Street Number")]
         public string StreetNumber { get; set; }
 
@@ -74,5 +85,17 @@ namespace LojourProperties.Domain.Models
         public string Gender { get; set; }
         [Display(Name = "Marital Status")]
         public string MaritalStatus { get; set; }
+
+        [Display(Name = "Profile Type")]
+        public ProfileType ProfileType { get; set; }
+
+        //[Display(Name = "Agent Data")]
+        //public string AgentInfor
+        //{
+        //    get
+        //    {
+        //        return SurName + " " + FirstName + " " + LastName + "["+OperatingRegion.RegionOfOperation+"]";
+        //    }
+        //}
     }
 }
