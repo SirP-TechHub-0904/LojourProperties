@@ -8,6 +8,37 @@ namespace LojourProperties.Domain.Models
 {
     public class Enum
     {
+        
+            public enum PropertyStatus
+        {
+            [Description("None")]
+            None = 0,
+
+            [Description("Publish")]
+            Publish = 2,
+
+            [Description("Unpublish")]
+            Unpublish = 3,
+
+        }
+
+        public enum ActivityStatus
+        {
+            [Description("None")]
+            None = 0,
+
+            [Description("Sold")]
+            Sold = 2,
+
+            [Description("Rented")]
+            Rented = 3,
+
+            [Description("Leased")]
+            Leased = 4,
+
+
+        }
+
         public enum ProfileType
         {
             [Description("None")]

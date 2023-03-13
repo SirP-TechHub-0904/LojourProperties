@@ -24,48 +24,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.Property[0].Title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].PropertyRefID)
+            <th> 
+                Ref ID
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].ShortDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].FullDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Date)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Property[0].DateAdded)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Property[0].LastUpdated)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Map)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].AreaGuide)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].PropertyUsage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].StreetNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].StreetName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Country)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Property[0].PropertyCategory)
             </th>
@@ -75,6 +44,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Property[0].PropertyType)
             </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Property[0].PropertyStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Property[0].ActivityStatus)
+                        </th>
             <th></th>
         </tr>
                 </thead>
@@ -98,54 +73,29 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PropertyRefID)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
+             
             <td>
                 @Html.DisplayFor(modelItem => item.DateAdded)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LastUpdated)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Map)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AreaGuide)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PropertyUsage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StreetNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StreetName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PropertyCategory.Id)
+                @Html.DisplayFor(modelItem => item.PropertyCategory.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PrivacyCategory.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PropertyType.Name)
+                @Html.DisplayFor(modelItem => item.PropertyStatus)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityStatus)
+            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyType.Name)
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success">Action</button>

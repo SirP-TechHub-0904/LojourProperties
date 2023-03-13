@@ -286,8 +286,16 @@
                                     </p>
                                 </a>
                             </li>
-                        <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Security</li>
                         <li class="nav-item">
+                            <a asp-page="/Tips/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Safety Tips
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Security</li>
+                        <li class="nav-item" style="margin-bottom:20px;">
                             <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out"></i>
                                 <p>
@@ -295,7 +303,7 @@
                                 </p>
                             </a>
                         </li>
-                        
+                         
                        @* <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-columns"></i>
@@ -450,11 +458,16 @@
         });
     </script>
     <script>
-  $(function () {
-    // Summernote
-    $('#summernote').summernote();
-    $('#summernote2').summernote();
-        })
+        $(document).ready(function () {
+            $('.summernote').summernote();
+        });
+
+
+  //$(function () {
+  //  // Summernote
+  //  $('#summernote').summernote();
+  //  $('#summernote2').summernote();
+  //      })
     </script>
     <script>
         $(document).ready(function () {

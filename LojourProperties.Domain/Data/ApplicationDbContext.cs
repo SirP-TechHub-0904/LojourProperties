@@ -32,6 +32,7 @@ namespace LojourProperties.Domain.Data
         public DbSet<WebPage> WebPages { get; set; }
         public DbSet<FAQ> FAQs { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<SafetyTip> SafetyTips { get; set; }
 
     }
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>

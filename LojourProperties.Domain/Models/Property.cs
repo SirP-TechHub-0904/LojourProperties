@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static LojourProperties.Domain.Models.Enum;
 
 namespace LojourProperties.Domain.Models
 {
@@ -92,6 +93,12 @@ namespace LojourProperties.Domain.Models
 
         [Display(Name = "land Area")]
         public string landArea { get; set; }
+
+        [Display(Name = "Property Status")]
+        public PropertyStatus PropertyStatus { get; set; }
+
+        [Display(Name = "Activity Status")]
+        public ActivityStatus ActivityStatus { get; set; }
 
         public ICollection<PropertyVideo> PropertyVideos { get; set; }
         public ICollection<PropertyImage> PropertyImages { get; set; }

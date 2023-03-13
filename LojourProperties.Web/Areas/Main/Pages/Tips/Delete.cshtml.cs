@@ -7,12 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
-using Microsoft.AspNetCore.Authorization;
-using System.Data;
 
-namespace LojourProperties.Web.Areas.Main.Pages.Web
+namespace LojourProperties.Web.Areas.Main.Pages.Tips
 {
-    [Authorize(Roles = "mSuperAdmin,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly LojourProperties.Domain.Data.ApplicationDbContext _context;
@@ -23,36 +20,36 @@ namespace LojourProperties.Web.Areas.Main.Pages.Web
         }
 
         [BindProperty]
-        public WebPage WebPage { get; set; }
+        public SafetyTip SafetyTip { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            WebPage = await _context.WebPages.FirstOrDefaultAsync(m => m.Id == id);
+            SafetyTip = await _context.SafetyTips.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (WebPage == null)
+            if (SafetyTip == null)
             {
                 return NotFound();
             }
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(long? id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            WebPage = await _context.WebPages.FindAsync(id);
+            SafetyTip = await _context.SafetyTips.FindAsync(id);
 
-            if (WebPage != null)
+            if (SafetyTip != null)
             {
-                _context.WebPages.Remove(WebPage);
+                _context.SafetyTips.Remove(SafetyTip);
                 await _context.SaveChangesAsync();
             }
 

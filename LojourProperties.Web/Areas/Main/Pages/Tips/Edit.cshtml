@@ -1,13 +1,13 @@
 ﻿@page
-@model LojourProperties.Web.Areas.Main.Pages.FaqPage.CreateModel
+@model LojourProperties.Web.Areas.Main.Pages.Tips.EditModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <div class="card card-default">
     <div class="card-header">
-        <h3 class="card-title">ADD A FAQ </h3>
+        <h3 class="card-title">UPDATE TIPS </h3>
 
 
     </div>
@@ -17,24 +17,20 @@
             <div class="col-md-12">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SafetyTip.Id" />
             <div class="form-group">
-                <label asp-for="FAQ.Title" class="control-label"></label>
-                <input asp-for="FAQ.Title" class="form-control" />
-                <span asp-validation-for="FAQ.Title" class="text-danger"></span>
+                <label asp-for="SafetyTip.Message" class="control-label"></label>
+                <input asp-for="SafetyTip.Message" class="form-control" />
+                <span asp-validation-for="SafetyTip.Message" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FAQ.Message" class="control-label"></label>
-                <input asp-for="FAQ.Message" class="form-control" />
-                <span asp-validation-for="FAQ.Message" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FAQ.SortOrder" class="control-label"></label>
-                <input asp-for="FAQ.SortOrder" class="form-control" />
-                <span asp-validation-for="FAQ.SortOrder" class="text-danger"></span>
+                <label asp-for="SafetyTip.SortOrder" class="control-label"></label>
+                <input asp-for="SafetyTip.SortOrder" class="form-control" />
+                <span asp-validation-for="SafetyTip.SortOrder" class="text-danger"></span>
             </div>
                     <div class="form-group form-check">
                         <label class="form-check-label">
-                            <input class="form-check-input" asp-for="FAQ.Show" /> @Html.DisplayNameFor(model => model.FAQ.Show)
+                            <input class="form-check-input" asp-for="SafetyTip.Show" /> @Html.DisplayNameFor(model => model.SafetyTip.Show)
                         </label>
                     </div>
                     <div class="form-group">
@@ -53,7 +49,6 @@
     <div class="card-footer">
     </div>
 </div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

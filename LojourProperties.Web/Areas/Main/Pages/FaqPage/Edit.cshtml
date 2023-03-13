@@ -33,7 +33,11 @@
                 <input asp-for="FAQ.SortOrder" class="form-control" />
                 <span asp-validation-for="FAQ.SortOrder" class="text-danger"></span>
             </div>
-
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="FAQ.Show" /> @Html.DisplayNameFor(model => model.FAQ.Show)
+                        </label>
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="Submit" class="btn btn-primary" />
                         <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>

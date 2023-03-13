@@ -1,5 +1,5 @@
 ﻿@page
-@model LojourProperties.Web.Areas.Main.Pages.Web.IndexModel
+@model LojourProperties.Web.Areas.Main.Pages.Tips.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -7,10 +7,10 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">WEB PAGES LIST</h3>
+        <h3 class="card-title">SAFETY TIPS</h3>
 
 
-        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Tips</a>
 
     </div>
     <!-- /.card-header -->
@@ -21,24 +21,14 @@
                     <tr>
                         <th>S/N</th>
                         <th>
-                            @Html.DisplayNameFor(model => model.WebPage[0].Title)
+                            @Html.DisplayNameFor(model => model.SafetyTip[0].Message)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.WebPage[0].Name)
+                            @Html.DisplayNameFor(model => model.SafetyTip[0].SortOrder)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.WebPage[0].Description)
+                            @Html.DisplayNameFor(model => model.SafetyTip[0].Show)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WebPage[0].SortOrder)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WebPage[0].PagePosition)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WebPage[0].Publish)
-                        </th>
-                         
                         <th></th>
                     </tr>
                 </thead>
@@ -46,7 +36,7 @@
                     int sn = 0;
                 }
                 <tbody>
-                    @foreach (var item in Model.WebPage)
+                    @foreach (var item in Model.SafetyTip)
                     {
                         <tr>
                             <td>
@@ -56,24 +46,14 @@
                                 @sn
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
+                                @Html.DisplayFor(modelItem => item.Message)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.SortOrder)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.PagePosition)
+                                @Html.DisplayFor(modelItem => item.Show)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Publish)
-                            </td>
-                             
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success">Action</button>
@@ -85,7 +65,8 @@
 
                                             <a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>
                                             <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
- 
+                                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+
                                         </div>
                                     </div>
                                 </div>

@@ -488,9 +488,9 @@
   /*------------------------------------------------------ MOBILE COLLAPSE TRIGGER BUTTON */
   margin: 0;
   padding: 0;
-  height: 50px;
-  width: 70px;
-  background: #1a1a1a;
+  height: 45px;
+  width: 45px;
+  background: #e2160f;
   display: none;
   position: absolute;
   top: 5px;
@@ -510,7 +510,7 @@
   content: "";
   display: block;
   height: 4px;
-  width: 40px;
+  width: 25px;
   background: #fff;
   position: absolute;
   top: 13px;
@@ -529,11 +529,11 @@
 }
 
 .mega-menu .menu-mobile-collapse-trigger:after {
-  top: 33px;
+  top: 27px;
 }
 
 .mega-menu .menu-mobile-collapse-trigger span {
-  top: 23px;
+  top: 20px;
 }
 
 .mega-menu .menu-mobile-collapse-trigger.active span {

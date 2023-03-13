@@ -29,6 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.FAQ[0].SortOrder)
             </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FAQ[0].Show)
+                        </th>
             <th></th>
         </tr>
     </thead>
@@ -53,6 +56,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SortOrder)
             </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Show)
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success">Action</button>

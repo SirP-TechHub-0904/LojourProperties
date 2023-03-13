@@ -1,0 +1,77 @@
+﻿@page
+@model LojourProperties.Web.Pages.Page.WebFaqModel
+
+@{
+    ViewData["Title"] = "Frequently Asked Questions";
+    ViewData["Title2"] = "Support Center";
+}
+<partial name="_Breadcrumb" />
+
+<div class="main-content-area clearfix">
+
+<section class="section-padding gray no-top">
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Middle Content Area -->
+            <div class="col-md-8 col-xs-12 col-sm-12">
+                <ul class="accordion">
+                    @foreach (var x in Model.FAQ.Take(1))
+                    {
+                        <li class="in">
+                            <h3 class="accordion-title"><a href="#">@x.Title</a></h3>
+                            <div class="accordion-content">
+                                <p>
+                                    @x.Message
+                                </p>
+                            </div>
+                        </li>
+                    }
+                    @foreach (var x in Model.FAQ.Skip(1))
+                    {
+                        <li class="">
+                            <h3 class="accordion-title">
+                                <a href="#">
+                                    @x.Title
+                                </a>
+                            </h3>
+                            <div class="accordion-content">
+                                <p>
+                                    @x.Message
+                                </p>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-12">
+                <!-- Sidebar Widgets -->
+                <div class="blog-sidebar">
+                    <!-- Categories -->
+                    <div class="widget">
+                        <div class="widget-heading">
+                            <h4 class="panel-title"><a>Saftey Tips </a></h4>
+                        </div>
+                        <div class="widget-content">
+                             <ol>
+                                 @foreach (var x in Model.SafetyTip)
+                    {
+                                <li>@x.Message</li>
+                    }
+                                   </ol>
+                        </div>
+                    </div>
+                    <!-- Latest News -->
+                </div>
+                <!-- Sidebar Widgets End -->
+            </div>
+            <!-- Middle Content Area  End -->
+        </div>
+        <!-- Row End -->
+    </div>
+    <!-- Main Container End -->
+</section>
+
+                                 </div>

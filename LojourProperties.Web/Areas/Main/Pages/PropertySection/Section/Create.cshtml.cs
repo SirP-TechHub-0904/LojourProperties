@@ -64,7 +64,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             Property.DateAdded = DateTime.UtcNow.AddHours(1);
             Property.LastUpdated = DateTime.UtcNow.AddHours(1);
             Property.PropertyRefID = "X";
-
+            Property.ActivityStatus = Domain.Models.Enum.ActivityStatus.None;
 
             _context.Properties.Add(Property);
             await _context.SaveChangesAsync();

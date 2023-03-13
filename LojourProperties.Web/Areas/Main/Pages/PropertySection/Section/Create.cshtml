@@ -38,13 +38,13 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Property.FullDescription" class="control-label"></label>
-                        <textarea id="summernote" asp-for="Property.FullDescription" class="form-control">
+                        <textarea id=" " asp-for="Property.FullDescription" class="form-control summernote">
 
                          </textarea>
                         <span asp-validation-for="Property.FullDescription" class="text-danger"></span>
                     </div>
-                    
-                   
+
+
                     <div class="form-group">
                         <label asp-for="Property.Map" class="control-label"></label><br />
                         <label class="control-label">
@@ -58,17 +58,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="Property.AreaGuide" class="control-label">Area Guide <br />
-                        Specify things that makes the area marketable and attractive.    
+                        <label asp-for="Property.AreaGuide" class="control-label">
+                            Area Guide <br />
+                            Specify things that makes the area marketable and attractive.
                         </label>
-                        <textarea asp-for="Property.AreaGuide" class="form-control"></textarea>
+
+                        <textarea id=" " asp-for="Property.AreaGuide" class="form-control summernote">
+
+                         </textarea>
+
                         <span asp-validation-for="Property.AreaGuide" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="Property.PropertyUsage" class="control-label"></label>
-                        <input asp-for="Property.PropertyUsage" class="form-control" />
-                        <span asp-validation-for="Property.PropertyUsage" class="text-danger"></span>
+                        <textarea id="" asp-for="Property.PropertyUsage" class="form-control summernote">
+
+                         </textarea>                        <span asp-validation-for="Property.PropertyUsage" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -116,8 +122,17 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Property.landArea" class="control-label"></label>
-                        <textarea asp-for="Property.landArea" class="form-control"></textarea>
-                        <span asp-validation-for="Property.landArea" class="text-danger"></span>
+                        <textarea id="summernote" asp-for="Property.landArea" class="form-control">
+
+                         </textarea>       
+                         <span asp-validation-for="Property.landArea" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyStatus" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Property.PropertyStatus, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.PropertyStatus))), new { @class = "form-control" })
+
+                        <span asp-validation-for="Property.PropertyStatus" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Submit" class="btn btn-primary" />

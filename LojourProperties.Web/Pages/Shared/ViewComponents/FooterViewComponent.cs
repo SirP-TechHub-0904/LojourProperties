@@ -13,11 +13,13 @@ using System.Threading.Tasks;
 
 namespace NirsalProject.Pages.Shared.ViewComponents
 {
-    public class SliderViewComponent : ViewComponent
+    public class FooterViewComponent : ViewComponent
     {
         private readonly ApplicationDbContext _context;
-         
-        public SliderViewComponent(
+
+
+
+        public FooterViewComponent(
             ApplicationDbContext context)
         {
             _context = context;
@@ -29,7 +31,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
         {
 
             var slider = await _context.Sliders.Where(x => x.Show == true).ToListAsync();
-            return View(slider);
+            return View();
         }
     }
 }
