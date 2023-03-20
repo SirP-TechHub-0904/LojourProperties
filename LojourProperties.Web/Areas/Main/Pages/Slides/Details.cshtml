@@ -17,17 +17,44 @@
             <div class="col-md-12">
                 <dl class="row">
 
-                 
+                    @if (Model.Slider.IsVideo == false)
+                    {
+
+                        <dt class="col-sm-2">
+                            Image
+                        </dt>
+                        <dd class="col-sm-10">
+                            <a href="@Model.Slider.Url" target="_blank">
+                                <img src="@Model.Slider.Url" class="img-fluid" style="max-height:120px" />
+                            </a>
+                        </dd>
+                    }
+                    else
+                    {
+                        <dt class="col-sm-2">
+                            Video
+                        </dt>
+                        <dd class="col-sm-10">
+                            <video controls="controls" id="myVideo" style="height:120px;">
+                                <source src="@Model.Slider.Url" type="video/mp4">
+                                Any alternate text.
+                            </video>
+                        </dd>
+                    }
+
 
                     <dt class="col-sm-2">
-                       Image
+                        @Html.DisplayNameFor(model => model.Slider.IsVideo)
                     </dt>
                     <dd class="col-sm-10">
-                        <a href="@Model.Slider.Url" target="_blank">
-                            <img src="@Model.Slider.Url" class="img-fluid" style="max-height:120px" />
-                        </a>
+                        @Html.DisplayFor(model => model.Slider.IsVideo)
                     </dd>
-
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.SortOrder)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.SortOrder)
+                    </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Slider.Key)
                     </dt>

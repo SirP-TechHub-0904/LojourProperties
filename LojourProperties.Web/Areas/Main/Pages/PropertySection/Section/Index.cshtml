@@ -50,6 +50,10 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Property[0].ActivityStatus)
                         </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Property[0].SortOrder)
+                        </th>
+
             <th></th>
         </tr>
                 </thead>
@@ -96,6 +100,11 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.PropertyType.Name)
                             </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SortOrder)
+                            </td>
+
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success">Action</button>

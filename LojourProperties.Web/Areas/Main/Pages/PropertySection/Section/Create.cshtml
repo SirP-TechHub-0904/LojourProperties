@@ -32,6 +32,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label asp-for="Property.Amount" class="control-label"></label>
+                        <textarea asp-for="Property.Amount" class="form-control"></textarea>
+                        <span asp-validation-for="Property.Amount" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
                         <label asp-for="Property.ShortDescription" class="control-label"></label>
                         <textarea asp-for="Property.ShortDescription" class="form-control"></textarea>
                         <span asp-validation-for="Property.ShortDescription" class="text-danger"></span>
@@ -133,6 +139,12 @@
                         @Html.DropDownListFor(model => model.Property.PropertyStatus, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.PropertyStatus))), new { @class = "form-control" })
 
                         <span asp-validation-for="Property.PropertyStatus" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.SortOrder" class="control-label"></label>
+                        <input asp-for="Property.SortOrder" class="form-control" />
+                        <span asp-validation-for="Property.SortOrder" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Submit" class="btn btn-primary" />

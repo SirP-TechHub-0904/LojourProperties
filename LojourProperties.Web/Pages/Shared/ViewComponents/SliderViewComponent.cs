@@ -28,7 +28,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string key)
         {
 
-            var slider = await _context.Sliders.Where(x => x.Show == true).ToListAsync();
+            var slider = await _context.Sliders.Where(x => x.Show == true).OrderBy(x=>x.SortOrder).ToListAsync();
             return View(slider);
         }
     }

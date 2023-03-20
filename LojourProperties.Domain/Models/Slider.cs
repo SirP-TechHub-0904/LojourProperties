@@ -13,7 +13,12 @@ namespace LojourProperties.Domain.Models
         public long Id { get; set; }
         public string? Url { get; set; }
         public string? Key { get; set; }
-        
+
+        [Display(Name = "Is Video")]
+        public bool IsVideo { get; set; }
+
+        [Display(Name = "Sort Order")]
+        public int SortOrder { get; set; }
 
         public DateTime Date { get; set; }
 

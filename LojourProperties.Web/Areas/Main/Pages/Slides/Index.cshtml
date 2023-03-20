@@ -8,10 +8,10 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">WEB SLIDERS</h3>
-       
 
-            <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Slider</a>
-        
+
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Slider</a>
+
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -20,7 +20,7 @@
                 <thead>
                     <tr>
                         <th>S/N</th>
-                        
+
                         <th>
                             Image
                         </th>
@@ -37,17 +37,12 @@
                             @Html.DisplayNameFor(model => model.Slider[0].MainText)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Slider[0].SubText)
+                            @Html.DisplayNameFor(model => model.Slider[0].IsVideo)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Slider[0].PlainText)
+                            @Html.DisplayNameFor(model => model.Slider[0].SortOrder)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Slider[0].ButtonText)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Slider[0].ButtonLink)
-                        </th>
+                       
                         <th></th>
                     </tr>
                 </thead>
@@ -64,11 +59,27 @@
                                 }
                                 @sn
                             </td>
-                           
+
                             <td>
-                                <a href="@item.Url" target="_blank">
-                                    <img src="@item.Url" class="img-fluid" style="max-height:80px" />
-                                </a>
+
+                                @if (item.IsVideo == false)
+                                {
+                                    <a href="@item.Url" target="_blank">
+                                        <img src="@item.Url" class="img-fluid" style="max-height:80px" />
+                                    </a>
+                                }
+                                else
+                                {
+
+                                    <video loop="loop" id="myVideo" controls="controls" style="height:80px;">
+                                        <source src="@item.Url" type="video/mp4">
+                                        Any alternate text.
+                                    </video>
+                                }
+
+
+
+
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.StartDate)
@@ -83,17 +94,12 @@
                                 @Html.DisplayFor(modelItem => item.MainText)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.SubText)
+                                @Html.DisplayFor(modelItem => item.IsVideo)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.PlainText)
+                                @Html.DisplayFor(modelItem => item.SortOrder)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ButtonText)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ButtonLink)
-                            </td>
+                            
 
                             <td>
                                 <div class="btn-group">

@@ -13,9 +13,16 @@ namespace LojourProperties.Domain.Models
     public class Property
     {
         public long Id { get; set; }
+        public string Key { get; set; }
 
         [Display(Name = "Title")]
         public string Title { get; set; }
+
+        [Display(Name = "Sort Order")]
+        public int SortOrder { get; set; }
+
+        [Display(Name = "Amount")]
+        public decimal Amount { get; set; }
 
         [Display(Name = "Property Ref ID")]
         public string PropertyRefID { get; set; }

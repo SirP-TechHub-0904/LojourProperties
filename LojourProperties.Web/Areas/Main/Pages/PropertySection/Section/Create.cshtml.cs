@@ -60,6 +60,8 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             //{
             //    return Page();
             //}
+            Guid guid = Guid.NewGuid();
+            Property.Key = guid.ToString();
             Property.Date = DateTime.UtcNow.AddHours(1);
             Property.DateAdded = DateTime.UtcNow.AddHours(1);
             Property.LastUpdated = DateTime.UtcNow.AddHours(1);
