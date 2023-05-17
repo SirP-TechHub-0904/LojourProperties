@@ -1,4 +1,5 @@
 ﻿using LojourProperties.Domain.Services.AWS;
+using LojourProperties.Domain.Services.ImageResize;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace LojourProperties.Domain
         {
 
             services.AddTransient<IStorageService, StorageService>();
+            services.AddTransient<IFileImageResize, FileImageResize>();
 
             return services;
 

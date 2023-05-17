@@ -25,13 +25,13 @@ namespace LojourProperties.Domain.Models
         public decimal Amount { get; set; }
 
         [Display(Name = "Property Ref ID")]
-        public string PropertyRefID { get; set; }
+        public string? PropertyRefID { get; set; }
 
         [Display(Name = "Short Description")]
-        public string ShortDescription { get; set; }
+        public string? ShortDescription { get; set; }
 
         [Display(Name = "Full Description")]
-        public string FullDescription { get; set; }
+        public string? FullDescription { get; set; }
 
         [Display(Name = "Date")]
         public DateTime Date { get; set; }
@@ -43,54 +43,49 @@ namespace LojourProperties.Domain.Models
         public DateTime LastUpdated { get; set; }
 
         [Display(Name = "Map Location")]
-        public string Map { get; set; }
+        public string? Map { get; set; }
 
         [Display(Name = "Area Guide")]
-        public string AreaGuide { get; set; }
+        public string? AreaGuide { get; set; }
 
         [Display(Name = "Property Possible Ussage")]
-        public string PropertyUsage { get; set; }
+        public string? PropertyUsage { get; set; }
 
         [Display(Name = "Street Number")]
-        public string StreetNumber { get; set; }
+        public string? StreetNumber { get; set; }
 
         [Display(Name = "Street Name")]
-        public string StreetName { get; set; }
+        public string? StreetName { get; set; }
 
         [Display(Name = "City")]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         [Display(Name = "State")]
-        public string State { get; set; }
+        public string? State { get; set; }
 
         [Display(Name = "Country")]
-        public string Country { get; set; }
+        public string? Country { get; set; }
 
-        [Display(Name = "Property Activity ID")]
+        [Display(Name = "Property Activity")]
         public long PropertyCategoryId { get; set; }
 
         [Display(Name = "Property Activity")]
         public PropertyCategory PropertyCategory { get; set; }
 
-        [Display(Name = "Property Category ID")]
+        [Display(Name = "Property Category")]
         public long PrivacyCategoryId { get; set; }
 
         [Display(Name = "Privacy Category")]
         public PrivacyCategory PrivacyCategory { get; set; }
 
-        [Display(Name = "Property Category ID")]
+        [Display(Name = "Property Type")]
         public long PropertyTypeId { get; set; }
 
-        [Display(Name = "Property Category")]
+        [Display(Name = "Property Type")]
         public PropertyType PropertyType { get; set; }
 
-        [Display(Name = "Property Region ID")]
-        public long OperatingRegionId { get; set; }
-
-        [Display(Name = "Property Region")]
-        public OperatingRegion OperatingRegion { get; set; }
-
-        [Display(Name = "Property Agent ID")]
+       
+        [Display(Name = "Property Agent")]
         public string AgentId { get; set; }
 
         [Display(Name = "Property Agent")]
@@ -99,7 +94,7 @@ namespace LojourProperties.Domain.Models
 
 
         [Display(Name = "land Area")]
-        public string landArea { get; set; }
+        public string? landArea { get; set; }
 
         [Display(Name = "Property Status")]
         public PropertyStatus PropertyStatus { get; set; }

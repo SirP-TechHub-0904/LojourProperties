@@ -32,7 +32,8 @@ namespace LojourProperties.Domain.Models
 
             get
             {
-                return City + " / " + State + " / " + Zone + " / " + Region +" / " + Country;
+                //return City + " / " + State + " / " + Zone + " / " + Region +" / " + Country;
+                return State;
             }
         }
         

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using LojourProperties.Domain.Data;
 using LojourProperties.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
+using LojourProperties.Domain.Dtos;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 {
@@ -41,9 +42,26 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             {
                 return NotFound();
             }
-           ViewData["PrivacyCategoryId"] = new SelectList(_context.PrivacyCategories, "Id", "Name");
-           ViewData["PropertyCategoryId"] = new SelectList(_context.PropertyCategories, "Id", "Id");
-           ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
+            ViewData["PrivacyCategoryId"] = new SelectList(_context.PrivacyCategories, "Id", "Name");
+
+            ViewData["PropertyCategoryId"] = new SelectList(_context.PropertyCategories, "Id", "Name");
+
+            ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
+
+            ViewData["OperatingRegionId"] = new SelectList(_context.OperatingRegions, "Id", "RegionOfOperation");
+
+
+            ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
+
+
+            var data = _context.Users.Include(x => x.OperatingRegion).Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
+            var output = data.Select(x => new AgentInfo
+            {
+                Id = x.Id,
+                Name = x.Fullname + "   [" + x.OperatingRegion.RegionOfOperation + "]"
+            });
+
+            ViewData["AgentId"] = new SelectList(output, "Id", "Name");
             return Page();
         }
 
@@ -51,11 +69,11 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+            Property.LastUpdated = DateTime.UtcNow.AddHours(1);
             _context.Attach(Property).State = EntityState.Modified;
 
             try
@@ -74,7 +92,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Property.Id });
         }
 
         private bool PropertyExists(long id)

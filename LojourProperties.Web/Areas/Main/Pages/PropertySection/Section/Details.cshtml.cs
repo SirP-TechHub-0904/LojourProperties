@@ -32,8 +32,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 
             Property = await _context.Properties
                 .Include(x => x.PrivacyCategory)
-                .Include(x => x.PropertyCategory)
-                .Include(x => x.OperatingRegion)
+                .Include(x => x.PropertyCategory) 
                 .Include(x => x.PropertyDocuments)
                 .ThenInclude(x=>x.DocumentCategory)
                 .Include(x => x.PropertyImages)

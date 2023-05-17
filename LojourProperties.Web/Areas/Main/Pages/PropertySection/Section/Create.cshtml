@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label asp-for="Property.Amount" class="control-label"></label>
-                        <textarea asp-for="Property.Amount" class="form-control"></textarea>
+                        <input asp-for="Property.Amount" class="form-control"/>
                         <span asp-validation-for="Property.Amount" class="text-danger"></span>
                     </div>
 
@@ -110,10 +110,10 @@
                         <input asp-for="Property.Country" class="form-control" value="NIGERIA" />
                         <span asp-validation-for="Property.Country" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                   @* <div class="form-group">
                         <label asp-for="Property.OperatingRegionId" class="control-label"></label>
                         <select asp-for="Property.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <label asp-for="Property.PropertyCategoryId" class="control-label"></label>
                         <select asp-for="Property.PropertyCategoryId" class="form-control" asp-items="ViewBag.PropertyCategoryId"></select>

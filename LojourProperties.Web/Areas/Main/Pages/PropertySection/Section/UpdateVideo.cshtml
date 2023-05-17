@@ -38,6 +38,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.PropertyVideo[0].Active)
                         </th>
+                        <th>VR</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -64,7 +65,10 @@
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Active )
+                                @Html.DisplayFor(modelItem => item.Active)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VR)
                             </td>
                             <td>
 

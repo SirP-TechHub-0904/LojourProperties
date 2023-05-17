@@ -1,20 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LojourProperties.Domain.Data;
+using LojourProperties.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace LojourProperties.Web.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(
+            ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<Property> Property { get; set; }
 
-        }
+        public async Task OnGetAsync()
+        {
+            Property = await _context.Properties
+                .Include(x => x.PrivacyCategory)
+                .Include(x => x.PropertyCategory)
+                .Include(x => x.PropertyType).ToListAsync();
+         }
     }
 }

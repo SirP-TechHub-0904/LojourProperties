@@ -381,16 +381,16 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("AreaGuide")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
@@ -400,7 +400,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FullDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Key")
@@ -411,11 +410,7 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Map")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("OperatingRegionId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("PrivacyCategoryId")
                         .HasColumnType("bigint");
@@ -424,7 +419,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("PropertyRefID")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PropertyStatus")
@@ -434,26 +428,21 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("PropertyUsage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SortOrder")
                         .HasColumnType("int");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -461,14 +450,11 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("landArea")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AgentId");
-
-                    b.HasIndex("OperatingRegionId");
 
                     b.HasIndex("PrivacyCategoryId");
 
@@ -1103,12 +1089,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LojourProperties.Domain.Models.OperatingRegion", "OperatingRegion")
-                        .WithMany()
-                        .HasForeignKey("OperatingRegionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LojourProperties.Domain.Models.PrivacyCategory", "PrivacyCategory")
                         .WithMany()
                         .HasForeignKey("PrivacyCategoryId")
@@ -1128,8 +1108,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Agent");
-
-                    b.Navigation("OperatingRegion");
 
                     b.Navigation("PrivacyCategory");
 
