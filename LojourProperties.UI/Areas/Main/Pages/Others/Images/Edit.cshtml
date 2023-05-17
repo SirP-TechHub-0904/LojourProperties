@@ -1,0 +1,50 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.Others.Images.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PropertyImage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PropertyImage.Id" />
+            <div class="form-group">
+                <label asp-for="PropertyImage.ImageUrl" class="control-label"></label>
+                <input asp-for="PropertyImage.ImageUrl" class="form-control" />
+                <span asp-validation-for="PropertyImage.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PropertyImage.Key" class="control-label"></label>
+                <input asp-for="PropertyImage.Key" class="form-control" />
+                <span asp-validation-for="PropertyImage.Key" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PropertyImage.Description" class="control-label"></label>
+                <input asp-for="PropertyImage.Description" class="form-control" />
+                <span asp-validation-for="PropertyImage.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PropertyImage.PropertyId" class="control-label"></label>
+                <select asp-for="PropertyImage.PropertyId" class="form-control" asp-items="ViewBag.PropertyId"></select>
+                <span asp-validation-for="PropertyImage.PropertyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

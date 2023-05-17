@@ -10,6 +10,7 @@ namespace LojourProperties.Domain.Services.ImageResize
     public interface IFileImageResize
     {
         Task<MemoryStream> UploadFileAsync(string url, int xheight, int xwidth);
+        Task<MemoryStream> ReduceFileSteamAsync(MemoryStream imageStream, int xheight, int xwidth);
 
     }
 }

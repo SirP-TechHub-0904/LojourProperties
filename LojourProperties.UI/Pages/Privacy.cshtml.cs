@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LojourProperties.UI.Pages
+namespace LojourProperties.Web.Pages
 {
     public class PrivacyModel : PageModel
     {

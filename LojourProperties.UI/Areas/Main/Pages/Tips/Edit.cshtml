@@ -1,0 +1,55 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.Tips.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE TIPS </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SafetyTip.Id" />
+            <div class="form-group">
+                <label asp-for="SafetyTip.Message" class="control-label"></label>
+                <input asp-for="SafetyTip.Message" class="form-control" />
+                <span asp-validation-for="SafetyTip.Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SafetyTip.SortOrder" class="control-label"></label>
+                <input asp-for="SafetyTip.SortOrder" class="form-control" />
+                <span asp-validation-for="SafetyTip.SortOrder" class="text-danger"></span>
+            </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="SafetyTip.Show" /> @Html.DisplayNameFor(model => model.SafetyTip.Show)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

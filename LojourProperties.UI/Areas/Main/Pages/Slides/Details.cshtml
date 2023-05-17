@@ -1,0 +1,134 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.Slides.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">SLIDER DETAILS </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <dl class="row">
+
+                    @if (Model.Slider.IsVideo == false)
+                    {
+
+                        <dt class="col-sm-2">
+                            Image
+                        </dt>
+                        <dd class="col-sm-10">
+                            <a href="@Model.Slider.Url" target="_blank">
+                                <img src="@Model.Slider.Url" class="img-fluid" style="max-height:120px" />
+                            </a>
+                        </dd>
+                    }
+                    else
+                    {
+                        <dt class="col-sm-2">
+                            Video
+                        </dt>
+                        <dd class="col-sm-10">
+                            <video controls="controls" id="myVideo" style="height:120px;">
+                                <source src="@Model.Slider.Url" type="video/mp4">
+                                Any alternate text.
+                            </video>
+                        </dd>
+                    }
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.IsVideo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.IsVideo)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.SortOrder)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.SortOrder)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Key)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Key)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Date)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Date)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.StartDate)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.StartDate)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.EndDate)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.EndDate)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.Show)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.Show)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.MainText)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.MainText)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.SubText)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.SubText)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.PlainText)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.PlainText)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.ButtonText)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.ButtonText)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Slider.ButtonLink)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Slider.ButtonLink)
+                    </dd>
+                </dl>
+            </div>
+            <div class="form-group">
+                <a asp-page="./Edit" asp-route-id="@Model.Slider.Id" class="btn bg-gradient-warning btn-sm">Edit</a> |
+
+                <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /.row -->
+</div>
+<!-- /.card-body -->
+<div class="card-footer">
+</div>

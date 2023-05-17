@@ -17,7 +17,7 @@ namespace LojourProperties.Domain.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.14")
+                .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -617,6 +617,12 @@ namespace LojourProperties.Domain.Data.Migrations
 
                     b.Property<long>("PropertyId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("SmallSizeImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SmallSizeKey")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

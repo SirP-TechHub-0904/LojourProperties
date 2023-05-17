@@ -1,0 +1,176 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.PropertySection.Section.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE PROPERTY </h3>
+        <h5 style="padding:10px; margin:10px;" class="btn btn-primary">Ref. ID: @Model.Property.PropertyRefID</h5>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Property.Id" />
+                    <input type="hidden" asp-for="Property.Key" />
+                    <input type="hidden" asp-for="Property.PropertyRefID" />
+                    <input type="hidden" asp-for="Property.Date" />
+                    <input type="hidden" asp-for="Property.DateAdded" />
+
+                    <div class="form-group">
+                        <label asp-for="Property.AgentId" class="control-label"></label>
+                        <select asp-for="Property.AgentId" class="form-control" asp-items="ViewBag.AgentId" class="form-control select2 select2-primary js-example-basic-single" data-dropdown-css-class="select2-primary"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.Title" class="control-label"></label>
+                        <textarea asp-for="Property.Title" class="form-control"></textarea>
+                        <span asp-validation-for="Property.Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.Amount" class="control-label"></label>
+                        <input asp-for="Property.Amount" class="form-control" />
+                        <span asp-validation-for="Property.Amount" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.ShortDescription" class="control-label"></label>
+                        <textarea asp-for="Property.ShortDescription" class="form-control"></textarea>
+                        <span asp-validation-for="Property.ShortDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.FullDescription" class="control-label"></label>
+                        <textarea id=" " asp-for="Property.FullDescription" class="form-control summernote">
+
+                         </textarea>
+                        <span asp-validation-for="Property.FullDescription" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Property.Map" class="control-label"></label><br />
+                        <label class="control-label">
+                            <i class=""><a href="https://www.google.com/maps" target="_blank">click to set up Map</a></i><br />
+                            <a target="_blank" asp-page="./Guide">Google Map Guide/Help</a>
+
+                        </label>
+
+                        <textarea asp-for="Property.Map" class="form-control"></textarea>
+                        <span asp-validation-for="Property.Map" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.AreaGuide" class="control-label">
+                            Area Guide <br />
+                            Specify things that makes the area marketable and attractive.
+                        </label>
+
+                        <textarea id=" " asp-for="Property.AreaGuide" class="form-control summernote">
+
+                         </textarea>
+
+                        <span asp-validation-for="Property.AreaGuide" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyUsage" class="control-label"></label>
+                        <textarea id="" asp-for="Property.PropertyUsage" class="form-control summernote">
+
+                         </textarea>                        <span asp-validation-for="Property.PropertyUsage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.StreetNumber" class="control-label"></label>
+                        <input asp-for="Property.StreetNumber" class="form-control" />
+                        <span asp-validation-for="Property.StreetNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.StreetName" class="control-label"></label>
+                        <input asp-for="Property.StreetName" class="form-control" />
+                        <span asp-validation-for="Property.StreetName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.City" class="control-label"></label>
+                        <input asp-for="Property.City" class="form-control" />
+                        <span asp-validation-for="Property.City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.State" class="control-label"></label>
+                        <select asp-for="Property.State" class="form-control" asp-items="ViewBag.StateId"></select>
+                        <span asp-validation-for="Property.State" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.Country" class="control-label"></label>
+                        <input asp-for="Property.Country" class="form-control" value="NIGERIA" />
+                        <span asp-validation-for="Property.Country" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                    <label asp-for="Property.OperatingRegionId" class="control-label"></label>
+                    <select asp-for="Property.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyCategoryId" class="control-label"></label>
+                        <select asp-for="Property.PropertyCategoryId" class="form-control" asp-items="ViewBag.PropertyCategoryId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.PrivacyCategoryId" class="control-label"></label>
+                        <select asp-for="Property.PrivacyCategoryId" class="form-control" asp-items="ViewBag.PrivacyCategoryId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyTypeId" class="control-label"></label>
+                        <select asp-for="Property.PropertyTypeId" class="form-control" asp-items="ViewBag.PropertyTypeId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.landArea" class="control-label"></label>
+                        <textarea id="summernote" asp-for="Property.landArea" class="form-control">
+
+                         </textarea>
+                        <span asp-validation-for="Property.landArea" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyStatus" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Property.PropertyStatus, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.PropertyStatus))), new { @class = "form-control" })
+
+                        <span asp-validation-for="Property.PropertyStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.ActivityStatus" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Property.ActivityStatus, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.ActivityStatus))), new { @class = "form-control" })
+
+                        <span asp-validation-for="Property.ActivityStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.SortOrder" class="control-label"></label>
+                        <input asp-for="Property.SortOrder" class="form-control" />
+                        <span asp-validation-for="Property.SortOrder" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

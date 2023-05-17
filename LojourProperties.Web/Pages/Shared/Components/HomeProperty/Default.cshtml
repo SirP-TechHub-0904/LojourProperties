@@ -1,37 +1,38 @@
-﻿@model ICollection<LojourProperties.Domain.Models.Property>
+﻿@model ICollection<LojourProperties.Domain.Dtos.HomePropertyDto>
 
-    @foreach(var x in Model){
+    @foreach(var item in Model){
 
 <div class="col-md-4 col-xs-12 col-sm-6">
     <!-- Ad Box -->
     <div class="category-grid-box">
         <!-- Ad Img -->
         <div class="category-grid-img">
-            <img class="img-responsive" alt="" src="images/posting/2.jpg">
+            <img class="img-responsive" alt="" src="@item.Image">
             <!-- Ad Status -->
             <!-- User Review -->
             <div class="user-preview">
-                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                <a href="#"> @item.Activity </a>
             </div>
             <!-- View Details --><a href="" class="view-details">View Details</a>
             <!-- Additional Info -->
             <div class="additional-information">
-                <p>Transmission : Automatic</p>
-                <p>Engine Capacity : 1799 cc</p>
-                <p>Engine Type : Petrol</p>
-                <p>Mileage : 103,198 km</p>
-                <p>Registered City : London</p>
+                    @foreach(var x in item.PropertyFeatures)
+                    {
+                        <p>@x.FeaturesCategoryId : @x.Description</p>
+                    }
+               
+                
             </div>
             <!-- Additional Info End-->
         </div>
         <!-- Ad Img End -->
         <div class="short-description">
             <!-- Ad Category -->
-            <div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+            <div class="category-title"> <span><a href="#">@item.Category</a></span> </div>
             <!-- Ad Title -->
-            <h3><a title="" href="single-page-listing.html">Porsche 911 Carrera 2017 </a></h3>
+            <h3><a title="" href="single-page-listing.html">@item.Title </a></h3>
             <!-- Price -->
-            <div class="price">$96,100 <span class="negotiable">(Negotiable)</span></div>
+            <div class="price">@item.Amount <span class="negotiable">(Negotiable)</span></div>
         </div>
         <!-- Addition Info -->
         <div class="ad-info">

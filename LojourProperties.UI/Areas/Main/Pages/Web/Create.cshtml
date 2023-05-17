@@ -1,0 +1,271 @@
+﻿@page
+@using static LojourProperties.Domain.Models.Enum;
+@model LojourProperties.UI.Areas.Main.Pages.Web.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">ADD A PAGE </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WebPage.Title" class="control-label"></label>
+                <input asp-for="WebPage.Title" class="form-control" />
+                <span asp-validation-for="WebPage.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.Name" class="control-label"></label>
+                <input asp-for="WebPage.Name" class="form-control" />
+                <span asp-validation-for="WebPage.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.Description" class="control-label"></label>
+                <input asp-for="WebPage.Description" class="form-control" />
+                <span asp-validation-for="WebPage.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.SortOrder" class="control-label"></label>
+                <input asp-for="WebPage.SortOrder" class="form-control" />
+                <span asp-validation-for="WebPage.SortOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.PagePosition" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.WebPage.PagePosition, new SelectList(Enum.GetValues(typeof(PagePosition))), new { @class = "form-control" })
+
+                 <span asp-validation-for="WebPage.PagePosition" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="WebPage.Publish" /> @Html.DisplayNameFor(model => model.WebPage.Publish)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextOne" class="control-label"></label>
+                <input asp-for="WebPage.TextOne" class="form-control" />
+                <span asp-validation-for="WebPage.TextOne" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextTwo" class="control-label"></label>
+                <input asp-for="WebPage.TextTwo" class="form-control" />
+                <span asp-validation-for="WebPage.TextTwo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextThree" class="control-label"></label>
+                <input asp-for="WebPage.TextThree" class="form-control" />
+                <span asp-validation-for="WebPage.TextThree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextFour" class="control-label"></label>
+                <input asp-for="WebPage.TextFour" class="form-control" />
+                <span asp-validation-for="WebPage.TextFour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextFive" class="control-label"></label>
+                <input asp-for="WebPage.TextFive" class="form-control" />
+                <span asp-validation-for="WebPage.TextFive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextSix" class="control-label"></label>
+                <input asp-for="WebPage.TextSix" class="form-control" />
+                <span asp-validation-for="WebPage.TextSix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextSeven" class="control-label"></label>
+                <input asp-for="WebPage.TextSeven" class="form-control" />
+                <span asp-validation-for="WebPage.TextSeven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextEight" class="control-label"></label>
+                <input asp-for="WebPage.TextEight" class="form-control" />
+                <span asp-validation-for="WebPage.TextEight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextNine" class="control-label"></label>
+                <input asp-for="WebPage.TextNine" class="form-control" />
+                <span asp-validation-for="WebPage.TextNine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextTen" class="control-label"></label>
+                <input asp-for="WebPage.TextTen" class="form-control" />
+                <span asp-validation-for="WebPage.TextTen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextEleven" class="control-label"></label>
+                <input asp-for="WebPage.TextEleven" class="form-control" />
+                <span asp-validation-for="WebPage.TextEleven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextTwelve" class="control-label"></label>
+                <input asp-for="WebPage.TextTwelve" class="form-control" />
+                <span asp-validation-for="WebPage.TextTwelve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextThirteen" class="control-label"></label>
+                <input asp-for="WebPage.TextThirteen" class="form-control" />
+                <span asp-validation-for="WebPage.TextThirteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextFourteen" class="control-label"></label>
+                <input asp-for="WebPage.TextFourteen" class="form-control" />
+                <span asp-validation-for="WebPage.TextFourteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextFiften" class="control-label"></label>
+                <input asp-for="WebPage.TextFiften" class="form-control" />
+                <span asp-validation-for="WebPage.TextFiften" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextSixteen" class="control-label"></label>
+                <input asp-for="WebPage.TextSixteen" class="form-control" />
+                <span asp-validation-for="WebPage.TextSixteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextSeventeen" class="control-label"></label>
+                <input asp-for="WebPage.TextSeventeen" class="form-control" />
+                <span asp-validation-for="WebPage.TextSeventeen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextEighteen" class="control-label"></label>
+                <input asp-for="WebPage.TextEighteen" class="form-control" />
+                <span asp-validation-for="WebPage.TextEighteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextNineteen" class="control-label"></label>
+                <input asp-for="WebPage.TextNineteen" class="form-control" />
+                <span asp-validation-for="WebPage.TextNineteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.TextTwenty" class="control-label"></label>
+                <input asp-for="WebPage.TextTwenty" class="form-control" />
+                <span asp-validation-for="WebPage.TextTwenty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageOne" class="control-label"></label>
+                <input asp-for="WebPage.ImageOne" class="form-control" />
+                <span asp-validation-for="WebPage.ImageOne" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageTwo" class="control-label"></label>
+                <input asp-for="WebPage.ImageTwo" class="form-control" />
+                <span asp-validation-for="WebPage.ImageTwo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageThree" class="control-label"></label>
+                <input asp-for="WebPage.ImageThree" class="form-control" />
+                <span asp-validation-for="WebPage.ImageThree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageFour" class="control-label"></label>
+                <input asp-for="WebPage.ImageFour" class="form-control" />
+                <span asp-validation-for="WebPage.ImageFour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageFive" class="control-label"></label>
+                <input asp-for="WebPage.ImageFive" class="form-control" />
+                <span asp-validation-for="WebPage.ImageFive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageSix" class="control-label"></label>
+                <input asp-for="WebPage.ImageSix" class="form-control" />
+                <span asp-validation-for="WebPage.ImageSix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageSeven" class="control-label"></label>
+                <input asp-for="WebPage.ImageSeven" class="form-control" />
+                <span asp-validation-for="WebPage.ImageSeven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageEight" class="control-label"></label>
+                <input asp-for="WebPage.ImageEight" class="form-control" />
+                <span asp-validation-for="WebPage.ImageEight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageNine" class="control-label"></label>
+                <input asp-for="WebPage.ImageNine" class="form-control" />
+                <span asp-validation-for="WebPage.ImageNine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageTen" class="control-label"></label>
+                <input asp-for="WebPage.ImageTen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageTen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageEleven" class="control-label"></label>
+                <input asp-for="WebPage.ImageEleven" class="form-control" />
+                <span asp-validation-for="WebPage.ImageEleven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageTwelve" class="control-label"></label>
+                <input asp-for="WebPage.ImageTwelve" class="form-control" />
+                <span asp-validation-for="WebPage.ImageTwelve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageThirteen" class="control-label"></label>
+                <input asp-for="WebPage.ImageThirteen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageThirteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageFourteen" class="control-label"></label>
+                <input asp-for="WebPage.ImageFourteen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageFourteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageFiften" class="control-label"></label>
+                <input asp-for="WebPage.ImageFiften" class="form-control" />
+                <span asp-validation-for="WebPage.ImageFiften" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageSixteen" class="control-label"></label>
+                <input asp-for="WebPage.ImageSixteen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageSixteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageSeventeen" class="control-label"></label>
+                <input asp-for="WebPage.ImageSeventeen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageSeventeen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageEighteen" class="control-label"></label>
+                <input asp-for="WebPage.ImageEighteen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageEighteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageNineteen" class="control-label"></label>
+                <input asp-for="WebPage.ImageNineteen" class="form-control" />
+                <span asp-validation-for="WebPage.ImageNineteen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebPage.ImageTwenty" class="control-label"></label>
+                <input asp-for="WebPage.ImageTwenty" class="form-control" />
+                <span asp-validation-for="WebPage.ImageTwenty" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

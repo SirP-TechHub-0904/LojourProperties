@@ -1,0 +1,94 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.RegionPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">REGIONS IN NIGERIA</h3>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("mSuperAdmin"))
+        {
+
+            <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Region</a>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperatingRegion[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperatingRegion[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperatingRegion[0].Zone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperatingRegion[0].Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperatingRegion[0].Country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+                @{
+                    int sn = 0;
+                }
+    <tbody>
+@foreach (var item in Model.OperatingRegion) {
+        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("mSuperAdmin"))
+                            {
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success">Action</button>
+
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            </button>
+                                            <div class="dropdown-menu" style="">
+
+                                                <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

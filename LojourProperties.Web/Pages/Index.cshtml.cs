@@ -16,14 +16,10 @@ namespace LojourProperties.Web.Pages
             _context = context;
         }
 
-        public IList<Property> Property { get; set; }
 
         public async Task OnGetAsync()
         {
-            Property = await _context.Properties
-                .Include(x => x.PrivacyCategory)
-                .Include(x => x.PropertyCategory)
-                .Include(x => x.PropertyType).ToListAsync();
+             
          }
     }
 }

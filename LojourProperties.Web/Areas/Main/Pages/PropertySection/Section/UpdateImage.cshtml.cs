@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using LojourProperties.Domain.Services.ImageResize;
 
 namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 {
@@ -15,12 +16,14 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
         private readonly IConfiguration _config;
         private readonly IStorageService _storageService;
-        public UpdateImageModel(LojourProperties.Domain.Data.ApplicationDbContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IConfiguration config, IStorageService storageService)
+        private readonly IFileImageResize _fileImageResize;
+        public UpdateImageModel(LojourProperties.Domain.Data.ApplicationDbContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IConfiguration config, IStorageService storageService, IFileImageResize fileImageResize)
         {
             _context = context;
             _environment = environment;
             _config = config;
             _storageService = storageService;
+            _fileImageResize = fileImageResize;
         }
         [BindProperty]
 
@@ -52,7 +55,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 
         public async Task<IActionResult> OnPostAsync()
         {
-            
+
             try
             {
                 // Process file
@@ -82,6 +85,32 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
                 {
                     Image.ImageUrl = result.Url;
                     Image.Key = result.Key;
+
+                    //try
+                    //{
+                    //    var streamresult = await _fileImageResize.ReduceFileSteamAsync(memoryStream, 270, 360);
+                    //    var smalls3Obj = new Domain.Dtos.AwsDtos.S3Object()
+                    //    {
+                    //        BucketName = "lojourxyz",
+                    //        InputStream = streamresult,
+                    //        Name = docName
+                    //    };
+                    //    var smallresult = await _storageService.UploadFileReturnUrlAsync(smalls3Obj, cred, "");
+                    //    // 
+                    //    if (smallresult.Message.Contains("200"))
+                    //    {
+                    //        Image.SmallSizeImageUrl = smallresult.Url;
+                    //        Image.SmallSizeKey = smallresult.Key;
+
+                    //    }
+
+                    //}
+                    //catch (Exception c)
+                    //{
+
+                    //}
+
+
                 }
                 else
                 {
@@ -98,7 +127,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             _context.PropertyImages.Add(Image);
             await _context.SaveChangesAsync();
             TempData["success"] = "Created";
-            return RedirectToPage("./UpdateImage", new {id = Image.PropertyId});
+            return RedirectToPage("./UpdateImage", new { id = Image.PropertyId });
         }
 
         public async Task<IActionResult> OnPostDelete(long? id, long? pid)
@@ -112,7 +141,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
                 return RedirectToPage("/Result", new { error = "Invalid Data" });
             }
             var property = await _context.Properties.FindAsync(pid);
-            if(property == null)
+            if (property == null)
             {
                 return RedirectToPage("/Result", new { error = "Property Not Found" });
             }
@@ -156,7 +185,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             if (Image != null)
             {
                 var allimages = _context.PropertyImages.Where(x => x.PropertyId == pid).AsQueryable();
-                foreach(var x in allimages)
+                foreach (var x in allimages)
                 {
                     x.Default = false;
                     _context.Attach(x).State = EntityState.Modified;

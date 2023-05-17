@@ -1,52 +1,261 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LojourProperties.UI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/LojourProperties.UI.styles.css" asp-append-version="true" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="description" content="">
+    <meta name="author" content="ScriptsBundle">
+
+    <meta name="description" content="@ViewBag.MetaTitle">
+    <meta name="description" content="@ViewBag.MetaKeyword">
+    <meta name="description" content="@ViewBag.MetaDescription">
+
+    <title>LOJOUR PROPERTIES | SMARTHOMES | APARTMENTS | HOTELS | LANDS</title>
+    <link rel="icon" href="~/img/icon.png" type="image/x-icon" />
+
+    <meta property="og:url" content="@ViewBag.url" />
+    <meta property="og:title" content="@ViewBag.title">
+    <meta property="og:description" content="@ViewBag.description">
+    <meta property="og:image" content="@ViewBag.image">
+
+    <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+    <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/bootstrap.css">
+    <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/style.css">
+    <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/font-awesome.css" type="text/css">
+    <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
+    <link href="~/smart/css/flaticon.css" rel="stylesheet">
+    <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/et-line-fonts.css" type="text/css">
+    <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/carspot-menu.css" type="text/css">
+    <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/animate.min.css" type="text/css">
+    <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
+    <link href="~/smart/css/select2.min.css" rel="stylesheet" />
+    <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
+    <link href="~/smart/css/nouislider.min.css" rel="stylesheet">
+    <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
+    <link href="~/smart/css/slider.css" rel="stylesheet">
+    <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+    <link rel="stylesheet" type="text/css" href="~/smart/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/smart/css/owl.theme.css">
+    <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+    <link href="~/smart/skins/minimal/minimal.css" rel="stylesheet">
+    <!-- =-=-=-=-=-=-= PrettyPhoto =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="~/smart/css/jquery.fancybox.min.css" type="text/css" media="screen" />
+    <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
+    <link href="~/smart/css/responsive-media.css" rel="stylesheet">
+    <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
+    <link rel="stylesheet" id="color" href="~/smart/css/colors/defualt.css">
+    <!-- For This Page Only -->
+    <!-- Base MasterSlider style sheet -->
+    <link rel="stylesheet" href="~/smart/js/masterslider/style/masterslider.css" />
+    <link rel="stylesheet" href="~/smart/js/masterslider/skins/default/style.css" />
+    <link rel="stylesheet" href="~/smart/js/masterslider/style/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CSource+Sans+Pro:400,400i,600" rel="stylesheet">
+    <!-- JavaScripts -->
+    <script src="~/smart/js/modernizr.js"></script>
+
+    <style>
+        .page-header-area-2 {
+            padding: 30px 0;
+            text-align: left;
+            position: relative;
+            background-image: url('../../img/hd.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .small-breadcrumb .breadcrumb-link ul li::after {
+            color: #fff;
+            content: "\f105";
+            font-family: "FontAwesome";
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 500;
+            position: absolute;
+            right: 0;
+            text-decoration: inherit;
+            top: 10px;
+            margin-right: 5px;
+        }
+
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
+    <div class="preloader"></div>
+
+    <!-- =-=-=-=-=-=-=  Header =-=-=-=-=-=-= -->
+    <div class="colored-header">
+        <!-- Top Bar -->
+        <div class="header-top">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">LojourProperties.UI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+                <div class="row">
+                    <!-- Header Top Left -->
+                    <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
+                        <ul class="listnone">
+                            <li><a asp-page="/Page/WebPage" asp-route-id="786f812a-8436-4587-8f1d-c9dc68a48898"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
+                            <li><a asp-page="/Page/WebFaq"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">English</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Header Top Right Social -->
+                    @await Component.InvokeAsync("HomeProfile")
+
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - LojourProperties.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>
+        <!-- Top Bar End -->
+        <!-- Navigation Menu -->
+        <div class="clearfix"></div>
+        <!-- menu start -->
+        <nav id="menu-1" class="mega-menu">
+            <!-- menu list items container -->
+            <section class="menu-list-items">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <!-- menu logo -->
+                            <ul class="menu-logo">
+                                <li>
+                                    <a href="/"><img src="~/img/lojour-logo-web-2.png" alt="logo" style="margin-top:8px;"> </a>
+                                </li>
+                            </ul>
+                            <!-- menu links -->
+                            <ul class="menu-links">
+                                <!-- active class -->
+                                <li>
+                                    <a href="#">Rent</a>
+                                </li>
+                                 <li>
+                                    <a href="#">Lease</a>
+                                </li>
+                                 <li>
+                                    <a href="#">Sale</a>
+                                </li>
+                                 <li>
+                                    <a href="#">Buy</a>
+                                </li>
+                                <li>
+                                    <a href="#">SmartHomes</a>
+                                </li>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+                            </ul>
+                            <ul class="menu-search-bar">
+                                <li>
+                                    <a href="#" class="btn btn-theme">Special Request</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+        <!-- menu end -->
+    </div>
+    <form asp-area="Identity" id="logoutForm" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Account/Login", new { area = "Identity" })" method="post">
+    </form>
+    <div class="clearfix"></div>
 
-    @await RenderSectionAsync("Scripts", required: false)
+
+    @RenderBody()
+    <!-- Back To Top -->
+    <a href="#0" class="cd-top">Top</a>
+    <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+    <script src="~/smart/js"></script>
+    <script src="~/smart/js/jquery.min.js"></script>
+    <!-- Bootstrap Core Css  -->
+    <script src="~/smart/js/bootstrap.min.js"></script>
+    <!-- Jquery Easing -->
+    <script src="~/smart/js/easing.js"></script>
+    <!-- Menu Hover  -->
+    <script src="~/smart/js/carspot-menu.js"></script>
+    <!-- Jquery Appear Plugin -->
+    <script src="~/smart/js/jquery.appear.min.js"></script>
+    <!-- Numbers Animation   -->
+    <script src="~/smart/js/jquery.countTo.js"></script>
+    <!-- Jquery Select Options  -->
+    <script src="~/smart/js/select2.min.js"></script>
+    <!-- noUiSlider -->
+    <script src="~/smart/js/nouislider.all.min.js"></script>
+    <!-- Carousel Slider  -->
+    <script src="~/smart/js/carousel.min.js"></script>
+    <script src="~/smart/js/slide.js"></script>
+    <!-- Image Loaded  -->
+    <script src="~/smart/js/imagesloaded.js"></script>
+    <script src="~/smart/js/isotope.min.js"></script>
+    <!-- CheckBoxes  -->
+    <script src="~/smart/js/icheck.min.js"></script>
+    <!-- Jquery Migration  -->
+    <script src="~/smart/js/jquery-migrate.min.js"></script>
+
+    <!-- Style Switcher -->
+    <script src="~/smart/js/color-switcher.js"></script>
+    <!-- PrettyPhoto -->
+    <script src="~/smart/js/jquery.fancybox.min.js"></script>
+    <!-- Wow Animation -->
+    <script src="~/smart/js/wow.js"></script>
+    <!-- Template Core JS -->
+    <script src="~/smart/js/custom.js"></script>
+    <!-- For This Page Only -->
+    <!-- MasterSlider -->
+    <script src="~/smart/js/masterslider/masterslider.min.js"></script>
+    <script type="text/javascript">
+
+        (function ($) {
+            "use strict";
+
+
+            var slider = new MasterSlider();
+
+            // adds Arrows navigation control to the slider.
+            slider.control('arrows');
+
+            slider.setup('masterslider', {
+                width: 1400,    // slider standard width
+                height: 560,   // slider standard height
+                layout: 'fullwidth',
+                loop: true,
+                preload: 0,
+                fillMode: 'fill',
+                instantStartLayers: true,
+                autoplay: true,
+                view: "basic"
+
+            });
+            // add scroll parallax effect
+
+        })(jQuery);
+
+
+
+
+
+
+
+    </script>
+
+
+
+    @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
+

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,14 +31,14 @@ namespace LojourProperties.Domain.Services.ImageResize
                                     using (MemoryStream memoryStream = new MemoryStream())
                                     {
                                         resizedImage.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                        memoryStream.Seek(0, SeekOrigin.Begin);
+                                        //memoryStream.Seek(0, SeekOrigin.Begin);
 
-                                        // Use memoryStream as needed, e.g., copy it to another stream.
-                                        using (FileStream fileStream = new FileStream("resized_image.jpg", FileMode.Create))
-                                        {
-                                            await memoryStream.CopyToAsync(fileStream);
-                                            //return fileStream;
-                                        }
+                                        //// Use memoryStream as needed, e.g., copy it to another stream.
+                                        //using (FileStream fileStream = new FileStream("resized_image.jpg", FileMode.Create))
+                                        //{
+                                        //    await memoryStream.CopyToAsync(fileStream);
+                                        //    //return fileStream;
+                                        //}
                                     }
                                 }
                             }
@@ -85,5 +86,31 @@ namespace LojourProperties.Domain.Services.ImageResize
             return destImage;
         }
 
+        public async Task<MemoryStream> ReduceFileSteamAsync(MemoryStream imageStream, int xheight, int xwidth)
+        {
+            MemoryStream rxstream = new MemoryStream();
+            using (Image originalImage = Image.FromStream(imageStream))
+            {
+                using (Image resizedImage = ResizeImage(originalImage, xwidth, xheight))
+                {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        resizedImage.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        rxstream = memoryStream;
+                        //memoryStream.Seek(0, SeekOrigin.Begin);
+
+                        //// Use memoryStream as needed, e.g., copy it to another stream.
+                        //using (FileStream fileStream = new FileStream("resized_image.jpg", FileMode.Create))
+                        //{
+                        //    await memoryStream.CopyToAsync(fileStream);
+                        //    //return fileStream;
+                        //   // rxstream = fileStream;
+                        //}
+
+                    }
+                }
+            }
+            return rxstream;
+        }
     }
 }

@@ -1,0 +1,150 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.PropertySection.Section.UpdateImageModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title text-uppercase">IMAGES OF [@Model.Property.Title] </h3>
+
+        <a asp-page="./Details" asp-route-id="@Model.Property.Id" class="btn bg-gradient-warning btn-sm" style="float:right;">Back To Property Details</a>
+
+    </div>
+</div>
+<!-- /.card-header -->
+<div class="card card-default">
+
+    <div class="card-body" style="margin-bottom:10px;">
+        <div class="card-header">
+            <h6 class="card-title ">Image List </h6>
+
+        </div>
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyImage[0].ImageUrl)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyImage[0].Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyImage[0].Active)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.PropertyImage)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a href="@item.ImageUrl" target="_blank">
+                                    <img src="@item.ImageUrl" style="max-height:100px" class="img-fluid" />
+                                </a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Active )
+                            </td>
+                            <td>
+                                <form asp-page-handler="Default" method="post">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input type="hidden" name="pid" value="@item.PropertyId" />
+                                    @if(item.Default == false){
+                                    <button type="submit" class="btn btn-info btn-xs">make default</button>
+                              
+                                    }else{
+                                    <i class="btn btn-xs btn-success">default</i>
+                                    }    
+                                    </form>
+                                <form asp-page-handler="Delete" method="post">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input type="hidden" name="pid" value="@item.PropertyId" />
+
+                                    <button type="submit" class="btn btn-danger pull-left">X</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="card card-default">
+
+
+    <div class="card-body">
+        <div class="card-header">
+            <h6 class="card-title ">Upload New Image </h6>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Image.PropertyId" value="@Model.Property.Id" />
+
+                    <div class="form-group">
+                        <label asp-for="Image.Description" class="control-label"></label>
+                        <input asp-for="Image.Description" class="form-control" />
+                        <span asp-validation-for="Image.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Image.Active" /> Make Image Active
+                        </label>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label asp-for="Image.ImageUrl" class="control-label">Image</label><br />
+                        <input type="file" class="control-label" asp-for="file" />
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+ 
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

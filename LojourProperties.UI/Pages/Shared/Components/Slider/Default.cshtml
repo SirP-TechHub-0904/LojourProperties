@@ -1,0 +1,70 @@
+﻿@model ICollection<LojourProperties.Domain.Models.Slider>
+<style>
+    #myVideo {
+        /*position: fixed;*/
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+</style>
+<!-- Master Slider -->
+<div class="master-slider ms-skin-default" id="masterslider">
+
+
+    @foreach (var img in Model)
+    {
+        <!-- slide 2 -->
+        <div class="ms-slide slide-3" data-delay="5">
+            <!-- slide background -->
+            @if (img.IsVideo == false)
+            {
+                <img src="~/smart/js/masterslider/style/blank.gif" data-src="@img.Url" alt="Slide1 background" />
+            }
+            else
+            {
+                <video autoplay="autoplay" @*muted="muted"*@ loop="loop" id="myVideo">
+                    <source src="@img.Url" type="video/mp4">
+                    Any alternate text.
+                </video>
+            }
+            <h3 class="ms-layer title4 font-white font-uppercase font-thin-xs"
+                style="left:120px; top:150px;"
+                data-type="text"
+                data-delay="2000"
+                data-duration="2000"
+                data-ease="easeOutExpo"
+                data-effect="skewleft(30,80)">
+                @img.MainText
+            </h3>
+            <h3 class="ms-layer title4 font-white font-thin-xs"
+                style="left:120px; top:210px;"
+                data-type="text"
+                data-delay="2500"
+                data-duration="2000"
+                data-ease="easeOutExpo"
+                data-effect="skewleft(30,80)">
+                <span class="font-color font-thin-xs heading-color">@Html.Raw(img.SubText)</span>
+            </h3>
+            <h5 class="ms-layer text1 font-white"
+                style="left: 120px; top: 280px;"
+                data-type="text"
+                data-effect="bottom(45)"
+                data-duration="2500"
+                data-delay="3000"
+                data-ease="easeOutExpo">
+                @Html.Raw(img.PlainText)
+            </h5>
+            <a class="ms-layer btn3 uppercase"
+               style="left:120px; top: 390px;"
+               data-type="text"
+               data-delay="3500"
+               data-ease="easeOutExpo"
+               data-duration="2000"
+               data-effect="scale(1.5,1.6)" href="@img.ButtonLink"> @img.ButtonText</a>
+        </div>
+        <!-- end of slide -->
+    }
+
+</div>
+<!-- end Master Slider -->

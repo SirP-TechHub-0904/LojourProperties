@@ -1,0 +1,60 @@
+﻿@page
+@model LojourProperties.UI.Areas.Main.Pages.FaqPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">FAQs </h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FAQ.Title)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FAQ.Title)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FAQ.Message)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FAQ.Message)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FAQ.SortOrder)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FAQ.SortOrder)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FAQ.Show)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FAQ.Show)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-page="./Edit" asp-route-id="@Model.FAQ.Id">Edit</a> |
+                <a asp-page="./Index">Back to List</a>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- /.row -->
+</div>
+<!-- /.card-body -->
+<div class="card-footer">
+</div>
