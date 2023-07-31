@@ -99,10 +99,7 @@ namespace LojourProperties.UI.Areas.Identity.Pages.Roles
                         Description = "Admin",
                         StreetNumber ="0",
                         StreetName="ABJ",
-                        ZipCode="ABJ",
-                        City="ABJ",
-                        Country ="ABJ",
-                        State="ABJ",
+                        
                         LojourId="L001",
                         EmailConfirmed = true,
                         DateRegistered = DateTime.UtcNow.AddHours(1),

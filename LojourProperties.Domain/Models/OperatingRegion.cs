@@ -12,31 +12,24 @@ namespace LojourProperties.Domain.Models
     public class OperatingRegion
     {
         public long Id { get; set; }
-        [Display(Name = "City")]
-        public string City { get; set; }
+        [Display(Name = "Location")]
+        public string Location { get; set; }
 
         [Display(Name = "State")]
         public string State { get; set; }
 
-        [Display(Name = "Zone")]
-        public string Zone { get; set; }
-
-        [Display(Name = "Region")]
-        public string Region { get; set; }
-
-        [Display(Name = "Country")]
-        public string Country { get; set; }
-
+        
         [Display(Name = "Region Of Operation")]
-        public string RegionOfOperation {
+        public string RegionOfOperation
+        {
 
             get
             {
                 //return City + " / " + State + " / " + Zone + " / " + Region +" / " + Country;
-                return State;
+                return Location + " in " + State;
             }
         }
-        
+
 
     }
 }

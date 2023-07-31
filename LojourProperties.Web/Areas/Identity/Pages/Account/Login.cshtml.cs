@@ -133,7 +133,7 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Account
                         }
                         else if(xAdmin == true)
                         {
-                            return RedirectToPage("/Admin/Index", new { area = "Main" });
+                            return RedirectToPage("/V1/Dashboard/Index", new { area = "Admin" });
                         }
                         else if (xSuper == true)
                         {

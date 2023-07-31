@@ -1,0 +1,149 @@
+﻿@page
+@model LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">PROPERTIES</h3>
+
+
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+
+    </div>
+    <div class="card-header">
+        <div class="row">
+            @foreach(var item in Model.PropertyDtoLists) { 
+            <div class="col-md-2">
+                <a asp-route="" class="btn btn-primary" style="width:100%;margin-bottom:5px;">
+                     
+                        <span>@item.Title</span><br />
+                        <span>@item.Count</span>
+                   
+                </a>
+            </div>
+            }
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Title)
+            </th>
+            <th> 
+                ID
+            </th>
+            
+            <th>
+                Date
+            </th>
+            <th>
+                Updated
+            </th>
+            
+            <th>
+                Category
+            </th>
+            <th>
+                Privacy
+            </th>
+            <th>
+                Status
+            </th>
+                        <th>
+                            Activity
+                        </th>
+                       <th>Agent</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Property[0].SortOrder)
+                        </th>
+
+            <th></th>
+        </tr>
+                </thead>
+                
+                @{
+                    int sn = 0;
+                }
+    <tbody>
+@foreach (var item in Model.Property) {
+                        <tr>
+
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                <a asp-page="./Details" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </a>
+                                
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyRefID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateAdded)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastUpdated)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyCategory.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrivacyCategory.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ActivityStatus)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Agent.Fullname)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SortOrder)
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Action</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

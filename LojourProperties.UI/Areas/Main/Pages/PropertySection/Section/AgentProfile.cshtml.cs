@@ -24,7 +24,7 @@ namespace LojourProperties.UI.Areas.Main.Pages.PropertySection.Section
         {
             Profile = await _userManager
                 .Users
-                .Include(x=>x.OperatingRegion)
+                .Include(x=>x.UserRegions)
                 .FirstOrDefaultAsync(x=>x.Id == id);
             if(Profile == null)
             {

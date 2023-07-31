@@ -57,8 +57,8 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Street Name")]
         public string? StreetName { get; set; }
 
-        [Display(Name = "City")]
-        public string? City { get; set; }
+        [Display(Name = "Full Address")]
+        public string? FullAddress { get; set; }
 
         [Display(Name = "State")]
         public string? State { get; set; }
@@ -66,13 +66,13 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Country")]
         public string? Country { get; set; }
 
-        [Display(Name = "Property Activity")]
+        [Display(Name = "Activity")]
         public long PropertyCategoryId { get; set; }
 
-        [Display(Name = "Property Activity")]
+        [Display(Name = "Activity")]
         public PropertyCategory PropertyCategory { get; set; }
 
-        [Display(Name = "Property Category")]
+        [Display(Name = "Privacy Category")]
         public long PrivacyCategoryId { get; set; }
 
         [Display(Name = "Privacy Category")]
@@ -91,7 +91,8 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Property Agent")]
         public Profile Agent { get; set; }
 
-
+        public long? OperatingRegionId { get;set;}
+        public OperatingRegion OperatingRegion { get;set;}
 
         [Display(Name = "land Area")]
         public string? landArea { get; set; }
@@ -107,5 +108,8 @@ namespace LojourProperties.Domain.Models
         public ICollection<PropertyFeature> PropertyFeatures { get; set; }
         public ICollection<PropertyDocument> PropertyDocuments { get; set; }
         public ICollection<PropertyAgency> PropertyAgencies { get; set; }
+
+         [Display(Name = "Property Linkage")]
+        public PropertyLink PropertyLink { get;set;}
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace LojourProperties.Domain.Data
 {
@@ -33,16 +34,24 @@ namespace LojourProperties.Domain.Data
         public DbSet<FAQ> FAQs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<SafetyTip> SafetyTips { get; set; }
-
+        public DbSet<MailingSystem> MailingSystems { get; set; }
+        public DbSet<UserRegion> UserRegions { get; set; }
+        public DbSet<PropertyCategoryList> PropertyCategoryLists { get; set; }
+        
     }
-    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
-    {
-        public ApplicationDbContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseSqlServer("Server=sql5094.site4now.net;Database=DB_9AFABF_GlobalWebs;User Id=DB_9AFABF_GlobalWebs_admin;Password=Exwhyzee@2023;MultipleActiveResultSets=true");
+    //public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+    //{
+    //    public ApplicationDbContext CreateDbContext(string[] args)
+    //    {
+            
 
-            return new ApplicationDbContext(optionsBuilder.Options);
-        }
-    }
+
+
+    //       var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+    //        optionsBuilder.UseSqlServer("Server=sql5094.site4now.net;Database=DB_9AFABF_GlobalWebs;User Id=DB_9AFABF_GlobalWebs_admin;Password=Exwhyzee@2023;MultipleActiveResultSets=true");
+
+    //        return new ApplicationDbContext(optionsBuilder.Options);
+
+    //    }
+    //}
 }

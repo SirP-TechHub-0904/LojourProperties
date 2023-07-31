@@ -25,19 +25,24 @@ namespace LojourProperties.Web.Areas.Main.Pages.Accounts
         }
 
         public IList<Profile> Profile { get; set; }
-        public int Participant { get; set; }
-        public int Staff { get; set; }
-        public int DS { get; set; }
-        public int MS { get; set; }
+        public int Agents { get; set; }
+        public int Diamond { get; set; }
+        public int Silver { get; set; }
+        public int Owner { get; set; }
+        public int AllUsers { get; set; }
 
         public async Task OnGetAsync()
         {
 
             IQueryable<Profile> profilex = from s in _context.Users
-                                           .Include(x=>x.OperatingRegion)
+                                           .Include(x=>x.UserRegions)
                                            .Where(x => x.Email != "admin@lojour.com")
                                            select s;
             Profile = await profilex.ToListAsync();
+
+            AllUsers = profilex.Count();
+            Agents = profilex.Where(x=>x.ProfileType == Domain.Models.Enum.ProfileType.Agent).Count();
+            Owner = profilex.Where(x=>x.ProfileType == Domain.Models.Enum.ProfileType.LandLord).Count();
            
         }
 

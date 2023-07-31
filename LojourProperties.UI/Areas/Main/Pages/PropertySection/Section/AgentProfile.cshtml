@@ -31,7 +31,7 @@
                             <img src="@Model.Profile.PhotoUrl" style="max-height:120px;" class="img-fluid" />
                         }
                         <br />
-                        <h5>Region: @Model.Profile.OperatingRegion.RegionOfOperation</h5>
+                        <h5>Region: </h5>
                         <h3>@Model.Profile.ProfileType</h3>
                     </td>
                 </tr>
@@ -103,15 +103,7 @@
                     <td>@Model.Profile.State</td>
                 </tr>
 
-                <tr>
-                    <th>Zip Code</th>
-                    <td>@Model.Profile.ZipCode</td>
-                </tr>
-                <tr>
-                    <th>Country</th>
-                    <td>@Model.Profile.Country</td>
-                </tr>
-
+               
                 <tr>
                     <th>Description</th>
                     <td>@Html.Raw(Model.Profile)</td>

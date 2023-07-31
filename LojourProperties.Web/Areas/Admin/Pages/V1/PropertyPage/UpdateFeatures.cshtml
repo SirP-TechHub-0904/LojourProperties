@@ -1,0 +1,119 @@
+﻿@page
+@model LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage.UpdateFeaturesModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title text-uppercase">FEATURES OF [@Model.Property.Title] </h3>
+
+        <a asp-page="./Details" asp-route-id="@Model.Property.Id" class="btn bg-gradient-warning btn-sm" style="float:right;">Back To Property Details</a>
+
+    </div>
+</div>
+<!-- /.card-header -->
+<div class="card card-default">
+
+    <div class="card-body" style="margin-bottom:10px;">
+        <div class="card-header">
+            <h6 class="card-title ">Features List </h6>
+
+        </div>
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Feature</th>
+
+                        <th>Details</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var x in Model.PropertyFeature)
+                    {
+                        <tr>
+                            <td>@{sn++;}
+                                @sn
+                            </td>
+                            <td>
+                                @x.FeaturesCategory.Name
+                            </td>
+                            <td>
+                                @x.Description
+                            </td>
+                            <td>
+
+                                <form asp-page-handler="Delete" method="post">
+                                    <input type="hidden" name="id" value="@x.Id" />
+                                    <input type="hidden" name="pid" value="@x.PropertyId" />
+
+                                    <button type="submit" class="btn btn-danger">X</button>
+                                </form>
+                            </td>
+
+
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="card card-default">
+
+
+    <div class="card-body">
+        <div class="card-header">
+            <h6 class="card-title ">Update Features </h6>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Feature.PropertyId" value="@Model.Property.Id" />
+
+                    <div class="form-group">
+                        <label asp-for="Feature.Description" class="control-label"></label>
+                        <input asp-for="Feature.Description" class="form-control" />
+                        <span asp-validation-for="Feature.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Feature.FeaturesCategoryId" class="control-label">Features</label>
+                        <select asp-for="Feature.FeaturesCategoryId" class="form-control" asp-items="ViewBag.FeaturesCategoryId"></select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+ 
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

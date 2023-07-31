@@ -25,6 +25,8 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
 
         public IActionResult OnGet()
         {
+            ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
+
             return Page();
         }
 
@@ -36,6 +38,8 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
         {
             if (!ModelState.IsValid)
             {
+                ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
+
                 return Page();
             }
 

@@ -155,7 +155,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
+         with font-awesome or any other icon font library -->
                         <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">DASHBOARD</li>
                         <li class="nav-item">
                             <a asp-page="/Admin/Index" asp-area="Main" class="nav-link">
@@ -165,33 +165,33 @@
                                 </p>
                             </a>
                         </li>
-                      @*  <li class="nav-item">
-                            <a asp-page="/Dashboard/Funds" asp-area="Main" class="nav-link">
-                                <i class="nav-icon fa fa-money"></i>
+                        <li class="nav-item">
+                            <a asp-page="/V1/Dashboard/Index" asp-area="Admin" class="nav-link">
+                                <i class="nav-icon fa fa-th"></i>
                                 <p>
-                                    Statistics
+                                    M Dashboard
                                 </p>
                             </a>
-                        </li>*@
+                        </li>
 
-                            <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Authorization</li>
-                            <li class="nav-item">
-                                <a asp-page="/Roles/List" asp-area="Identity" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Roles
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-page="/Accounts/Index" asp-area="Main" class="nav-link">
-                                    <i class="nav-icon fa fa-users"></i>
-                                    <p>
-                                        Users
-                                    </p>
-                                </a>
-                            </li>
-                        
+                        <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Authorization</li>
+                        <li class="nav-item">
+                            <a asp-page="/Roles/List" asp-area="Identity" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Roles
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/Accounts/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">NAVIGATION</li>
                         <li class="nav-item">
                             <a asp-page="/RegionPage/Index" asp-area="Main" class="nav-link">
@@ -205,7 +205,7 @@
                             <a asp-page="/Slides/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-image"></i>
                                 <p>
-                                   Web Slider
+                                    Web Slider
                                 </p>
                             </a>
                         </li>
@@ -215,6 +215,14 @@
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Activity
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/PropertySection/IPropertyCategoryList/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Activity List
                                 </p>
                             </a>
                         </li>
@@ -243,7 +251,7 @@
                             </a>
                         </li>
 
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a asp-page="/PropertySection/PType/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-lock"></i>
                                 <p>
@@ -255,11 +263,11 @@
                             <a asp-page="/PropertySection/DocumentCategoryPage/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-lock"></i>
                                 <p>
-                                   Document Category
+                                    Document Category
                                 </p>
                             </a>
                         </li>
-                          <li class="nav-item">
+                        <li class="nav-item">
                             <a asp-page="/PropertySection/Section/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
@@ -267,25 +275,25 @@
                                 </p>
                             </a>
                         </li>
-                       
-                        
-                            <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Others</li>
-                            <li class="nav-item">
-                                <a asp-page="/Web/Index" asp-area="Main" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Pages
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-page="/FaqPage/Index" asp-area="Main" class="nav-link">
-                                    <i class="nav-icon fa fa-users"></i>
-                                    <p>
-                                        FAQs
-                                    </p>
-                                </a>
-                            </li>
+
+
+                        <li class="nav-header" style="background-color: #c8cacc;border-radius: 4px;font-weight: bolder;color: black;">Others</li>
+                        <li class="nav-item">
+                            <a asp-page="/Web/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Pages
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/FaqPage/Index" asp-area="Main" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    FAQs
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a asp-page="/Tips/Index" asp-area="Main" class="nav-link">
                                 <i class="nav-icon fa fa-users"></i>
@@ -303,33 +311,33 @@
                                 </p>
                             </a>
                         </li>
-                         
-                       @* <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    menu
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-page="/ContributorsPage/Category/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>xxxx</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-page="/ContributorsPage/ContributorList/Index" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>xxx</p>
-                                    </a>
-                                </li>
 
-                            </ul>
-                        </li>*@
+                        @* <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                    menu
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a asp-page="/ContributorsPage/Category/Index" asp-area="Main" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>xxxx</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-page="/ContributorsPage/ContributorList/Index" asp-area="Main" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>xxx</p>
+                    </a>
+                </li>
 
-                    
+            </ul>
+        </li>*@
+
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -443,8 +451,7 @@
                 "autoWidth": false,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "responsive": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            });
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": false,

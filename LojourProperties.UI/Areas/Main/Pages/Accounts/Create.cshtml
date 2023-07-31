@@ -103,25 +103,11 @@
                         <select asp-for="Profile.State" class="form-control" asp-items="ViewBag.StateId"></select>
                         <span asp-validation-for="Profile.State" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Profile.ZipCode" class="control-label"></label>
-                        <input asp-for="Profile.ZipCode" class="form-control" />
-                        <span asp-validation-for="Profile.ZipCode" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Profile.Country" class="control-label"></label>
-                        <input asp-for="Profile.Country" value="NIGERIA" class="form-control" />
-                        <span asp-validation-for="Profile.Country" class="text-danger"></span>
-                    </div>
-                  @*  <div class="form-group">
-                        <label asp-for="Profile.Description" class="control-label"></label>
-                        <textarea id="summernote2" asp-for="Profile.Description" class="form-control" />
-                        <span asp-validation-for="Profile.Description" class="text-danger"></span>
-                    </div>*@
-                    <div class="form-group">
+                   
+                    @*<div class="form-group">
                         <label asp-for="Profile.OperatingRegionId" class="control-label"></label>
                         <select asp-for="Profile.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <label asp-for="Profile.ProfileType" class="control-label"></label>
                         @Html.DropDownListFor(model => model.Profile.ProfileType, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.ProfileType))), new { @class = "form-control" })

@@ -6,7 +6,7 @@
             @if (!User.Identity.IsAuthenticated)
             {
                 <li><a asp-page="/Account/Login" asp-area="Identity"><i class="fa fa-sign-in"></i> Log in</a></li>
-                <li><a asp-page="/Account/Register" asp-area="Identity"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+                @*<li><a asp-page="/Account/Register" asp-area="Identity"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>*@
             }
             else if (User.Identity.IsAuthenticated)
             {
@@ -15,10 +15,10 @@
                         <img class="img-circle resize" alt="" src="~/assets/dist/img/avatar5.png"> <span class="myname hidden-xs"> @Model.SurName </span> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/">User Profile</a></li>
-                        <li><a href="/">Check Later</a></li>
+                        <li><a asp-page="/V1/Dashboard/Index" asp-area="Admin">Dashboard</a></li>
+                        @*<li><a href="/">Check Later</a></li>
                         <li><a href="/">Wish List</a></li>
-                        <li><a href="/">Message Panel</a></li>
+                        <li><a href="/">Message Panel</a></li>*@
                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
                     </ul>
                 </li>

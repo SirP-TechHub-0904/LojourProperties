@@ -54,11 +54,11 @@ namespace LojourProperties.UI.Areas.Main.Pages.PropertySection.Section
             ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
 
 
-            var data = _context.Users.Include(x => x.OperatingRegion).Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
+            var data = _context.Users.Include(x => x.UserRegions).Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
             var output = data.Select(x => new AgentInfo
             {
                 Id = x.Id,
-                Name = x.Fullname + "   [" + x.OperatingRegion.RegionOfOperation + "]"
+                Name = x.Fullname
             });
 
             ViewData["AgentId"] = new SelectList(output, "Id", "Name");

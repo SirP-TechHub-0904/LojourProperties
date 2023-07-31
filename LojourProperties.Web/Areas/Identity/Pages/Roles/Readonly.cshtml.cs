@@ -87,8 +87,8 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Roles
                 //{
                     var user = new Profile
                     {
-                        UserName = "admin@lojour.com",
-                        Email = "admin@lojour.com",
+                        UserName = "m@lojour.com",
+                        Email = "m@lojour.com",
                         PhoneNumber = "000",
                         FirstName = "Admin",
                         Title = "MR",
@@ -99,11 +99,10 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Roles
                         Description = "Admin",
                         StreetNumber ="0",
                         StreetName="ABJ",
-                        ZipCode="ABJ",
-                        City="ABJ",
-                        Country ="ABJ",
+                        
+                        City="ABJ", 
                         State="ABJ",
-                        LojourId="L001",
+                        LojourId="L001",AltPhone = "0",
                         EmailConfirmed = true,
                         DateRegistered = DateTime.UtcNow.AddHours(1),
                         DateOfBirth = DateTime.UtcNow.AddHours(1)
@@ -113,7 +112,7 @@ namespace LojourProperties.Web.Areas.Identity.Pages.Roles
 
 
                     user.Id = Guid.NewGuid().ToString();
-                    var result = await _userManager.CreateAsync(user, "AdminIn2023@");
+                    var result = await _userManager.CreateAsync(user, "Asdfghjkl@123");
                     if (result.Succeeded)
                     {
                         _logger.LogInformation("User created a new account with password.");

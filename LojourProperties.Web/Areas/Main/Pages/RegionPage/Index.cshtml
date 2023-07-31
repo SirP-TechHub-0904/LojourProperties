@@ -22,20 +22,12 @@
                     <tr>
                         <th>S/N</th>
             <th>
-                @Html.DisplayNameFor(model => model.OperatingRegion[0].City)
+                @Html.DisplayNameFor(model => model.OperatingRegion[0].Location)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OperatingRegion[0].State)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperatingRegion[0].Zone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperatingRegion[0].Region)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperatingRegion[0].Country)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -52,20 +44,12 @@
                                 @sn
                             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City)
+                @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.State)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
+           
                             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("mSuperAdmin"))
                             {
                                 <td>

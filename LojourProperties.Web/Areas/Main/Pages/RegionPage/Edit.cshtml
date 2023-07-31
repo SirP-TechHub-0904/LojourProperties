@@ -15,34 +15,19 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="OperatingRegion.Id" />
-            <div class="form-group">
-                <label asp-for="OperatingRegion.City" class="control-label"></label>
-                <input asp-for="OperatingRegion.City" class="form-control" />
-                <span asp-validation-for="OperatingRegion.City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OperatingRegion.State" class="control-label"></label>
-                <input asp-for="OperatingRegion.State" class="form-control" />
-                <span asp-validation-for="OperatingRegion.State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OperatingRegion.Zone" class="control-label"></label>
-                <input asp-for="OperatingRegion.Zone" class="form-control" />
-                <span asp-validation-for="OperatingRegion.Zone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OperatingRegion.Region" class="control-label"></label>
-                <input asp-for="OperatingRegion.Region" class="form-control" />
-                <span asp-validation-for="OperatingRegion.Region" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OperatingRegion.Country" class="control-label"></label>
-                <input asp-for="OperatingRegion.Country" class="form-control" />
-                <span asp-validation-for="OperatingRegion.Country" class="text-danger"></span>
-            </div>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="OperatingRegion.Id" />
+                    <div class="form-group">
+                        <label asp-for="OperatingRegion.Location" class="control-label"></label>
+                        <input asp-for="OperatingRegion.Location" class="form-control" />
+                        <span asp-validation-for="OperatingRegion.Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperatingRegion.State" class="control-label"></label>
+                        <select asp-for="OperatingRegion.State" class="form-control" asp-items="ViewBag.StateId"></select>
+                        <span asp-validation-for="OperatingRegion.State" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="Submit" class="btn btn-primary" />
                         <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>

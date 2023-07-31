@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LOJOUR PROPERTIES | SMARTHOMES | APARTMENTS | HOTELS | LANDS</title>
+    <link rel="icon" href="~/img/icon.png" type="image/x-icon" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/JurayUniversal.Website.styles.css" asp-append-version="true" />
+    <style>
+        
+    </style>
+
+</head>
+<body>
+
+
+    <!-- Section: Design Block -->
+    <section class="background-radial-gradient overflow-hidden" style="background: url(../../img/lojourbg.jpg) no-repeat center fixed; background-size: cover;">
+
+        <div class="container px-4 py-5 px-md-5 text-lg-start my-5">
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-lg-6 mb-5 mb-lg-0 text-center " style="z-index: 10">
+                    <div style="margin:0 auto;text-align:center;">
+                       
+                            <img src="~/img/lojour-logo-web-2.png" style="margin:0 auto;text-align:center;" alt="LOJOUR PROPERTIES" class="img-fluid" />
+                         
+
+                    </div>
+                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        Best Property In the world
+                    </h1>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                        Ultimately, the best property in the world is a matter of personal preference and priorities. It's essential to consider your specific needs, desires, and goals when searching for a property that suits you best.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+
+
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            @RenderBody()
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

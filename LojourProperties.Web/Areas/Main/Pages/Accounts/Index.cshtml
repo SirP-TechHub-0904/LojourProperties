@@ -32,12 +32,12 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Profile[0].ProfileType)
                         </th>
-                         <th>
+                        <th>
                             @Html.DisplayNameFor(model => model.Profile[0].PhoneNumber)
                         </th>
 
                         <th>Region</th>
-                        
+
                         <th></th>
                     </tr>
                 </thead>
@@ -48,30 +48,34 @@
                 <tbody>
                     @foreach (var item in Model.Profile)
                     {
-                    <tr>
-                        <td>
-                            @{ sno++; }
-                            @sno
-                        </td>
+                        <tr>
+                            <td>
+                                @{ sno++; }
+                                @sno
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Fullname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Gender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProfileType) 
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProfileType)
 
-                        </td>
-                         <td>
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.PhoneNumber) |
                                 @Html.DisplayFor(modelItem => item.AltPhone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OperatingRegion.RegionOfOperation)
-                        </td>
-                        
+                            </td>
+                            <td>
+                                @foreach (var region in item.UserRegions)
+                                {
+                                    <a class="btn btn-primary">@region.OperatingRegion.Location</a>
+                                }
+
+                            </td>
+
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success">Action</button>
@@ -82,8 +86,7 @@
                                         <div class="dropdown-menu" style="">
 
                                             <a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>
-                                            <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                            <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
 
                                         </div>
                                     </div>

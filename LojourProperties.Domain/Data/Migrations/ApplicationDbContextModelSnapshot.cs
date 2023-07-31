@@ -17,7 +17,7 @@ namespace LojourProperties.Domain.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.15")
+                .HasAnnotation("ProductVersion", "6.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -124,6 +124,40 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.ToTable("LocalGoverments");
                 });
 
+            modelBuilder.Entity("LojourProperties.Domain.Models.MailingSystem", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NotificationStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Receipient")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Retries")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MailingSystems");
+                });
+
             modelBuilder.Entity("LojourProperties.Domain.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -166,23 +200,11 @@ namespace LojourProperties.Domain.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Region")
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Zone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -217,23 +239,16 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AltPhone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Biography")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -243,7 +258,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -261,14 +275,12 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InstagramLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LinkedinLink")
@@ -285,7 +297,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaritalStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
@@ -296,9 +307,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<long?>("OperatingRegionId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -307,6 +315,9 @@ namespace LojourProperties.Domain.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("PhotoKey")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("nvarchar(max)");
@@ -318,15 +329,12 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SurName")
@@ -334,7 +342,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TwitterLink")
@@ -347,9 +354,8 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserStatus")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -360,8 +366,6 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("OperatingRegionId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -387,9 +391,6 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.Property<string>("AreaGuide")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
@@ -398,6 +399,9 @@ namespace LojourProperties.Domain.Data.Migrations
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("FullAddress")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
                         .HasColumnType("nvarchar(max)");
@@ -412,11 +416,17 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.Property<string>("Map")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long?>("OperatingRegionId")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("PrivacyCategoryId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("PropertyCategoryId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("PropertyLink")
+                        .HasColumnType("int");
 
                     b.Property<string>("PropertyRefID")
                         .HasColumnType("nvarchar(max)");
@@ -455,6 +465,8 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AgentId");
+
+                    b.HasIndex("OperatingRegionId");
 
                     b.HasIndex("PrivacyCategoryId");
 
@@ -520,6 +532,22 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PropertyCategories");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.PropertyCategoryList", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PropertyCategoryLists");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.PropertyDocument", b =>
@@ -774,6 +802,29 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("States");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.UserRegion", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("OperatingRegionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ProfileId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperatingRegionId");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("UserRegions");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.WebPage", b =>
@@ -1078,15 +1129,6 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.Navigation("States");
                 });
 
-            modelBuilder.Entity("LojourProperties.Domain.Models.Profile", b =>
-                {
-                    b.HasOne("LojourProperties.Domain.Models.OperatingRegion", "OperatingRegion")
-                        .WithMany()
-                        .HasForeignKey("OperatingRegionId");
-
-                    b.Navigation("OperatingRegion");
-                });
-
             modelBuilder.Entity("LojourProperties.Domain.Models.Property", b =>
                 {
                     b.HasOne("LojourProperties.Domain.Models.Profile", "Agent")
@@ -1094,6 +1136,10 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasForeignKey("AgentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("LojourProperties.Domain.Models.OperatingRegion", "OperatingRegion")
+                        .WithMany()
+                        .HasForeignKey("OperatingRegionId");
 
                     b.HasOne("LojourProperties.Domain.Models.PrivacyCategory", "PrivacyCategory")
                         .WithMany()
@@ -1114,6 +1160,8 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Agent");
+
+                    b.Navigation("OperatingRegion");
 
                     b.Navigation("PrivacyCategory");
 
@@ -1191,6 +1239,23 @@ namespace LojourProperties.Domain.Data.Migrations
                     b.Navigation("Property");
                 });
 
+            modelBuilder.Entity("LojourProperties.Domain.Models.UserRegion", b =>
+                {
+                    b.HasOne("LojourProperties.Domain.Models.OperatingRegion", "OperatingRegion")
+                        .WithMany()
+                        .HasForeignKey("OperatingRegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LojourProperties.Domain.Models.Profile", "Profile")
+                        .WithMany("UserRegions")
+                        .HasForeignKey("ProfileId");
+
+                    b.Navigation("OperatingRegion");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1240,6 +1305,11 @@ namespace LojourProperties.Domain.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.Profile", b =>
+                {
+                    b.Navigation("UserRegions");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.Property", b =>

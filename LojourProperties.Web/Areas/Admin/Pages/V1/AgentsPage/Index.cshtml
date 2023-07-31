@@ -1,0 +1,126 @@
+﻿@page
+@model LojourProperties.Web.Areas.Admin.Pages.V1.AgentsPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+ 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">USERS</h3>
+
+
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New User</a>
+
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" style="width:100%;">
+                    <span>All Users</span><br />
+                    <span>@Model.AllUsers</span>
+                </button>
+
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-danger" style="width:100%;">
+                    <span>Agents</span><br />
+                    <span>@Model.Agents</span>
+                </button>
+
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-warning" style="width:100%;">
+                    <span>Owner</span><br />
+                    <span>@Model.Owner</span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+
+                        <th>S/N</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].Fullname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].ProfileType)
+                        </th>
+                         <th>
+                            @Html.DisplayNameFor(model => model.Profile[0].PhoneNumber)
+                        </th>
+
+                        <th>Region</th>
+                        
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sno = 0;
+                }
+
+                <tbody>
+                    @foreach (var item in Model.Profile)
+                    {
+                    <tr>
+                        <td>
+                            @{ sno++; }
+                            @sno
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fullname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProfileType) 
+
+                        </td>
+                         <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber) |
+                                @Html.DisplayFor(modelItem => item.AltPhone)
+                        </td>
+                         <td>
+                             @foreach (var region in item.UserRegions)
+                             {
+                                 <a class="btn btn-primary">@region.OperatingRegion.Location</a>
+                             }
+                         </td>
+                        
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Action</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                                            <a class="dropdown-item" asp-page="./Update" asp-route-id="@item.Id">Update</a>
+                                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

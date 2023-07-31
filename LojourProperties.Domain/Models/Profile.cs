@@ -13,7 +13,7 @@ namespace LojourProperties.Domain.Models
     public class Profile : IdentityUser
     {
         [Display(Name = "Title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Display(Name = "Surname")]
         public string SurName { get; set; }
@@ -22,11 +22,11 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Lastname")]
 
       
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         
         [Display(Name = "Biography")]
-        public string Biography { get; set; }
+        public string? Biography { get; set; }
 
         [Display(Name = "FullName")]
         public string Fullname
@@ -38,29 +38,27 @@ namespace LojourProperties.Domain.Models
         }
 
         [Display(Name = "Alternative Phone Number")]
-        public string AltPhone { get; set; }
+        public string? AltPhone { get; set; }
 
 
         [Display(Name = "Street Number")]
-        public string StreetNumber { get; set; }
+        public string? StreetNumber { get; set; }
 
         [Display(Name = "Street Name")]
-        public string StreetName { get; set; }
+        public string? StreetName { get; set; }
 
 
          [Display(Name = "City")]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         [Display(Name = "State")]
-        public string State { get; set; }
-        [Display(Name = "Zip Code")]
-        public string ZipCode { get; set; }
-        [Display(Name = "Country")]
-        public string Country { get; set; }
+        public string? State { get; set; }
 
         [Display(Name = "Description")]
-        public string Description { get; set; }
-
+        public string? Description { get; set; }
+        [Display(Name = "User Status")]
+         
+        public UserStatus UserStatus { get; set; }
         [Display(Name = "Date Of Birth")]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Date Registered")]
@@ -75,27 +73,20 @@ namespace LojourProperties.Domain.Models
         public string? InstagramLink { get; set; }
         [Display(Name = "Passport")]
         public string? PhotoUrl { get; set; }
+        public string? PhotoKey { get; set; }
 
-        [Display(Name = "Operating Region ID")]
-        public long? OperatingRegionId { get; set; }
-        [Display(Name = "Operating Region")]
-        public OperatingRegion OperatingRegion { get; set; }
+        [Display(Name = "Operating Regions")]
+        public ICollection<UserRegion> UserRegions { get; set; }
+        
         [Display(Name = "Lojour Id")]
         public string LojourId { get; set; }
-        public string Gender { get; set; }
+        public string? Gender { get; set; }
         [Display(Name = "Marital Status")]
-        public string MaritalStatus { get; set; }
+        public string? MaritalStatus { get; set; }
 
         [Display(Name = "Profile Type")]
         public ProfileType ProfileType { get; set; }
-
-        //[Display(Name = "Agent Data")]
-        //public string AgentInfor
-        //{
-        //    get
-        //    {
-        //        return SurName + " " + FirstName + " " + LastName + "["+OperatingRegion.RegionOfOperation+"]";
-        //    }
-        //}
+        
+      
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel;
 
 namespace LojourProperties.Domain.Models
 {
@@ -20,8 +16,35 @@ namespace LojourProperties.Domain.Models
             [Description("Unpublish")]
             Unpublish = 3,
 
-        }
+        }  
+        public enum EmailType
+        {
+            [Description("None")]
+            None = 0,
 
+            [Description("ChangeEmail")]
+            ChangeEmail = 2,
+
+            [Description("VerifyEmail")]
+            VerifyEmail = 3,
+
+
+        }
+         public enum UserStatus
+        {
+            [Description("Pending")]
+            Pending = 0,
+
+            [Description("Active")]
+            Active = 2,
+            [Description("Suspended")]
+            Suspended = 3,
+
+            [Description("Leave")]
+            Leave = 4,
+            [Description("Deleted")]
+            Deleted = 6,
+        }
         public enum ActivityStatus
         {
             [Description("None")]
@@ -49,6 +72,20 @@ namespace LojourProperties.Domain.Models
 
             [Description("LandLord")]
             LandLord = 3,
+
+        }
+          public enum PropertyLink
+        {
+            [Description("None")]
+            None = 0,
+
+            [Description("Platinum")]
+            Platinum = 2,
+
+            [Description("Diamond")]
+            Diamond = 3,
+              [Description("Gold")]
+            Gold = 4,
 
         }
 
