@@ -17,12 +17,14 @@ namespace LojourProperties.Domain.Dtos
 
         [Display(Name = "Title")]
         public string Title { get; set; }
-
+         
+        [Display(Name = "Description")]
+        public string? Description { get; set; }
         [Display(Name = "Sort Order")]
         public int SortOrder { get; set; }
 
         [Display(Name = "Amount")]
-        public decimal Amount { get; set; }
+        public string Amount { get; set; }
 
         
         [Display(Name = "City")]

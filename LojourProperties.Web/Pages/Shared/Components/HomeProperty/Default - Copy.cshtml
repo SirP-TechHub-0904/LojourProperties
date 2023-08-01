@@ -1,0 +1,51 @@
+﻿@model ICollection<LojourProperties.Domain.Dtos.HomePropertyDto>
+
+    @foreach(var item in Model){
+
+<div class="col-md-4 col-xs-12 col-sm-6">
+    <!-- Ad Box -->
+    <div class="category-grid-box">
+        <!-- Ad Img -->
+        <div class="category-grid-img">
+            
+            <img class="img-responsive" alt="" src="@item.Image">
+            <!-- Ad Status -->
+            <!-- User Review -->
+            <div class="user-preview">
+                <a href="#"> @item.Activity </a>
+            </div>
+            <!-- View Details --><a href="" class="view-details">View Details</a>
+            <!-- Additional Info -->
+            <div class="additional-information">
+                    @foreach(var x in item.PropertyFeatures)
+                    {
+                        <p>@x.FeaturesCategoryId : @x.Description</p>
+                    }
+
+
+            </div>
+            <!-- Additional Info End-->
+        </div>
+        <!-- Ad Img End -->
+        <div class="short-description">
+            <!-- Ad Category -->
+            <div class="category-title"> <span class="activity-case"><a href="#">@item.Category</a></span> </div>
+            <!-- Ad Title -->
+            <h3 class="choose-2-line"><a title="" >@item.Title </a></h3>
+            <!-- Price -->
+            <div class="price">@item.Amount</div>
+        </div>
+        <!-- Addition Info -->
+        <div class="ad-info">
+            <ul>
+                <li><i class="flaticon-fuel-1"></i>Diesel</li>
+                <li><i class="flaticon-dashboard"></i>35,000 km</li>
+                <li><i class="flaticon-engine-2"></i> 1800 cc</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Ad Box End -->
+</div>
+}
+
+

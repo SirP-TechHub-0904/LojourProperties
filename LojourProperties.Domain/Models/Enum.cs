@@ -47,8 +47,8 @@ namespace LojourProperties.Domain.Models
         }
         public enum ActivityStatus
         {
-            [Description("None")]
-            None = 0,
+            [Description("Available")]
+            Available = 0,
 
             [Description("Sold")]
             Sold = 2,

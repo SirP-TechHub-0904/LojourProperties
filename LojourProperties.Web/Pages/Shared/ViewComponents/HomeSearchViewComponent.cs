@@ -4,6 +4,7 @@ using LojourProperties.Domain.Dtos.AwsDtos;
 using LojourProperties.Domain.Services.AWS;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,36 +38,9 @@ namespace NirsalProject.Pages.Shared.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string key)
         {
 
-            //string bucketName = "lojourxyz";
-            //var bucketExists = await _s3Client.DoesS3BucketExistAsync(bucketName);
-            ////if (!bucketExists) return NotFound($"Bucket {bucketName} does not exist.");
-            //var s3Object = await _s3Client.GetObjectAsync(bucketName, key);
-            ////return File(s3Object.ResponseStream, s3Object.Headers.ContentType);
-
-
-
-            ////var doctype = await _context.ApplicantDocuments.Include(x => x.DocumentType).FirstOrDefaultAsync(x => x.Id == id);
-            ////if(doctype == null)
-            ////{
-            ////    TempData["e"] = "Not Processed";
-            ////}
-
-            var s3Obj = new LojourProperties.Domain.Dtos.AwsDtos.S3GetObjectDto()
-            {
-                Bucket = "lojourxyz",
-                Key = key
-            };
-
-            var cred = new AwsCredentials()
-            {
-                AccessKey = _config["AwsConfiguration:AWSAccessKey"],
-                SecretKey = _config["AwsConfiguration:AWSSecretKey"]
-            };
-
-            var result = await _storageService.DownloadFileAsync(s3Obj.Key, s3Obj.Bucket, cred);
-            // 
-            
-            ViewBag.outcome = result;
+          
+              ViewData["OperatingRegionId"] = new SelectList(_context.OperatingRegions, "Id", "RegionOfOperation");
+             
             return View();
         }
     }

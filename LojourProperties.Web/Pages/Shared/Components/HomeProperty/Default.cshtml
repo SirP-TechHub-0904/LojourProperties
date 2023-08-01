@@ -1,53 +1,69 @@
 ﻿@model ICollection<LojourProperties.Domain.Dtos.HomePropertyDto>
 
-    @foreach(var item in Model){
+<div class="row">
 
-<div class="col-md-4 col-xs-12 col-sm-6">
-    <!-- Ad Box -->
-    <div class="category-grid-box">
-        <!-- Ad Img -->
-        <div class="category-grid-img">
-            <div style="background-image: url('@item.Image'); background-size: cover;  background-repeat: no-repeat;">
+    @foreach (var item in Model)
+    {
 
+        <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+            <div class="ads-list-archive">
+                <!-- Image Block -->
+                <div class="no-padding">
+                    <!-- Img Block -->
+                    <div class="ad-archive-img">
+                        <div class="featured-ribbon">
+                            <span>@item.Activity</span>
+                        </div>
+                        <a href="#">
+                            <img class="img-responsive" src="@item.Image" alt="@item.Title">
+                        </a>
+                    </div>
+                    <!-- Img Block -->
+                </div>
+                <!-- Ads Listing -->
+                <div class="clearfix visible-xs-block"></div>
+                <!-- Content Block -->
+                <div class="no-padding">
+                    <!-- Ad Desc -->
+                    <div class="ad-archive-desc">
+                        <!-- Price -->
+                        <img alt="" class="pull-right" src="~/smart/images/certified.png" style="max-width: 10%;">
+                        <!-- Title -->
+                        <h3>@item.Title </h3>
+                        <!-- Category -->
+                        <div class="category-title"> <span class="activity-case"><a href="#">@item.Category</a></span> </div>
+                        <!-- Short Description -->
+                        <div class="clearfix visible-xs-block"></div>
+                        <p class="hidden-sm">@item.Description</p>
+                        <!-- Ad Features -->
+                        <ul class="short-meta list-inline">
+                            @foreach (var x in item.PropertyFeatures)
+                            {
+                                <li><a href="#"><i class="fas @x.FeaturesCategory.Icon"></i> @x.Description @x.FeaturesCategory.Description </a></li>
+                            }
+
+                        </ul>
+                        <!-- Ad History -->
+                        <div class="ad-price-simple">@item.Amount</div>
+                        <div class="clearfix archive-history"> 
+                            <div class="ad-meta">
+                                <a class="btn save-ad"><i class="fa fa-heart-o"></i> Compare</a>
+                                <a class="btn btn-success"><i class="fa fa-phone"></i> Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ad Desc End -->
+                </div>
+                <!-- Content Block End -->
             </div>
-            @*<img class="img-responsive" alt="" src="@item.Image">*@
-            <!-- Ad Status -->
-            <!-- User Review -->
-            <div class="user-preview">
-                <a href="#"> @item.Activity </a>
-            </div>
-            <!-- View Details --><a href="" class="view-details">View Details</a>
-            <!-- Additional Info -->
-            <div class="additional-information">
-                    @foreach(var x in item.PropertyFeatures)
-                    {
-                        <p>@x.FeaturesCategoryId : @x.Description</p>
-                    }
+        </div>
+    }
 
 
-            </div>
-            <!-- Additional Info End-->
-        </div>
-        <!-- Ad Img End -->
-        <div class="short-description">
-            <!-- Ad Category -->
-            <div class="category-title"> <span><a href="#">@item.Category</a></span> </div>
-            <!-- Ad Title -->
-            <h3><a title="" href="single-page-listing.html">@item.Title </a></h3>
-            <!-- Price -->
-            <div class="price">@item.Amount</div>
-        </div>
-        <!-- Addition Info -->
-        <div class="ad-info">
-            <ul>
-                <li><i class="flaticon-fuel-1"></i>Diesel</li>
-                <li><i class="flaticon-dashboard"></i>35,000 km</li>
-                <li><i class="flaticon-engine-2"></i> 1800 cc</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Ad Box End -->
 </div>
-}
-
-
+@*@if (Model.Count() > 15)
+{*@
+    <div>
+        <a asp-page="/Property" class="btn-theme btn-lg btn">More Properties <i class="fa fa-angle-right"></i></a>
+    </div>
+@*}*@

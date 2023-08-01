@@ -30,12 +30,18 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
         public Property Property { get; set; }
         [BindProperty]
         public PropertyImage Image { get; set; }
+
+
+
         [BindProperty]
 
         public IList<PropertyImage> PropertyImage { get; set; }
 
         [BindProperty]
         public IFormFile file { get; set; }
+
+             [BindProperty]
+        public IFormFile filelarge { get; set; }
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -85,32 +91,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                 {
                     Image.ImageUrl = result.Url;
                     Image.Key = result.Key;
-
-                    //try
-                    //{
-                    //    var streamresult = await _fileImageResize.ReduceFileSteamAsync(memoryStream, 270, 360);
-                    //    var smalls3Obj = new Domain.Dtos.AwsDtos.S3Object()
-                    //    {
-                    //        BucketName = "lojourxyz",
-                    //        InputStream = streamresult,
-                    //        Name = docName
-                    //    };
-                    //    var smallresult = await _storageService.UploadFileReturnUrlAsync(smalls3Obj, cred, "");
-                    //    // 
-                    //    if (smallresult.Message.Contains("200"))
-                    //    {
-                    //        Image.SmallSizeImageUrl = smallresult.Url;
-                    //        Image.SmallSizeKey = smallresult.Key;
-
-                    //    }
-
-                    //}
-                    //catch (Exception c)
-                    //{
-
-                    //}
-
-
+ 
                 }
                 else
                 {
@@ -122,7 +103,47 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             {
 
             }
+            try
+            {
+                // Process file
+                await using var memoryStream = new MemoryStream();
+                await filelarge.CopyToAsync(memoryStream);
 
+                var fileExt = Path.GetExtension(filelarge.FileName);
+                var docName = $"{Guid.NewGuid()}{fileExt}";
+                // call server
+
+                var s3Obj = new Domain.Dtos.AwsDtos.S3Object()
+                {
+                    BucketName = "lojourxyz",
+                    InputStream = memoryStream,
+                    Name = docName
+                };
+
+                var cred = new AwsCredentials()
+                {
+                    AccessKey = _config["AwsConfiguration:AWSAccessKey"],
+                    SecretKey = _config["AwsConfiguration:AWSSecretKey"]
+                };
+
+                var result = await _storageService.UploadFileReturnUrlAsync(s3Obj, cred, "");
+                // 
+                if (result.Message.Contains("200"))
+                {
+                    Image.FullImageUrl = result.Url;
+                    Image.FullImageKey = result.Key;
+ 
+                }
+                else
+                {
+                    TempData["error"] = "unable to upload image";
+                    //return Page();
+                }
+            }
+            catch (Exception c)
+            {
+
+            }
             Image.Date = DateTime.UtcNow.AddHours(1);
             _context.PropertyImages.Add(Image);
             await _context.SaveChangesAsync();

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojourProperties.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojourProperties.UI", "LojourProperties.UI\LojourProperties.UI.csproj", "{636E6E24-7332-4718-9011-6A1EC02AF5C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojourProperties.Application", "LojourProperties.Application\LojourProperties.Application.csproj", "{90DEC319-39D1-4F59-B9D3-9F3F84FC1366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojourProperties.Application", "LojourProperties.Application\LojourProperties.Application.csproj", "{90DEC319-39D1-4F59-B9D3-9F3F84FC1366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

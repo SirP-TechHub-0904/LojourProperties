@@ -47,7 +47,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 Key = x.Key,
                 Title = x.Title,
                 SortOrder = x.SortOrder,
-                Amount = x.Amount, 
+                Amount = string.Format("₦{0:N0}", x.Amount), 
                 State = x.State,
                 Country = x.Country,
                 Privacy = x.PrivacyCategory.Name,
@@ -56,7 +56,8 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "default-image-url",
                 PropertyAgencies = x.PropertyAgencies,
                 PropertyDocuments = x.PropertyDocuments,
-                PropertyFeatures = x.PropertyFeatures
+                PropertyFeatures = x.PropertyFeatures,
+                Description = x.ShortDescription
          
             
             
@@ -64,7 +65,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
 
 
 
-            return View(outcome.ToList());
+            return View(outcome.Take(15).ToList());
         }
     }
 }

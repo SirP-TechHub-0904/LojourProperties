@@ -12,6 +12,9 @@ namespace LojourProperties.Domain.Models
         public string? ImageUrl { get; set; }
         public string? Key { get; set; }
 
+         public string? FullImageUrl { get; set; }
+        public string? FullImageKey { get; set; }
+
         public string? SmallSizeImageUrl { get; set; }
         public string? SmallSizeKey { get; set; }
 

@@ -1,4 +1,4 @@
-﻿ 
+﻿
 
 
 <div class="search-bar">
@@ -12,57 +12,47 @@
                                 <div class="search-form-inner pull-left">
                                     <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
                                         <div class="form-group">
-                                            <label>Keyword</label>
+                                            <label>Property</label>
                                             <input type="text" class="form-control" placeholder="Eg Duplex , One Room , Bungalo." />
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
                                         <div class="form-group">
-                                            <label>Select Make</label>
-                                            <select class=" form-control make">
-                                                <option label="Any Make"></option>
-                                                <option>BMW</option>
-                                                <option>Honda </option>
-                                                <option>Hyundai </option>
-                                                <option>Nissan </option>
-                                                <option>Mercedes Benz </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
-                                        <div class="form-group">
-                                            <label>Select Year</label>
-                                            <select class=" form-control search-year">
-                                                <option label="Any Year"></option>
-                                                <option>Year</option>
-                                                <option>2010</option>
-                                                <option>2011</option>
-                                                <option>2012</option>
-                                                <option>2013</option>
-                                                <option>2014</option>
-                                                <option>2015</option>
-                                                <option>2016</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
-                                        <div class="form-group">
                                             <label>Select Location</label>
-                                            <select class="search-loaction form-control">
-                                                <option label="location"></option>
-                                                <option value="0">America</option>
-                                                <option value="1">Australia</option>
-                                                <option value="2">Africa</option>
-                                                <option value="3">Pakistan</option>
-                                                <option value="4">Japan</option>
-                                                <option value="5">Srilanka</option>
+                                            <select class=" form-control make" asp-items="ViewBag.OperatingRegionId">
+                                                <option label="Any Location"></option>
+
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
+                                        <div class="form-group">
+                                            <label>Select Amount</label>
+                                            <select class=" form-control search-year">
+                                                <option label="Any Amount"></option>
+
+                                                <option>50,000 - 200,000</option>
+                                                <option>200,000 - 400,000</option>
+                                                <option>400,000 - 800,000</option>
+                                                <option>800,000 - 1,000,000</option>
+                                                <option>1,000,000 - 5,000,000</option>
+                                                <option>5,000,000 - 20,000,000</option>
+                                                <option>20,000,000 - 50,000,000</option>
+                                                <option>50,000,000 - 500,000,000</option>
+                                                <option>500,000,000 - 5,000,000,000</option>
+
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
+                                        <div class="form-group" style="margin:5px 0 0 0;">
+                                            <label></label>
+                                            <button type="submit" value="submit" class="btn btn-lg btn-theme" style="width:100%;margin-top:0;">Search Now</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group pull-right">
-                                    <button type="submit" value="submit" class="btn btn-lg btn-theme">Search Now</button>
-                                </div>
+
                             </div>
                         </form>
                     </div>

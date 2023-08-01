@@ -37,6 +37,7 @@ namespace LojourProperties.Domain.Data
         public DbSet<MailingSystem> MailingSystems { get; set; }
         public DbSet<UserRegion> UserRegions { get; set; }
         public DbSet<PropertyCategoryList> PropertyCategoryLists { get; set; }
+        public DbSet<Testimony> Testimonies { get; set; }
         
     }
     //public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>

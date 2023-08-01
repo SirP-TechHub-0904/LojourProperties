@@ -16,10 +16,10 @@ namespace LojourProperties.Web.Pages
             _context = context;
         }
 
-
+        public IList<Testimony> Testimonies { get;set;}
         public async Task OnGetAsync()
         {
-             
-         }
+            Testimonies = await _context.Testimonies.ToListAsync();
+        }
     }
 }

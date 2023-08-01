@@ -55,7 +55,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
 
             if (Property != null)
             {
-                //_context.Properties.Remove(Property);
+                _context.Properties.Remove(Property);
                 await _context.SaveChangesAsync();
             }
 

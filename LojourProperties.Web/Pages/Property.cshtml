@@ -1,0 +1,117 @@
+﻿@page "{pg:int?}"
+@model LojourProperties.Web.Pages.PropertyModel
+@{
+}
+
+<div class="page-header-area-2 gray" style="background: rgba(0, 0, 0, 0) url(../img/banner-lojour.jpg) no-repeat scroll center center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="small-breadcrumb">
+                    <div class=" breadcrumb-link">
+                        <ul>
+                            <li><a href="/">Home Page</a></li>
+                            <li><a class="active" href="#">Listing</a></li>
+                        </ul>
+                    </div>
+                    <div class="header-page">
+                        <h1>AVAILABLE PROPERTIES</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="custom-padding">
+    <!-- Main Container -->
+    <div class="container-fluid" style="margin:0 10%;">
+        <!-- Row -->
+        <div class="row">
+            <div class="clearfix"></div>
+            <!-- Heading Area -->
+
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-sm-12">
+
+                    <div class="posts-masonry">
+                        <div class="row">
+
+                            @foreach (var item in Model.PaginatedData)
+                            {
+
+                                <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                                    <div class="ads-list-archive">
+                                        <!-- Image Block -->
+                                        <div class="no-padding">
+                                            <!-- Img Block -->
+                                            <div class="ad-archive-img">
+                                                <div class="featured-ribbon">
+                                                    <span>@item.Activity</span>
+                                                </div>
+                                                <a href="#">
+                                                    <img class="img-responsive" src="@item.Image" alt="@item.Title">
+                                                </a>
+                                            </div>
+                                            <!-- Img Block -->
+                                        </div>
+                                        <!-- Ads Listing -->
+                                        <div class="clearfix visible-xs-block"></div>
+                                        <!-- Content Block -->
+                                        <div class="no-padding">
+                                            <!-- Ad Desc -->
+                                            <div class="ad-archive-desc">
+                                                <!-- Price -->
+                                                <img alt="" class="pull-right" src="~/smart/images/certified.png" style="max-width: 10%;">
+                                                <!-- Title -->
+                                                <h3>@item.Title </h3>
+                                                <!-- Category -->
+                                                <div class="category-title"> <span class="activity-case"><a href="#">@item.Category</a></span> </div>
+                                                <!-- Short Description -->
+                                                <div class="clearfix visible-xs-block"></div>
+                                                <p class="hidden-sm">@item.Description</p>
+                                                <!-- Ad Features -->
+                                                <ul class="short-meta list-inline">
+                                                    @foreach (var x in item.PropertyFeatures)
+                                                    {
+                                                        <li><a href="#"><i class="fas @x.FeaturesCategory.Icon"></i> @x.Description @x.FeaturesCategory.Description </a></li>
+                                                    }
+
+                                                </ul>
+                                                <!-- Ad History -->
+                                                <div class="ad-price-simple">@item.Amount</div>
+                                                <div class="clearfix archive-history">
+                                                    <div class="ad-meta">
+                                                        <a class="btn save-ad"><i class="fa fa-heart-o"></i> Compare</a>
+                                                        <a class="btn btn-success"><i class="fa fa-phone"></i> Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Ad Desc End -->
+                                        </div>
+                                        <!-- Content Block End -->
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+               
+                    <div>
+                        @if (Model.TotalPages > 1)
+                        {
+                            <ul class="pagination">
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    <li class="@(i == Model.CurrentPage ? "active" : "")">
+                                        <a asp-page="/Property" asp-route-pg="@i">@i</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>

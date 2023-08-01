@@ -52,6 +52,8 @@
     <link rel="stylesheet" href="~/smart/css/jquery.fancybox.min.css" type="text/css" media="screen" />
     <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
     <link href="~/smart/css/responsive-media.css" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" />
+
     <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="color" href="~/smart/css/colors/defualt.css">
     <!-- For This Page Only -->
@@ -87,7 +89,171 @@
             top: 10px;
             margin-right: 5px;
         }
+        .user-preview {
+            background-color: white;
+            padding: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .activity-case {
+            font-weight: 900;
+            font-size: 16px;
+            background-color: #e52d27;
+            padding: 4px;
+            color: white !important;
+        }
+        .category-title .activity-case a {
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .category-title .activity-case a :hover{
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .activity-case:hover {
+            font-weight: 900;
+            font-size: 16px;
+            background-color: #e52d27;
+            padding: 4px;
+            color: white !important;
+        }
+        .choose-2-line {
+            display: -webkit-box !important;
+            -webkit-line-clamp: 2 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
+        }
 
+            .choose-2-line a {
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                /*text-align: justify !important;*/
+            }
+            .choose-2-line a {
+                height:58px;
+            }
+        .choose-2-line a {
+            line-height: 1.0em;
+            margin-bottom: 0;
+        }
+            .choose-2-line { 
+                margin-bottom: 0;
+            }
+        .category-grid-box .short-description {
+            padding: 10px 20px;
+            
+        }
+        .choose-2-line {
+            margin-top: 10px;
+        }
+        .wp-block.property.list .wp-block-footer ul.aux-info li i {
+            font-size: 15px;
+            margin-right: 8px;
+            color: #2f3d46;
+        }
+
+        .fal, .far {
+            font-family: "font awesome 5 pro";
+        }
+
+        .fal {
+            font-weight: 300;
+        }
+
+        .fa, .fab, .fad, .fal, .far, .fas {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+        }
+        .ad-archive-desc ul.short-meta li:first-child {
+            padding-left: 10px;
+        }
+        .ad-archive-desc ul.short-meta li {
+            border-right: 1px solid #574e4e;
+            line-height: 15px;
+            padding: 0 10px;
+        }
+        .grid-panel .location-icon i, .widget-newsletter .fieldset form .submit-btn, .ad-listing .content-area .additional-info li a:hover, .noUi-connect, .card .nav-tabs > li > a::after, .featured-ribbon span, .progress-bar > span {
+            background: #29990e none repeat scroll 0 0;
+        }
+        .custom-padding {
+            padding: 10px 0 30px 0;
+        }
+        .heading-panel h1::after {
+            background-color: #24242400;
+            bottom: 0;
+            content: "";
+            height: 1px;
+            left: 0;
+            margin: 0 auto;
+            position: absolute;
+            right: 0;
+            width: 59px;
+        }
+        .heading-panel h1::before {
+            background-color: #24242400;
+            bottom: 6px;
+            content: "";
+            height: 1px;
+            left: 0;
+            margin: 0 auto;
+            position: absolute;
+            right: 0;
+            width: 99px;
+        }
+        .page-header-area-2 h1 {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 900;
+            text-transform: capitalize;
+        }
+        .ad-archive-desc .ad-price-simple {
+            font-size: 19px;
+            font-weight: 900;
+            margin-top: 3px;
+            overflow: hidden;
+        }
+        .category-title .activity-case a {
+            color: #ffffff;
+            font-size: 10px;
+            line-height: 0;
+        }
+        .activity-case {
+            font-weight: 900;
+            font-size: 8px;
+            background-color: #e52d27;
+            padding: 4px;
+            color: white !important;
+        }
+        .ad-archive-desc .category-title {
+            margin-bottom: 2px;
+            line-height: .8;
+        }
+        .ad-archive-desc ul.short-meta {
+            margin-top: 0;
+        }
+        .ad-archive-desc ul.short-meta {
+            margin-top: 0;
+            font-size: 14px;
+            color: black;
+        }
+            .ad-archive-desc ul.short-meta li a {
+                color: #000;
+            }
+        .ads-list-archive .archive-history {
+            margin-top: 5px;
+        }
+        .ad-archive-desc h3 {
+            
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -135,25 +301,25 @@
                             <ul class="menu-links">
                                 <!-- active class -->
                                 <li>
-                                    <a href="#">Rent</a>
+                                    <a asp-page="/Property" asp-route-category="Rent">Rent</a>
                                 </li>
                                  <li>
-                                    <a href="#">Lease</a>
+                                    <a asp-page="/Property" asp-route-category="Lease">Lease</a>
                                 </li>
                                  <li>
-                                    <a href="#">Sale</a>
+                                    <a asp-page="/Property" asp-route-category="Sale">Sale</a>
                                 </li>
                                  <li>
-                                    <a href="#">Buy</a>
+                                    <a asp-page="/Property" asp-route-category="Buy">Buy</a>
                                 </li>
                                 <li>
-                                    <a href="#">SmartHomes</a>
+                                    <a asp-page="/Property" asp-route-category="SmartHomes">SmartHomes</a>
                                 </li>
 
                             </ul>
                             <ul class="menu-search-bar">
                                 <li>
-                                    <a href="#" class="btn btn-theme">Special Request</a>
+                                    <a asp-page="/Request" class="btn btn-theme">Special Request</a>
                                 </li>
                             </ul>
                         </div>

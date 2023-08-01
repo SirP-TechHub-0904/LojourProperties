@@ -22,11 +22,9 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Region Of Operation")]
         public string RegionOfOperation
         {
-
             get
             {
-                //return City + " / " + State + " / " + Zone + " / " + Region +" / " + Country;
-                return Location + " in " + State;
+                return (Location + " in " + State).ToUpper();
             }
         }
 

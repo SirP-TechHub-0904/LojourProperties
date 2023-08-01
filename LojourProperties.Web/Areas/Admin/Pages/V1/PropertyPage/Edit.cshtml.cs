@@ -74,6 +74,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             //    return Page();
             //}
             Property.LastUpdated = DateTime.UtcNow.AddHours(1);
+            Property.Key = "000";
             _context.Attach(Property).State = EntityState.Modified;
 
             try
