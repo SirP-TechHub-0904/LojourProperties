@@ -1,0 +1,130 @@
+﻿@page
+@model LojourProperties.Web.Areas.Admin.Pages.V1.Slides.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">UPDATE SLIDER</h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Slider.Id" />
+                    <input type="hidden" asp-for="Slider.Url" />
+                    <input type="hidden" asp-for="Slider.Date" />
+                    <input type="hidden" asp-for="Slider.Key" />
+            
+
+           
+            <div class="form-group">
+                <label asp-for="Slider.StartDate" class="control-label"></label>
+                <input asp-for="Slider.StartDate" class="form-control" />
+                <span asp-validation-for="Slider.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.EndDate" class="control-label"></label>
+                <input asp-for="Slider.EndDate" class="form-control" />
+                <span asp-validation-for="Slider.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Slider.Show" /> @Html.DisplayNameFor(model => model.Slider.Show)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.MainText" class="control-label"></label>
+                <input asp-for="Slider.MainText" class="form-control" />
+                <span asp-validation-for="Slider.MainText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.SubText" class="control-label"></label>
+                <input asp-for="Slider.SubText" class="form-control" />
+                <span asp-validation-for="Slider.SubText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.PlainText" class="control-label"></label>
+                <input asp-for="Slider.PlainText" class="form-control" />
+                <span asp-validation-for="Slider.PlainText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.ButtonText" class="control-label"></label>
+                <input asp-for="Slider.ButtonText" class="form-control" />
+                <span asp-validation-for="Slider.ButtonText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slider.ButtonLink" class="control-label"></label>
+                <input asp-for="Slider.ButtonLink" class="form-control" />
+                <span asp-validation-for="Slider.ButtonLink" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.SortOrder" class="control-label"></label>
+                        <input asp-for="Slider.SortOrder" class="form-control" />
+                        <span asp-validation-for="Slider.SortOrder" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Slider.IsVideo" /> @Html.DisplayNameFor(model => model.Slider.IsVideo)
+                        </label>
+                    </div>
+                   
+                    <div class="form-group">
+                       
+
+                        @if (Model.Slider.IsVideo == false)
+                        {
+
+                            <label asp-for="Slider.Url" class="control-label">Image</label>
+                            <br />
+                            <a href="@Model.Slider.Url" target="_blank">
+                                <img src="@Model.Slider.Url" class="img-fluid" style="max-height:120px" />
+                            </a>
+                        }
+                        else
+                        {
+                            <label asp-for="Slider.Url" class="control-label">Video</label>
+                            <br />
+                            <video controls="controls" id="myVideo" style="height:120px;">
+                                    <source src="@Model.Slider.Url" type="video/mp4">
+                                    Any alternate text.
+                                </video>
+                            
+                        }
+
+
+
+
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Slider.Url" class="control-label">Upload to Replace Image</label>
+                        <input type="file" class="control-label" asp-for="file" required="" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
