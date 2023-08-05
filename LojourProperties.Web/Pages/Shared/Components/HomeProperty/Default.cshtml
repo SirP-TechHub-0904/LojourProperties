@@ -12,7 +12,25 @@
                     <!-- Img Block -->
                     <div class="ad-archive-img">
                         <div class="featured-ribbon">
-                            <span>@item.Activity</span>
+                            <span>
+                                @if (item.Activity == Domain.Models.Enum.ActivityStatus.Leased)
+                                {
+                                    <text>Leased Out</text>
+                                }
+                                else if (item.Activity == Domain.Models.Enum.ActivityStatus.Sold)
+                                {
+                                    <text>Sold Out</text>
+                                }
+                                else if (item.Activity == Domain.Models.Enum.ActivityStatus.Rented)
+                                {
+                                    <text>Rented Out</text>
+                                }
+                                else if (item.Activity == Domain.Models.Enum.ActivityStatus.Available)
+                                {
+                                    <text>Available</text>
+                                }
+                                
+                            </span>
                         </div>
                         <a href="#">
                             <img class="img-responsive" src="@item.Image" alt="@item.Title">

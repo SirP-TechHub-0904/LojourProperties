@@ -49,7 +49,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.Slides
             return Page();
         }
         [BindProperty]
-        public IFormFile file { get; set; }
+        public IFormFile? file { get; set; }
 
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
