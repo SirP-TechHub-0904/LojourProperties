@@ -12,22 +12,14 @@ namespace LojourProperties.Domain.Models
     public class OperatingRegion
     {
         public long Id { get; set; }
-        [Display(Name = "Location")]
-        public string Location { get; set; }
+
+        [Display(Name = "Display Title")]
+        public string? DisplayTitle { get; set; }
 
         [Display(Name = "State")]
         public string State { get; set; }
 
-        
-        [Display(Name = "Region Of Operation")]
-        public string RegionOfOperation
-        {
-            get
-            {
-                return (Location + " in " + State).ToUpper();
-            }
-        }
-
+        public ICollection<CategoryLocation> Categories { get; set; }
 
     }
 }

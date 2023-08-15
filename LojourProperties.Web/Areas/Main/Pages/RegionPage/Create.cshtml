@@ -17,16 +17,16 @@
                 <form method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label asp-for="OperatingRegion.Location" class="control-label"></label>
-                        <input asp-for="OperatingRegion.Location" class="form-control" />
-                        <span asp-validation-for="OperatingRegion.Location" class="text-danger"></span>
-                    </div>
-                   
-                    <div class="form-group">
                         <label asp-for="OperatingRegion.State" class="control-label"></label>
                         <select asp-for="OperatingRegion.State" class="form-control" asp-items="ViewBag.StateId"></select>
                         <span asp-validation-for="OperatingRegion.State" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <label asp-for="OperatingRegion.DisplayTitle" class="control-label"></label>
+                        <input asp-for="OperatingRegion.DisplayTitle" class="form-control" />
+                        <span asp-validation-for="OperatingRegion.DisplayTitle" class="text-danger"></span>
+                    </div>
+
                     <div class="form-group">
                         <input type="submit" value="Submit" class="btn btn-primary" />
                         <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>

@@ -1,0 +1,31 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.RegionPage.Location.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CityLocation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CityLocation.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CityLocation.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CityLocation.CategoryLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CityLocation.CategoryLocation.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.CityLocation.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

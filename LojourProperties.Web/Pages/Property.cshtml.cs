@@ -22,7 +22,7 @@ namespace LojourProperties.Web.Pages
         public int PageSize { get; set; } = 20; // Number of items to display per page
 
         public IList<HomePropertyDto> PropertyDtoLists { get; set; }
-        public async Task OnGetAsync(int? pg, string category)
+        public async Task OnGetAsync(int? pg, string category, long? region)
         {
             CurrentPage = pg ?? 1;
             var Property = _context.Properties
@@ -36,6 +36,10 @@ namespace LojourProperties.Web.Pages
                 .Include(x => x.PropertyType)
 
                 .AsQueryable();
+            if(region != null)
+            {
+                Property = Property.Where(x => x.CityLocationId == region).AsQueryable();
+            }
             if (!String.IsNullOrEmpty(category))
             {
                 Property = Property.Where(x => x.PropertyCategory.Name.Contains(category)).AsQueryable();

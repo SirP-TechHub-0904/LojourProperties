@@ -53,7 +53,7 @@
                 Category
             </th>
             <th>
-                Privacy
+                Link
             </th>
             <th>
                 Status
@@ -94,17 +94,17 @@
                             </td>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.DateAdded)
+                                @item.DateAdded.Date
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Amount)
+                                @string.Format("₦{0:N0}", item.Amount) 
                             </td>
 
                             <td>
                                 @Html.DisplayFor(modelItem => item.PropertyCategory.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.PrivacyCategory.Name)
+                                @Html.DisplayFor(modelItem => item.PropertyLink)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PropertyStatus)

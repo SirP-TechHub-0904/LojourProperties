@@ -1,0 +1,58 @@
+﻿@model ICollection<LojourProperties.Domain.Models.OperatingRegion>
+
+<section class="custom-padding">
+    <!-- Main Container -->
+    <div class="container-fluid" style="margin:0 10%;">
+        <!-- Row -->
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="clearfix"></div>
+                <!-- Heading Area -->
+                <div class="heading-panel">
+                    <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title -->
+                        <h1 style="font-family: 'Berlin Sans FB Demi Bold' !important;">@item.DisplayTitle</h1>
+                    </div>
+                </div>
+                <!-- Middle Content Box -->
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+
+                        <div class="">
+                            <div class="">
+
+                                @foreach (var list in item.Categories)
+                                {
+
+                                    <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                                        <div class="ads-list-archive">
+                                            <!-- Image Block -->
+                                            <div class="no-padding">
+                                                <!-- Img Block -->
+                                                <div class="ad-archive-img">
+                                                     
+                                                    <a asp-page="./Property" asp-route-region="@list.Id">
+                                                        <img class="img-responsive" src="@list.ImageUrl" alt="@list.Name">
+                                                    </a>
+                                                </div>
+                                                <!-- Img Block -->
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        <!-- Row End -->
+    </div>
+    <!-- Main Container End -->
+</section>
+ 

@@ -26,7 +26,8 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
         public IActionResult OnGet()
         {
             ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
-
+            ViewData["CategoryId"] = new SelectList(_context.CategoryLocations.OrderBy(x => x.Name), "Id", "Name");
+ 
             return Page();
         }
 
@@ -36,12 +37,6 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
-
-                return Page();
-            }
 
             _context.OperatingRegions.Add(OperatingRegion);
             await _context.SaveChangesAsync();

@@ -15,8 +15,10 @@
     <!-- =-=-=-=-=-=-= Search Bar =-=-=-=-=-=-= -->
 
     @await Component.InvokeAsync("HomeSearch")
-    <!-- =-=-=-=-=-=-= Search Bar End =-=-=-=-=-=-= -->
-    <!-- =-=-=-=-=-=-= Ads Archieve =-=-=-=-=-=-= -->
+
+    @await Component.InvokeAsync("HomeCategory")
+
+
     <section class="custom-padding">
         <!-- Main Container -->
         <div class="container-fluid" style="margin:0 10%;">
@@ -27,7 +29,7 @@
                 <div class="heading-panel">
                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
                         <!-- Main Title -->
-                        <h1>PROPERTIES <span class="heading-color"> AVAILABLE</span></h1>
+                        <h1 style="font-family: 'Berlin Sans FB Demi Bold' !important;">PROPERTIES <span class="heading-color"> AVAILABLE</span></h1>
                     </div>
                 </div>
                 <!-- Middle Content Box -->
@@ -47,8 +49,6 @@
         </div>
         <!-- Main Container End -->
     </section>
-    <!-- =-=-=-=-=-=-= Ads Archieve End =-=-=-=-=-=-= -->
-    <!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
     <div class="funfacts custom-padding parallex" style="padding: 40px 0 30px 0; background: rgba(0, 0, 0, 0) url(../img/Float-banner-lojour.jpg) no-repeat scroll center center; ">
         <div class="container">
             <div class="row">
@@ -92,36 +92,36 @@
             <div class="row">
                 <div class="heading-panel">
                     <div class="col-xs-12 col-md-12 col-sm-12 left-side">-->
-                        <!-- Main Title -->
-                        <!--<h1>Clients  <span class="heading-color"> Reviews</span> Feedback</h1>
-                    </div>
-                </div>-->
-                <!-- Middle Content Box -->
-                <!--<div class="col-md-12 col-xs-12 col-sm-12">
-                    <div class="row">
-                        <div class="owl-testimonial-1">
-                            @foreach (var item in Model.Testimonies)
-                            {
-                                <div class="single_testimonial">
-                                    <div class="textimonial-content">
+    <!-- Main Title -->
+    <!--<h1>Clients  <span class="heading-color"> Reviews</span> Feedback</h1>
+        </div>
+    </div>-->
+    <!-- Middle Content Box -->
+    <!--<div class="col-md-12 col-xs-12 col-sm-12">
+        <div class="row">
+            <div class="owl-testimonial-1">
+                @foreach (var item in Model.Testimonies)
+                {
+                    <div class="single_testimonial">
+                        <div class="textimonial-content">
 
-                                        <p>@item.Message</p>
-                                    </div>
-                                    <div class="testimonial-meta-box">
-                                        <div class="testimonial-meta">
-                                            <h3 class="">@item.Name</h3>
-                                            <p> @item.Location</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                            <p>@item.Message</p>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="testimonial-meta-box">
+                            <div class="testimonial-meta">
+                                <h3 class="">@item.Name</h3>
+                                <p> @item.Location</p>
+
+                            </div>
+                        </div>
                     </div>
-                </div>-->
-                <!-- Middle Content Box End -->
-            <!--</div>
+                }
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>-->
+    <!-- Middle Content Box End -->
+    <!--</div>
             <div class="clearfix"></div>
         </div>
     </section>-->

@@ -12,6 +12,8 @@
         {
 
             <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Region</a>
+            <a asp-page="./Category/Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Location Category</a>
+            <a asp-page="./Location/Index" class="btn bg-gradient-warning btn-sm" style="float:right;">City Location</a>
         }
     </div>
     <!-- /.card-header -->
@@ -21,35 +23,38 @@
                 <thead>
                     <tr>
                         <th>S/N</th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperatingRegion[0].Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperatingRegion[0].State)
-            </th>
-            
-            <th></th>
-        </tr>
-    </thead>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.OperatingRegion[0].State)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OperatingRegion[0].DisplayTitle)
+                        </th>
+                         
+                        <th></th>
+                    </tr>
+                </thead>
                 @{
                     int sn = 0;
                 }
-    <tbody>
-@foreach (var item in Model.OperatingRegion) {
-        <tr>
+                <tbody>
+                    @foreach (var item in Model.OperatingRegion)
+                    {
+                        <tr>
                             <td>
                                 @{
                                     sn++;
                                 }
                                 @sn
                             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-           
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.State)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DisplayTitle)
+                            </td>
+                           
                             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("mSuperAdmin"))
                             {
                                 <td>

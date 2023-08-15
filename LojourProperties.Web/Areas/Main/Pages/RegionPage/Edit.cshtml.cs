@@ -41,7 +41,8 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
                 return NotFound();
             }
                         ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
-
+                        ViewData["CategoryId"] = new SelectList(_context.CategoryLocations.OrderBy(x => x.Name), "Id", "Name");
+ 
             return Page();
         }
 
@@ -51,6 +52,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.RegionPage
         {
             if (!ModelState.IsValid)
             {            ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
+                                        ViewData["CategoryId"] = new SelectList(_context.CategoryLocations.OrderBy(x => x.Name), "Id", "Name");
 
                 return Page();
             }

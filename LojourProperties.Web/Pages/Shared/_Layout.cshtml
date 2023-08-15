@@ -19,7 +19,7 @@
     <meta property="og:title" content="@ViewBag.title">
     <meta property="og:description" content="@ViewBag.description">
     <meta property="og:image" content="@ViewBag.image">
-
+    <link href="https://db.onlinewebfonts.com/c/b6539b6d3432c623d8d4f9cc2a29589e?family=Berlin+Sans+FB+Demi+Bold" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -89,12 +89,14 @@
             top: 10px;
             margin-right: 5px;
         }
+
         .user-preview {
             background-color: white;
             padding: 4px;
             font-weight: 700;
             text-transform: uppercase;
         }
+
         .activity-case {
             font-weight: 900;
             font-size: 16px;
@@ -102,14 +104,17 @@
             padding: 4px;
             color: white !important;
         }
+
         .category-title .activity-case a {
             color: #ffffff;
             font-size: 14px;
         }
-        .category-title .activity-case a :hover{
-            color: #ffffff;
-            font-size: 14px;
-        }
+
+            .category-title .activity-case a :hover {
+                color: #ffffff;
+                font-size: 14px;
+            }
+
         .activity-case:hover {
             font-weight: 900;
             font-size: 16px;
@@ -117,6 +122,7 @@
             padding: 4px;
             color: white !important;
         }
+
         .choose-2-line {
             display: -webkit-box !important;
             -webkit-line-clamp: 2 !important;
@@ -132,23 +138,28 @@
                 text-overflow: ellipsis !important;
                 /*text-align: justify !important;*/
             }
+
             .choose-2-line a {
-                height:58px;
+                height: 58px;
             }
-        .choose-2-line a {
-            line-height: 1.0em;
-            margin-bottom: 0;
-        }
-            .choose-2-line { 
+
+            .choose-2-line a {
+                line-height: 1.0em;
                 margin-bottom: 0;
             }
+
+        .choose-2-line {
+            margin-bottom: 0;
+        }
+
         .category-grid-box .short-description {
             padding: 10px 20px;
-            
         }
+
         .choose-2-line {
             margin-top: 10px;
         }
+
         .wp-block.property.list .wp-block-footer ul.aux-info li i {
             font-size: 15px;
             margin-right: 8px;
@@ -172,20 +183,25 @@
             text-rendering: auto;
             line-height: 1;
         }
+
         .ad-archive-desc ul.short-meta li:first-child {
             padding-left: 10px;
         }
+
         .ad-archive-desc ul.short-meta li {
             border-right: 1px solid #574e4e;
             line-height: 15px;
             padding: 0 10px;
         }
+
         .grid-panel .location-icon i, .widget-newsletter .fieldset form .submit-btn, .ad-listing .content-area .additional-info li a:hover, .noUi-connect, .card .nav-tabs > li > a::after, .featured-ribbon span, .progress-bar > span {
             background: #29990e none repeat scroll 0 0;
         }
+
         .custom-padding {
             padding: 10px 0 30px 0;
         }
+
         .heading-panel h1::after {
             background-color: #24242400;
             bottom: 0;
@@ -197,6 +213,7 @@
             right: 0;
             width: 59px;
         }
+
         .heading-panel h1::before {
             background-color: #24242400;
             bottom: 6px;
@@ -208,23 +225,27 @@
             right: 0;
             width: 99px;
         }
+
         .page-header-area-2 h1 {
             color: #ffffff;
             font-size: 26px;
             font-weight: 900;
             text-transform: capitalize;
         }
+
         .ad-archive-desc .ad-price-simple {
             font-size: 19px;
             font-weight: 900;
             margin-top: 3px;
             overflow: hidden;
         }
+
         .category-title .activity-case a {
             color: #ffffff;
             font-size: 10px;
             line-height: 0;
         }
+
         .activity-case {
             font-weight: 900;
             font-size: 8px;
@@ -232,28 +253,34 @@
             padding: 4px;
             color: white !important;
         }
+
         .ad-archive-desc .category-title {
             margin-bottom: 2px;
             line-height: .8;
         }
+
         .ad-archive-desc ul.short-meta {
             margin-top: 0;
         }
+
         .ad-archive-desc ul.short-meta {
             margin-top: 0;
             font-size: 14px;
             color: black;
         }
+
             .ad-archive-desc ul.short-meta li a {
                 color: #000;
             }
+
         .ads-list-archive .archive-history {
             margin-top: 5px;
         }
+
         .ad-archive-desc h3 {
-            
             height: 50px;
         }
+
         .boxed-div {
             position: relative !important;
             border: 1px solid #eee !important;
@@ -263,8 +290,32 @@
             overflow: hidden !important;
             padding: 10px 15px !important;
             margin-bottom: 10px !important;
-            color:black;
+            color: black;
         }
+
+        .mega-menu > section.menu-list-items {
+            padding: 10px 0px;
+        }
+
+        .btn-theme {
+            padding: 5px 5px !important;
+        }
+    </style>
+    <style>
+        .heading-panel, .heading-panel-2 {
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+            .heading-panel h1 {
+                color: #222;
+                font-size: 28px;
+                font-weight: 700;
+                padding-bottom: 2px;
+                position: relative;
+                text-transform: capitalize;
+                z-index: 2;
+            }
     </style>
 </head>
 <body>
@@ -273,26 +324,7 @@
 
     <!-- =-=-=-=-=-=-=  Header =-=-=-=-=-=-= -->
     <div class="colored-header">
-        <!-- Top Bar -->
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <!-- Header Top Left -->
-                    <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                        <ul class="listnone">
-                            <li><a asp-page="/Page/WebPage" asp-route-id="786f812a-8436-4587-8f1d-c9dc68a48898"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
-                            <li><a asp-page="/Page/WebFaq"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
-                           
-                        </ul>
-                    </div>
 
-                    <!-- Header Top Right Social -->
-                    @await Component.InvokeAsync("HomeProfile")
-
-                </div>
-            </div>
-        </div>
-        <!-- Top Bar End -->
         <!-- Navigation Menu -->
         <div class="clearfix"></div>
         <!-- menu start -->
@@ -305,7 +337,7 @@
                             <!-- menu logo -->
                             <ul class="menu-logo">
                                 <li>
-                                    <a href="/"><img src="~/img/lojour-logo-web-2.png" alt="logo" style="margin-top:8px;"> </a>
+                                    <a href="/"><img src="~/img/lojour-logo-green.png" alt="LOJOUR PROPERTIES" style="margin-top:8px;"> </a>
                                 </li>
                             </ul>
                             <!-- menu links -->
@@ -314,21 +346,45 @@
                                 <li>
                                     <a asp-page="/Property" asp-route-category="Rent">Rent</a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a asp-page="/Property" asp-route-category="Lease">Lease</a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a asp-page="/Property" asp-route-category="Sale">Sale</a>
                                 </li>
-                                 
+
                                 <li>
                                     <a asp-page="/Property" asp-route-category="SmartHomes">SmartHomes</a>
                                 </li>
-
+                                <li>
+                                    <a asp-page="/Property" asp-route-category="Serviced Apartment">
+                                        Serviced Apartment
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Find a Home
+                                    </a>
+                                </li>
                             </ul>
                             <ul class="menu-search-bar">
                                 <li>
-                                    <a asp-page="/Request" class="btn btn-theme">Request a Tour</a>
+                                    <a asp-page="/Request" class="btn btn-theme">Special Request</a>
+
+                                    @if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <a asp-page="/Account/Login" asp-area="Identity" class="btn btn-theme">Log in</a>
+
+                                    }
+                                    else if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a asp-page="/V1/Dashboard/Index" asp-area="Admin" class="btn btn-theme"><i class="fa fa-dashboard"></i></a>
+
+
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-theme"><i class="fa fa-sign-out"></i></a>
+
+
+                                    }
                                 </li>
                             </ul>
                         </div>

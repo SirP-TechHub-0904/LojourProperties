@@ -85,32 +85,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
                 {
                     Image.ImageUrl = result.Url;
                     Image.Key = result.Key;
-
-                    //try
-                    //{
-                    //    var streamresult = await _fileImageResize.ReduceFileSteamAsync(memoryStream, 270, 360);
-                    //    var smalls3Obj = new Domain.Dtos.AwsDtos.S3Object()
-                    //    {
-                    //        BucketName = "lojourxyz",
-                    //        InputStream = streamresult,
-                    //        Name = docName
-                    //    };
-                    //    var smallresult = await _storageService.UploadFileReturnUrlAsync(smalls3Obj, cred, "");
-                    //    // 
-                    //    if (smallresult.Message.Contains("200"))
-                    //    {
-                    //        Image.SmallSizeImageUrl = smallresult.Url;
-                    //        Image.SmallSizeKey = smallresult.Key;
-
-                    //    }
-
-                    //}
-                    //catch (Exception c)
-                    //{
-
-                    //}
-
-
+ 
                 }
                 else
                 {

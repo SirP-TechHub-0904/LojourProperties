@@ -1,0 +1,78 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.RegionPage.Location.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">CITY LOCATIONS</h3>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("mSuperAdmin"))
+        {
+
+            <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New</a>
+        }
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CityLocation[0].Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CityLocation[0].CategoryLocation)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.CityLocation)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryLocation.Name)
+                            </td>
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("mSuperAdmin"))
+                            {
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success">Action</button>
+
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            </button>
+                                            <div class="dropdown-menu" style="">
+
+                                                <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

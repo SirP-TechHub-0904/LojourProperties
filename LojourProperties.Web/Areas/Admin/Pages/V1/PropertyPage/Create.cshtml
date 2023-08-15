@@ -128,12 +128,12 @@
                         <select asp-for="Property.PropertyTypeId" class="form-control" asp-items="ViewBag.PropertyTypeId"></select>
                     </div>
                     @*<div class="form-group">
-                        <label asp-for="Property.landArea" class="control-label"></label>
-                        <textarea id="summernote" asp-for="Property.landArea" class="form-control">
+            <label asp-for="Property.landArea" class="control-label"></label>
+            <textarea id="summernote" asp-for="Property.landArea" class="form-control">
 
-                         </textarea>
-                        <span asp-validation-for="Property.landArea" class="text-danger"></span>
-                    </div>*@
+             </textarea>
+            <span asp-validation-for="Property.landArea" class="text-danger"></span>
+        </div>*@
 
                     <div class="form-group">
                         <label asp-for="Property.PropertyStatus" class="control-label"></label>
@@ -141,7 +141,12 @@
 
                         <span asp-validation-for="Property.PropertyStatus" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyLink" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Property.PropertyLink, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.PropertyLink))), new { @class = "form-control" })
 
+                        <span asp-validation-for="Property.PropertyLink" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <label asp-for="Property.SortOrder" class="control-label"></label>
                         <input asp-for="Property.SortOrder" class="form-control" />

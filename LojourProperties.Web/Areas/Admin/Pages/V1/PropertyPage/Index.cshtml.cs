@@ -39,6 +39,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             List<PropertyDtoList> categoriesList = new List<PropertyDtoList>();
             List<PropertyDtoList> activitiesList = new List<PropertyDtoList>();
             List<PropertyDtoList> propertyTypesList = new List<PropertyDtoList>();
+            List<PropertyDtoList> propertyLink = new List<PropertyDtoList>();
 
 
             List<PropertyDtoList> iList = new List<PropertyDtoList>();
@@ -74,9 +75,29 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                 });
             }
 
+            var linkrank = property
+   .GroupBy(p => p.PropertyLink)  // Group properties by PropertyLink
+   .Select(group => new
+   {
+       PropertyLink = group.Key,
+       Count = group.Count()
+   })
+   .ToList();
+            foreach (var item in linkrank)
+            {
+                propertyLink.Add(new PropertyDtoList
+                {
+                    Title = item.PropertyLink.ToString(), // Assuming you have a "Title" property in the PropertyCategory class
+                    Count = item.Count, // You can set the count later based on your logic
+                    Query = "PropertyLink"
+                });
+            }
+
+
             iList.AddRange(categoriesList);
             iList.AddRange(activitiesList);
             iList.AddRange(propertyTypesList);
+            iList.AddRange(propertyLink);
 
             PropertyDtoLists = iList.ToList();
         }

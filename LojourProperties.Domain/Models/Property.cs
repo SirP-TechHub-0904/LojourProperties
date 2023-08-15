@@ -91,8 +91,8 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Property Agent")]
         public Profile Agent { get; set; }
 
-        public long? OperatingRegionId { get;set;}
-        public OperatingRegion OperatingRegion { get;set;}
+        public long? CityLocationId { get;set;}
+        public CityLocation CityLocation { get;set;}
 
         [Display(Name = "land Area")]
         public string? landArea { get; set; }

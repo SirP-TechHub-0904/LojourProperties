@@ -107,9 +107,9 @@
                         <span asp-validation-for="Property.Country" class="text-danger"></span>
                     </div>
                     @* <div class="form-group">
-        <label asp-for="Property.OperatingRegionId" class="control-label"></label>
-        <select asp-for="Property.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
-        </div>*@
+                        <label asp-for="Property.OperatingRegionId" class="control-label"></label>
+                        <select asp-for="Property.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
+                        </div>*@
                     <div class="form-group">
                         <label asp-for="Property.PropertyCategoryId" class="control-label"></label>
                         <select asp-for="Property.PropertyCategoryId" class="form-control" asp-items="ViewBag.PropertyCategoryId"></select>
@@ -141,6 +141,12 @@
                         @Html.DropDownListFor(model => model.Property.ActivityStatus, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.ActivityStatus))), new { @class = "form-control" })
 
                         <span asp-validation-for="Property.ActivityStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Property.PropertyLink" class="control-label"></label>
+                        @Html.DropDownListFor(model => model.Property.PropertyLink, new SelectList(Enum.GetValues(typeof(LojourProperties.Domain.Models.Enum.PropertyLink))), new { @class = "form-control" })
+
+                        <span asp-validation-for="Property.PropertyLink" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Property.SortOrder" class="control-label"></label>
