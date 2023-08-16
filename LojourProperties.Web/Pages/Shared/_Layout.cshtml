@@ -316,6 +316,31 @@
                 text-transform: capitalize;
                 z-index: 2;
             }
+
+        .ad-archive-desc p {
+            font-size: 14px;
+            height: 65px;
+            margin-bottom: 0;
+        }
+
+        .ad-archive-desc .ad-meta {
+            position: relative;
+            float: right;
+            width: 100%;
+        }
+
+        .video-container {
+            max-width: 100%; /* Ensure the container does not exceed its parent's width */
+            display: flex;
+            justify-content: center; /* Horizontally center the video */
+        }
+
+        /* Apply different styles for smaller screens */
+        @@media screen and (max-width: 768px) {
+            .video-container {
+                flex-direction: column; /* Stack video on top of controls on smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -362,7 +387,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a asp-page="/Property" asp-route-find="true">
                                         Find a Home
                                     </a>
                                 </li>

@@ -11,7 +11,7 @@
 @await Component.InvokeAsync("Slider")
 
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
-<div class="main-content-area clearfix">
+<section class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Search Bar =-=-=-=-=-=-= -->
 
     @await Component.InvokeAsync("HomeSearch")
@@ -19,36 +19,7 @@
     @await Component.InvokeAsync("HomeCategory")
 
 
-    <section class="custom-padding">
-        <!-- Main Container -->
-        <div class="container-fluid" style="margin:0 10%;">
-            <!-- Row -->
-            <div class="row">
-                <div class="clearfix"></div>
-                <!-- Heading Area -->
-                <div class="heading-panel">
-                    <div class="col-xs-12 col-md-12 col-sm-12 text-center">
-                        <!-- Main Title -->
-                        <h1 style="font-family: 'Berlin Sans FB Demi Bold' !important;">PROPERTIES <span class="heading-color"> AVAILABLE</span></h1>
-                    </div>
-                </div>
-                <!-- Middle Content Box -->
-                <div class="row">
-                    <div class="col-md-12 col-xs-12 col-sm-12">
 
-                        <div class="posts-masonry">
-                            @await Component.InvokeAsync("HomeProperty")
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- Row End -->
-        </div>
-        <!-- Main Container End -->
-    </section>
     <div class="funfacts custom-padding parallex" style="padding: 40px 0 30px 0; background: rgba(0, 0, 0, 0) url(../img/Float-banner-lojour.jpg) no-repeat scroll center center; ">
         <div class="container">
             <div class="row">
@@ -87,48 +58,59 @@
     </div>
 
 
-    <!--<section class="news section-padding">
-        <div class="container">
+    <section class="custom-padding">
+        <!-- Main Container -->
+        <div class="container-fluid" style="margin:0 10%;">
+            <!-- Row -->
             <div class="row">
-                <div class="heading-panel">
-                    <div class="col-xs-12 col-md-12 col-sm-12 left-side">-->
-    <!-- Main Title -->
-    <!--<h1>Clients  <span class="heading-color"> Reviews</span> Feedback</h1>
+                <div class="clearfix"></div>
+                <!-- Heading Area -->
+                <div class="">
+                    <div class="col-xs-4 col-md-4 col-sm-12 text-center">
+                        <a asp-page="/Property" asp-route-category="Rent" class="btn btn-primary" style="width:100%;">I Want To Rent</a>
+                    </div>
+                    <div class="col-xs-4 col-md-4 col-sm-12 text-center">
+                        <a asp-page="/Property" asp-route-category="Sale" class="btn btn-danger" style="width:100%;">For Sale</a>
+                    </div>
+                    <div class="col-xs-4 col-md-4 col-sm-12 text-center">
+                        <a asp-page="/Property" asp-route-category="Lease" class="btn btn-warning" style="width:100%;">I Want To Lease</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>-->
-    <!-- Middle Content Box -->
-    <!--<div class="col-md-12 col-xs-12 col-sm-12">
-        <div class="row">
-            <div class="owl-testimonial-1">
-                @foreach (var item in Model.Testimonies)
-                {
-                    <div class="single_testimonial">
-                        <div class="textimonial-content">
+    </section>
+    <section class="custom-padding">
+        <!-- Main Container -->
+        <div class="container-fluid" style="margin:0 10%;">
+            <!-- Row -->
+            <div class="row">
+                <div class="clearfix"></div>
+                <!-- Heading Area -->
+                <div class="heading-panel">
+                    <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title -->
+                        <h1 style="font-family: 'Berlin Sans FB Demi Bold' !important;">DISTRESS PROPERTIES</h1>
+                    </div>
+                </div>
+                <!-- Middle Content Box -->
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
 
-                            <p>@item.Message</p>
-                        </div>
-                        <div class="testimonial-meta-box">
-                            <div class="testimonial-meta">
-                                <h3 class="">@item.Name</h3>
-                                <p> @item.Location</p>
+                        <div class="posts-masonry">
+                            @await Component.InvokeAsync("HomeProperty")
 
-                            </div>
+
                         </div>
                     </div>
-                }
+                </div>
+
             </div>
-            <div class="clearfix"></div>
+            <!-- Row End -->
         </div>
-    </div>-->
-    <!-- Middle Content Box End -->
-    <!--</div>
-            <div class="clearfix"></div>
-        </div>
-    </section>-->
-
-
+        <!-- Main Container End -->
+    </section>
     @await Component.InvokeAsync("Footer")
 
 
-</div>
+</section>
 

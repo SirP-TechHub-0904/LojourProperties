@@ -15,7 +15,7 @@
                         </ul>
                     </div>
                     <div class="header-page">
-                        <h1>AVAILABLE PROPERTIES</h1>
+                        <h1>@Model.Title</h1>
                     </div>
                 </div>
             </div>
@@ -27,108 +27,137 @@
     <div class="container-fluid" style="margin:0 10%;">
         <!-- Row -->
         <div class="row">
-            <div class="clearfix"></div>
-            <!-- Heading Area -->
+            @if (!String.IsNullOrEmpty(Model.Query) || Model.Fine == true)
+            {
+                <div class="container">
+                    <div class="alert-box-container margin-top-30">
+                        <div class="well">
 
-            <div class="row">
-                <div class="col-md-12 col-xs-12 col-sm-12">
+                            <form method="get">
+                                <div class="row">
+                                    <div class="col-md-9 col-xs-12 col-sm-12">
+                                        <input placeholder="Property, Location" name="searchString" type="text" value="@Model.Query" class="form-control">
+                                    </div>
 
-                    <div class="posts-masonry">
-                        <div class="row">
-
-                            @foreach (var item in Model.PaginatedData)
-                            {
-
-                                <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-                                    <div class="ads-list-archive">
-                                        <!-- Image Block -->
-                                        <div class="no-padding">
-                                            <!-- Img Block -->
-                                            <div class="ad-archive-img">
-                                                <div class="featured-ribbon">
-                                                    <span>
-                                                        @if (item.Activity == Domain.Models.Enum.ActivityStatus.Leased)
-                                                        {
-                                                            <text>Leased Out</text>
-                                                        }
-                                                        else if (item.Activity == Domain.Models.Enum.ActivityStatus.Sold)
-                                                        {
-                                                            <text>Sold Out</text>
-                                                        }
-                                                        else if (item.Activity == Domain.Models.Enum.ActivityStatus.Rented)
-                                                        {
-                                                            <text>Rented Out</text>
-                                                        }
-                                                        else if (item.Activity == Domain.Models.Enum.ActivityStatus.Available)
-                                                        {
-                                                            <text>Available</text>
-                                                        }
-                                                    </span>
-                                                </div>
-                                                <a href="#">
-                                                    <img class="img-responsive" src="@item.Image" alt="@item.Title">
-                                                </a>
-                                            </div>
-                                            <!-- Img Block -->
-                                        </div>
-                                        <!-- Ads Listing -->
-                                        <div class="clearfix visible-xs-block"></div>
-                                        <!-- Content Block -->
-                                        <div class="no-padding">
-                                            <!-- Ad Desc -->
-                                            <div class="ad-archive-desc">
-                                                <!-- Price -->
-                                                <img alt="" class="pull-right" src="~/smart/images/certified.png" style="max-width: 10%;">
-                                                <!-- Title -->
-                                                <h3>@item.Title </h3>
-                                                <!-- Category -->
-                                                <div class="category-title"> <span class="activity-case"><a href="#">@item.Category</a></span> </div>
-                                                <!-- Short Description -->
-                                                <div class="clearfix visible-xs-block"></div>
-                                                <p class="hidden-sm">@item.Description</p>
-                                                <!-- Ad Features -->
-                                                <ul class="short-meta list-inline">
-                                                    @foreach (var x in item.PropertyFeatures)
-                                                    {
-                                                        <li><a href="#"><i class="fas @x.FeaturesCategory.Icon"></i> @x.Description @x.FeaturesCategory.Description </a></li>
-                                                    }
-
-                                                </ul>
-                                                <!-- Ad History -->
-                                                <div class="ad-price-simple">@item.Amount</div>
-                                                <div class="clearfix archive-history">
-                                                    <div class="ad-meta">
-                                                        <a class="btn save-ad"><i class="fa fa-heart-o"></i> Compare</a>
-                                                        <a class="btn btn-success"><i class="fa fa-phone"></i> Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Ad Desc End -->
-                                        </div>
-                                        <!-- Content Block End -->
+                                    <div class="col-md-3 col-xs-12 col-sm-12">
+                                        <input class="btn btn-theme btn-block" style="padding: 12px 52px !important;" value="Submit" type="submit">
                                     </div>
                                 </div>
-                            }
-
-
+                            </form>
                         </div>
                     </div>
-               
-                    <div>
-                        @if (Model.TotalPages > 1)
-                        {
-                            <ul class="pagination">
-                                @for (int i = 1; i <= Model.TotalPages; i++)
+                </div>
+            }
+            <div class="clearfix"></div>
+            <!-- Heading Area -->
+            @if (Model.Fine == false)
+            {
+
+
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+
+                        <div class="posts-masonry">
+                            <div class="row">
+                                @if (Model.PaginatedData.Count() > 0)
                                 {
-                                    <li class="@(i == Model.CurrentPage ? "active" : "")">
-                                        <a asp-page="/Property" asp-route-pg="@i">@i</a>
-                                    </li>
+                                    @foreach (var item in Model.PaginatedData)
+                                    {
+
+                                        <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                                            <div class="ads-list-archive">
+                                                <!-- Image Block -->
+                                                <div class="no-padding">
+                                                    <!-- Img Block -->
+                                                    <div class="ad-archive-img">
+                                                        <div class="featured-ribbon">
+                                                            <span>
+                                                                @if (item.Activity == Domain.Models.Enum.ActivityStatus.Leased)
+                                                                {
+                                                                    <text>Leased Out</text>
+                                                                }
+                                                                else if (item.Activity == Domain.Models.Enum.ActivityStatus.Sold)
+                                                                {
+                                                                    <text>Sold Out</text>
+                                                                }
+                                                                else if (item.Activity == Domain.Models.Enum.ActivityStatus.Rented)
+                                                                {
+                                                                    <text>Rented Out</text>
+                                                                }
+                                                                else if (item.Activity == Domain.Models.Enum.ActivityStatus.Available)
+                                                                {
+                                                                    <text>Available</text>
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                        <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
+                                                            <img class="img-responsive" src="@item.Image" alt="@item.Title">
+                                                        </a>
+                                                    </div>
+                                                    <!-- Img Block -->
+                                                </div>
+                                                <!-- Ads Listing -->
+                                                <div class="clearfix visible-xs-block"></div>
+                                                <!-- Content Block -->
+                                                <div class="no-padding">
+                                                    <!-- Ad Desc -->
+                                                    <div class="ad-archive-desc">
+                                                        <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
+                                                            <h3>@item.Title </h3>
+                                                        </a>
+                                                        <div class="clearfix visible-xs-block"></div>
+                                                        <p class="hidden-sm">@item.Description</p>
+                                                        <!-- Ad Features -->
+                                                        <ul class="short-meta list-inline">
+                                                            @foreach (var x in item.PropertyFeatures)
+                                                            {
+                                                                <li><a href="#"><i class="fas @x.FeaturesCategory.Icon"></i> @x.Description @x.FeaturesCategory.Description </a></li>
+                                                            }
+
+                                                        </ul>
+                                                        <div class="clearfix archive-history">
+                                                            <div class="ad-meta">
+                                                                <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")" class="btn btn-success" style="width:100%;"><i class="fa fa-phone"></i> Details</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Desc End -->
+                                                </div>
+                                                <!-- Content Block End -->
+                                            </div>
+                                        </div>
+                                    }
+
+
+
                                 }
-                            </ul>
-                        }
+                                else
+                                {
+                                    <h1 style="font-weight:900;font-size:30px;">No Property</h1>
+                                }
+
+                            </div>
+                        </div>
+
+                        <div>
+                            @if (Model.TotalPages > 1)
+                            {
+                                <ul class="pagination">
+                                    @for (int i = 1; i <= Model.TotalPages; i++)
+                                    {
+                                        <li class="@(i == Model.CurrentPage ? "active" : "")">
+                                            <a asp-page="/Property" asp-route-pg="@i">@i</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            }
+
         </div>
     </div>
-    </section>
+</section>
+@await Component.InvokeAsync("Footer")

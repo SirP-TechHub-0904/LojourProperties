@@ -31,7 +31,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.PropertyImage[0].ImageUrl)
                         </th>
-
+                        <th>
+                            @Html.DisplayNameFor(model => model.PropertyImage[0].FullImageUrl)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.PropertyImage[0].Description)
                         </th>
@@ -59,24 +61,31 @@
                                     <img src="@item.ImageUrl" style="max-height:100px" class="img-fluid" />
                                 </a>
                             </td>
-
+                            <td>
+                                <a href="@item.FullImageUrl" target="_blank">
+                                    <img src="@item.FullImageUrl" style="max-height:100px" class="img-fluid" />
+                                </a>
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Active )
+                                @Html.DisplayFor(modelItem => item.Active)
                             </td>
                             <td>
                                 <form asp-page-handler="Default" method="post">
                                     <input type="hidden" name="id" value="@item.Id" />
                                     <input type="hidden" name="pid" value="@item.PropertyId" />
-                                    @if(item.Default == false){
-                                    <button type="submit" class="btn btn-info btn-xs">make default</button>
-                              
-                                    }else{
-                                    <i class="btn btn-xs btn-success">default</i>
-                                    }    
-                                    </form>
+                                    @if (item.Default == false)
+                                    {
+                                        <button type="submit" class="btn btn-info btn-xs">make default</button>
+
+                                    }
+                                    else
+                                    {
+                                        <i class="btn btn-xs btn-success">default</i>
+                                    }
+                                </form>
                                 <form asp-page-handler="Delete" method="post">
                                     <input type="hidden" name="id" value="@item.Id" />
                                     <input type="hidden" name="pid" value="@item.PropertyId" />

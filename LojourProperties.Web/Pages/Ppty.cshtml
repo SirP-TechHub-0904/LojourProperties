@@ -1,0 +1,314 @@
+﻿@page "/{id}/{ppy}"
+@model LojourProperties.Web.Pages.PptyModel
+
+@{
+    ViewData["Title"] = "Ppty";
+}
+
+<style>
+    .category-list-title {
+        overflow: hidden;
+        padding: 15px 0 0 15px;
+        position: relative;
+        text-align: left;
+    }
+</style>
+<div class="page-header-area-2 gray" style="background: rgba(0, 0, 0, 0) url(../img/banner-lojour.jpg) no-repeat scroll center center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="small-breadcrumb">
+
+                    <div class="header-page">
+                        <h1>@Model.Property.Title</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-content-area clearfix">
+    <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+    <section class="section-padding no-top gray ">
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+
+                <div class="col-md-8 col-xs-12 col-sm-12">
+                    <!-- Single Ad -->
+                    <div class="singlepage-detail ">
+                        <div class="no-padding">
+                            <!-- Img Block -->
+                            <div class="ad-archive-img">
+                                <div class="featured-ribbon">
+                                    <span>
+                                        @if (Model.Property.ActivityStatus == Domain.Models.Enum.ActivityStatus.Leased)
+                                        {
+                                            <text>Leased Out</text>
+                                        }
+                                        else if (Model.Property.ActivityStatus == Domain.Models.Enum.ActivityStatus.Sold)
+                                        {
+                                            <text>Sold Out</text>
+                                        }
+                                        else if (Model.Property.ActivityStatus == Domain.Models.Enum.ActivityStatus.Rented)
+                                        {
+                                            <text>Rented Out</text>
+                                        }
+                                        else if (Model.Property.ActivityStatus == Domain.Models.Enum.ActivityStatus.Available)
+                                        {
+                                            <text>Available</text>
+                                        }
+
+                                    </span>
+                                </div>
+                                @{
+                                    var img = Model.Property.PropertyImages.FirstOrDefault(x => x.Default == true);
+                                }
+                                @if (img != null)
+                                {
+                                    if (!String.IsNullOrEmpty(img.FullImageUrl))
+                                    {
+
+                                        <img class="img-responsive" alt="@Model.Property.Title" src="@img.FullImageUrl">
+
+                                    }
+                                }
+
+
+                            </div>
+                            <!-- Img Block -->
+                        </div>
+
+
+                        <div class="content-box-grid">
+                            <div class="key-features">
+
+                                <div class="short-features" style="border-bottom: 1px solid black;">
+                                    <div class="heading-panel">
+                                        <h3 class="main-title text-left">
+                                            Property Features
+                                        </h3>
+                                    </div>
+                                    <!-- Car Key Features  -->
+                                    <ul class="car-feature-list ">
+                                        @foreach (var x in Model.Property.PropertyFeatures)
+                                        {
+                                            <li style="width: 25%; border: 1px solid #797171; padding: 4px; "><i class="fas @x.FeaturesCategory.Icon"></i> @x.Description @x.FeaturesCategory.Description</li>
+
+                                        }
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!-- Heading Area -->
+                            <div class="short-features">
+                                <div class="singleprice-tag">@string.Format("₦{0:N0}", Model.Property.Amount)</div>
+
+                                <div class="heading-panel">
+                                    <h3 class="main-title text-left">
+                                        Description
+                                    </h3>
+                                </div>
+                                <div>
+                                    @Html.Raw(Model.Property.FullDescription)
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        @{
+                            var imgs = Model.Property.PropertyImages.Where(x=>x.Default == false);
+                        }
+                        @if (imgs.Count() > 1)
+                        {
+                            <div class="list-style-1 margin-top-20">
+                                <div class="panel with-nav-tabs panel-default">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab3default" data-toggle="tab">Other Property Images</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane in active fade" id="tab3default">
+
+                                                <div class="row">
+                                                    @foreach (var item in imgs)
+                                                    {
+                                                        <div class="col-md-6">
+                                                            <img class="img-responsive" alt="@Model.Property.Title" src="@item.FullImageUrl">
+
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @{
+                            var video = Model.Property.PropertyVideos;
+                        }
+                        @if (video.Count() > 0)
+                        {
+                            <div class="list-style-1 margin-top-20">
+                                <div class="panel with-nav-tabs panel-default">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab3default" data-toggle="tab">Video</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane in active fade" id="tab3default">
+
+                                                <div class="row">
+                                                    @foreach (var item in video)
+                                                    {
+                                                        <div class="col-md-6">
+                                                            <div class="video-container">
+                                                                <video controls>
+                                                                    <source src="@item.VideoUrl" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Share Ad  -->
+                        }
+                    </div>
+                    <!-- Single Ad End -->
+                    <!-- Price Alert -->
+                    <div class="alert-box-container margin-top-30">
+                        <div class="well">
+                            <h3>Notify Us About Your Interest</h3>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-9 col-xs-12 col-sm-12">
+                                        <input placeholder="Enter Your Email " type="text" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12 col-sm-12">
+                                        <input class="btn btn-theme btn-block" style="padding: 12px 52px !important;" value="Submit" type="submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Price Alert End -->
+                    <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+                    <div class="grid-panel margin-top-30">
+                        <div class="heading-panel">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <h3 class="main-title text-left">
+                                    Related Properties
+                                </h3>
+                            </div>
+                        </div>
+                        <!-- Ads Archive -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <div class="posts-masonry">
+                                @foreach (var item in Model.RelatedProperty)
+                                {
+                                    <div class="ads-list-archive">
+                                        <!-- Image Block -->
+                                        <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                            <div class="ad-archive-img">
+                                                <div class="featured-ribbon">
+                                                    <span>
+                                                        @if (item.Activity == Domain.Models.Enum.ActivityStatus.Leased)
+                                                        {
+                                                            <text>Leased Out</text>
+                                                        }
+                                                        else if (item.Activity == Domain.Models.Enum.ActivityStatus.Sold)
+                                                        {
+                                                            <text>Sold Out</text>
+                                                        }
+                                                        else if (item.Activity == Domain.Models.Enum.ActivityStatus.Rented)
+                                                        {
+                                                            <text>Rented Out</text>
+                                                        }
+                                                        else if (item.Activity == Domain.Models.Enum.ActivityStatus.Available)
+                                                        {
+                                                            <text>Available</text>
+                                                        }
+                                                    </span>
+                                                </div>
+                                                <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
+                                                    <img class="img-responsive" src="@item.Image" alt="@item.Title">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- Ads Listing -->
+                                        <div class="clearfix visible-xs-block"></div>
+                                        <!-- Content Block -->
+                                        <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                            <!-- Ad Desc -->
+                                            <div class="ad-archive-desc">
+                                                <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
+                                                    <h3>@item.Title </h3>
+                                                </a>
+                                                <div class="clearfix visible-xs-block"></div>
+                                                <p class="hidden-sm">@item.Description</p>
+                                                <!-- Ad Features -->
+                                                <ul class="short-meta list-inline">
+                                                    @foreach (var x in item.PropertyFeatures)
+                                                    {
+                                                        <li><a href="#"><i class="fas @x.FeaturesCategory.Icon"></i> @x.Description @x.FeaturesCategory.Description </a></li>
+                                                    }
+
+                                                </ul>
+                                                <div class="clearfix archive-history">
+                                                    <div class="ad-meta">
+                                                        <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")" class="btn btn-success" style="width:100%;"><i class="fa fa-phone"></i> Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Ad Desc End -->
+                                        </div>
+                                        <!-- Content Block End -->
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->
+                </div>
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-xs-12 col-sm-12">
+                    <!-- Sidebar Widgets -->
+                    <div class="sidebar">
+                        <!-- Price info block -->
+                        <div class="category-list-icon">
+                            <i class="green flaticon-mail-1"></i>
+                            <div class="category-list-title">
+                                <h5><a style="line-height:20px;" href="mailto:contact@lojour.com">Contact Us Via Email <br />contact@lojour.com</a></h5>
+                            </div>
+                        </div>
+                        <div class="category-list-icon">
+                            <i class="purple flaticon-smartphone"></i>
+                            <div class="category-list-title">
+                                <h5><a href="tel:07060530000" class="number" data-last="111111X">070<span>60530000</span></a></h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@await Component.InvokeAsync("Footer")

@@ -220,7 +220,7 @@
                         </tr>
                         <tr>
                             <th>Activity </th>
-                            <td>@Model.Property.PrivacyCategory.Name</td>
+                            <td>@Model.Property.ActivityStatus</td>
                         </tr>
 
                         <tr>
@@ -232,12 +232,16 @@
                             <td>@Model.Property.PropertyType.Name</td>
                         </tr>
 
+                        <tr>
+                            <th>Status </th>
+                            <td>@Model.Property.PropertyStatus</td>
+                        </tr>
 
                         <tr>
                             <th>Agent </th>
                             <td>@Model.Property.Agent.Fullname <a asp-page="./AgentProfile" asp-route-id="@Model.Property.AgentId" class="btn btn-success btn-xs">View Profile</a></td>
                         </tr>
-                        
+
                     </table>
                 </div>
                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">

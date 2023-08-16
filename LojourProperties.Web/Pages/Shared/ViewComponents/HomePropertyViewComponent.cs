@@ -39,7 +39,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 .ThenInclude(x=>x.FeaturesCategory)
                 .Include(x => x.PropertyDocuments)
                 .Include(x => x.PropertyAgencies)
-                .Include(x => x.PropertyType).AsQueryable();
+                .Include(x => x.PropertyType).Where(x=>x.Distress == true && x.PropertyStatus == LojourProperties.Domain.Models.Enum.PropertyStatus.Publish).OrderBy(x=>x.SortOrder).AsQueryable();
 
             var outcome = Property.Select(x => new HomePropertyDto
             {
@@ -65,7 +65,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
 
 
 
-            return View(outcome.Take(15).ToList());
+            return View(outcome.Take(6).ToList());
         }
     }
 }

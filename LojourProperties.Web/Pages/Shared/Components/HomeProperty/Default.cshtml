@@ -32,7 +32,7 @@
                                 
                             </span>
                         </div>
-                        <a href="#">
+                        <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-")">
                             <img class="img-responsive" src="@item.Image" alt="@item.Title">
                         </a>
                     </div>
@@ -44,13 +44,12 @@
                 <div class="no-padding">
                     <!-- Ad Desc -->
                     <div class="ad-archive-desc">
-                        <!-- Price -->
-                        <img alt="" class="pull-right" src="~/smart/images/certified.png" style="max-width: 10%;">
-                        <!-- Title -->
-                        <h3>@item.Title </h3>
-                        <!-- Category -->
-                        <div class="category-title"> <span class="activity-case"><a href="#">@item.Category</a></span> </div>
-                        <!-- Short Description -->
+                          <!-- Title -->
+                        <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
+                            <h3>@item.Title </h3>
+                        </a>
+                        
+                           <!-- Short Description -->
                         <div class="clearfix visible-xs-block"></div>
                         <p class="hidden-sm">@item.Description</p>
                         <!-- Ad Features -->
@@ -62,11 +61,9 @@
 
                         </ul>
                         <!-- Ad History -->
-                        <div class="ad-price-simple">@item.Amount</div>
-                        <div class="clearfix archive-history"> 
-                            <div class="ad-meta">
-                                <a class="btn save-ad"><i class="fa fa-heart-o"></i> Compare</a>
-                                <a class="btn btn-success"><i class="fa fa-phone"></i> Details</a>
+                           <div class="clearfix archive-history"> 
+                            <div class="ad-meta"> 
+                                <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")" class="btn btn-success" style="width:100%;"><i class="fa fa-phone"></i> Details</a>
                             </div>
                         </div>
                     </div>
@@ -82,6 +79,7 @@
 @*@if (Model.Count() > 15)
 {*@
     <div>
-        <a asp-page="/Property" class="btn-theme btn-lg btn">More Properties <i class="fa fa-angle-right"></i></a>
+        <a asp-page="/Property" asp-route-distress="true" class="btn-theme btn-lg btn">More Properties <i class="fa fa-angle-right"></i></a>
     </div>
 @*}*@
+

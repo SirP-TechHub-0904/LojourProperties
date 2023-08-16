@@ -111,5 +111,8 @@ namespace LojourProperties.Domain.Models
 
          [Display(Name = "Property Linkage")]
         public PropertyLink PropertyLink { get;set;}
+
+          [Display(Name = "Distress Property")]
+        public bool Distress { get;set;}
     }
 }

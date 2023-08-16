@@ -108,6 +108,10 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PropertyStatus)
+                                @if(item.Distress == true)
+                {
+                    <span style="margin-right:6px;"><strong>(Distress)</strong></span>
+                }
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.ActivityStatus)

@@ -40,6 +40,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             List<PropertyDtoList> activitiesList = new List<PropertyDtoList>();
             List<PropertyDtoList> propertyTypesList = new List<PropertyDtoList>();
             List<PropertyDtoList> propertyLink = new List<PropertyDtoList>();
+            List<PropertyDtoList> Distress = new List<PropertyDtoList>();
 
 
             List<PropertyDtoList> iList = new List<PropertyDtoList>();
@@ -64,7 +65,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                     Query = "PrivacyCategory"
                 });
             }
-            var propertytype = await _context.PropertyTypes.ToListAsync();
+            var propertytype = _context.PropertyTypes.AsQueryable();
             foreach (var item in propertytype)
             {
                 propertyTypesList.Add(new PropertyDtoList
@@ -74,6 +75,16 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                     Query = "PropertyType"
                 });
             }
+
+            var propertydistress = property.Where(x=>x.Distress == true).AsQueryable();
+            
+                Distress.Add(new PropertyDtoList
+                {
+                    Title = "Distress", // Assuming you have a "Title" property in the PropertyCategory class
+                    Count = propertydistress.Count(), // You can set the count later based on your logic
+                    Query = "Distress"
+                });
+            
 
             var linkrank = property
    .GroupBy(p => p.PropertyLink)  // Group properties by PropertyLink
@@ -98,6 +109,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             iList.AddRange(activitiesList);
             iList.AddRange(propertyTypesList);
             iList.AddRange(propertyLink);
+            iList.AddRange(Distress);
 
             PropertyDtoLists = iList.ToList();
         }
