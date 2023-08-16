@@ -50,6 +50,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
 
             ViewData["OperatingRegionId"] = new SelectList(_context.OperatingRegions, "Id", "RegionOfOperation");
 
+                        ViewData["CityLocationId"] = new SelectList(_context.CityLocations.OrderBy(x => x.Name), "Id", "Name");
 
             ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
 

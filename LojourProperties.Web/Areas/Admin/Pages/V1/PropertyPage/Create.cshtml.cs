@@ -36,6 +36,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
 
 
             ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
+            ViewData["CityLocationId"] = new SelectList(_context.CityLocations.OrderBy(x => x.Name), "Id", "Name");
 
 
             var data = _context.Users.Include(x => x.UserRegions).Where(x => x.Email != "admin@lojour.com" && x.Email != "m@lojour.com").OrderBy(x => x.SurName).AsQueryable();
