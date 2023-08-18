@@ -30,7 +30,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
 
             ViewData["PropertyCategoryId"] = new SelectList(_context.PropertyCategories, "Id", "Name");
 
-            ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
+            ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Name", "Name");
 
             ViewData["OperatingRegionId"] = new SelectList(_context.OperatingRegions, "Id", "RegionOfOperation");
 
@@ -38,7 +38,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             ViewData["StateId"] = new SelectList(_context.States.OrderBy(x=>x.StateName), "StateName", "StateName");
 
 
-            var data = _context.Users.Include(x => x.UserRegions).Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
+            var data = _context.Users.Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
             var output = data.Select(x => new AgentInfo
             {
                 Id = x.Id,
@@ -72,7 +72,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             await _context.SaveChangesAsync();
             ///
             var updateid = await _context.Properties.FindAsync(Property.Id);
-            updateid.PropertyRefID = "LOJ" + updateid.Id.ToString("0000");
+            updateid.PropertyRefID = "L" + updateid.Id;
             _context.Attach(updateid).State = EntityState.Modified;
 
                 await _context.SaveChangesAsync();

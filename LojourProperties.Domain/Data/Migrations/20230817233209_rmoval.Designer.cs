@@ -4,6 +4,7 @@ using LojourProperties.Domain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LojourProperties.Domain.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230817233209_rmoval")]
+    partial class rmoval
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1313,7 +1315,7 @@ namespace LojourProperties.Domain.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("LojourProperties.Domain.Models.Profile", "Profile")
-                        .WithMany()
+                        .WithMany("UserRegions")
                         .HasForeignKey("ProfileId");
 
                     b.Navigation("OperatingRegion");
@@ -1380,6 +1382,11 @@ namespace LojourProperties.Domain.Data.Migrations
             modelBuilder.Entity("LojourProperties.Domain.Models.OperatingRegion", b =>
                 {
                     b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("LojourProperties.Domain.Models.Profile", b =>
+                {
+                    b.Navigation("UserRegions");
                 });
 
             modelBuilder.Entity("LojourProperties.Domain.Models.Property", b =>

@@ -61,8 +61,7 @@ namespace LojourProperties.Web.Pages
                     .Include(x => x.PropertyFeatures)
                     .ThenInclude(x => x.FeaturesCategory)
                     .Include(x => x.PropertyDocuments)
-                    .Include(x => x.PropertyAgencies)
-                    .Include(x => x.PropertyType)
+                    .Include(x => x.PropertyAgencies)  
                     .Where(x => x.PropertyStatus == Domain.Models.Enum.PropertyStatus.Publish).OrderBy(x => x.SortOrder)
                     .AsQueryable();
 
@@ -90,10 +89,8 @@ namespace LojourProperties.Web.Pages
                         searchWords.Any(word =>
                             prop.Title.Contains(word, StringComparison.OrdinalIgnoreCase) ||
                             prop.ShortDescription.Contains(word, StringComparison.OrdinalIgnoreCase) ||
-                            prop.FullDescription.Contains(word, StringComparison.OrdinalIgnoreCase) ||
-                            prop.FullAddress.Contains(word, StringComparison.OrdinalIgnoreCase) ||
-                            prop.PropertyCategory.Name.Contains(word, StringComparison.OrdinalIgnoreCase) ||
-                            prop.PropertyType.Name.Contains(word, StringComparison.OrdinalIgnoreCase) ||
+                            prop.FullDescription.Contains(word, StringComparison.OrdinalIgnoreCase) || 
+                            prop.PropertyCategory.Name.Contains(word, StringComparison.OrdinalIgnoreCase) || 
                             (prop.CityLocation != null && prop.CityLocation.Name.Contains(word, StringComparison.OrdinalIgnoreCase)) ||
                             prop.Amount.ToString().Contains(word, StringComparison.OrdinalIgnoreCase)
                         )
@@ -106,8 +103,7 @@ namespace LojourProperties.Web.Pages
                     Title = x.Title,
                     SortOrder = x.SortOrder,
                     Amount = string.Format("₦{0:N0}", x.Amount),
-                    State = x.State,
-                    Country = x.Country,
+                  
                     Privacy = x.PrivacyCategory.Name,
                     Category = x.PropertyCategory.Name,
                     Activity = x.ActivityStatus,
@@ -115,7 +111,8 @@ namespace LojourProperties.Web.Pages
                     PropertyAgencies = x.PropertyAgencies,
                     PropertyDocuments = x.PropertyDocuments,
                     PropertyFeatures = x.PropertyFeatures,
-                    Description = x.ShortDescription
+                    Description = x.ShortDescription,
+                    LojourID = x.PropertyRefID
 
 
 

@@ -50,23 +50,22 @@
                                 @item.Title
 
 
-                                <a class="btn btn-success" style="float: right;color: #fff;background-color: #396739;border-color: grey;width: 25%;padding: 5px;">
-                                    @if (item.Category.ToLower().Contains("sale"))
-                                    {
-                                        <span>For Sale</span>
-                                    }
-                                    else if (item.Category.ToLower().Contains("lease"))
-                                    {
-                                        <span>Leasing</span>
-                                    }
-                                    else if (item.Category.ToLower().Contains("rent"))
-                                    {
-                                        <span>For Rent</span>
-                                    }
+                                                        <a class="btn btn-success" style="float: right;color: #fff;background-color: #396739;border-color: grey;width: 25%;padding: 5px;">
+                                                            @if (item.Category.ToLower().Contains("sale"))
+                                                            {
+                                                                <span>For Sale</span>
+                                                            }
+                                                            else if (item.Category.ToLower().Contains("lease"))
+                                                            {
+                                                                <span>Leasing</span>
+                                                            }
+                                                            else if (item.Category.ToLower().Contains("rent"))
+                                                            {
+                                                                <span>For Rent</span>
+                                                            }
 
-                                </a>
-
-                            </h3>
+                                                        </a>
+                                                    </h3>
                         </a>
 
                         <!-- Short Description -->
@@ -101,7 +100,9 @@
 @*@if (Model.Count() > 15)
     {*@
 <div>
-    <a asp-page="/Property" class="btn-theme btn-lg btn">More Properties <i class="fa fa-angle-right"></i></a>
+    <a asp-page="/Property" asp-route-distress="true" class="btn-theme btn-lg btn">More Properties <i class="fa fa-angle-right"></i></a>
 </div>
 @*}*@
+
+
 

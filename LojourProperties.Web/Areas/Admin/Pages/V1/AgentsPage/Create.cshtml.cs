@@ -50,15 +50,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.AgentsPage
 
             var result = await _userManager.CreateAsync(Profile, "XYZ123@20");
             if (result.Succeeded)
-            {
-                UserRegion r = new UserRegion();
-                r.ProfileId = Profile.Id;
-                r.OperatingRegionId = Convert.ToInt64(Region);
-                _context.UserRegions.Add(r);
-                await _context.SaveChangesAsync();
-
-                //var updateid = await _userManager.FindByIdAsync(Profile.Id);
-                //updateid.LojourId = "LP"+ PRO
+            { 
 
                 TempData["success"] = "successfull";
                 return RedirectToPage("./Index");

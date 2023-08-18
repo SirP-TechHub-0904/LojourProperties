@@ -58,9 +58,7 @@
                          <th>
                             @Html.DisplayNameFor(model => model.Profile[0].PhoneNumber)
                         </th>
-
-                        <th>Region</th>
-                        
+  
                         <th></th>
                     </tr>
                 </thead>
@@ -91,12 +89,7 @@
                                 @Html.DisplayFor(modelItem => item.PhoneNumber) |
                                 @Html.DisplayFor(modelItem => item.AltPhone)
                         </td>
-                         <td>
-                             @foreach (var region in item.UserRegions)
-                             {
-                                 @*<a class="btn btn-primary">@region.OperatingRegion.Location</a>*@
-                             }
-                         </td>
+                         
                         
                             <td>
                                 <div class="btn-group">

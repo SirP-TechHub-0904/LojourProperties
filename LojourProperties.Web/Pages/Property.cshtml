@@ -103,7 +103,25 @@
                                                     <!-- Ad Desc -->
                                                     <div class="ad-archive-desc">
                                                         <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
-                                                            <h3>@item.Title </h3>
+                                                            <h3 style="font-family: 'Berlin Sans FB Demi Bold' !important;">
+                                                                @item.Title
+
+                                                                                                                        <a class="btn btn-success" style="float: right;color: #fff;background-color: #396739;border-color: grey;width: 25%;padding: 5px;">
+                                                                                                                            @if (item.Category.ToLower().Contains("sale"))
+                                                                                                                            {
+                                                                                                                                <span>For Sale</span>
+                                                                                                                            }
+                                                                                                                            else if (item.Category.ToLower().Contains("lease"))
+                                                                                                                            {
+                                                                                                                                <span>Leasing</span>
+                                                                                                                            }
+                                                                                                                            else if (item.Category.ToLower().Contains("rent"))
+                                                                                                                            {
+                                                                                                                                <span>For Rent</span>
+                                                                                                                            }
+
+                                                                                                                        </a>
+                                                                                                                    </h3>
                                                         </a>
                                                         <div class="clearfix visible-xs-block"></div>
                                                         <p class="hidden-sm">@item.Description</p>
@@ -116,8 +134,12 @@
 
                                                         </ul>
                                                         <div class="clearfix archive-history">
+                                                           
+
                                                             <div class="ad-meta">
-                                                                <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")" class="btn btn-success" style="width:100%;"><i class="fa fa-phone"></i> Details</a>
+                                                                <a class="btn btn-success" asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")" style="width: 70%;"><i class="fa fa-phone"></i> Details</a>
+                                                                
+                                                                <a class="btn btn-success" href="#" style="float: right;color: #fff;background-color: grey;border-color: grey;width: 25%;">ID: @item.LojourID</a>
                                                             </div>
                                                         </div>
                                                     </div>

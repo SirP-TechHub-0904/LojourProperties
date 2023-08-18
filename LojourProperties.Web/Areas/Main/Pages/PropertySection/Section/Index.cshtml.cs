@@ -29,7 +29,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
             Property = await _context.Properties
                 .Include(x=> x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
-                .Include(x => x.PropertyType).ToListAsync();
+                .ToListAsync();
         }
     }
 }

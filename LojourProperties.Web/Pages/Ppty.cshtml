@@ -20,7 +20,7 @@
                 <div class="small-breadcrumb">
 
                     <div class="header-page">
-                        <h1>@Model.Property.Title</h1>
+                        <h1 style="font-family: 'Berlin Sans FB Demi Bold' !important;">@Model.Property.Title</h1>
                     </div>
                 </div>
             </div>
@@ -86,8 +86,25 @@
 
                                 <div class="short-features" style="border-bottom: 1px solid black;">
                                     <div class="heading-panel">
-                                        <h3 class="main-title text-left">
+                                        <h3 class="">
                                             Property Features
+                                            <a class="btn btn-success" style="float: right;color: #fff;background-color: grey;border-color: grey;width: 25%;">ID: @Model.Property.PropertyRefID</a>
+
+                                            <a class="btn btn-success" style="float: right;color: #fff;background-color: #396739;border-color: grey;width: 25%;">
+                                                @if (Model.Property.PropertyCategory.Name.ToLower().Contains("sale"))
+                                                {
+                                                    <span>For Sale</span>
+                                                }
+                                                else if (Model.Property.PropertyCategory.Name.ToLower().Contains("lease"))
+                                                {
+                                                    <span>Leasing</span>
+                                                }
+                                                else if (Model.Property.PropertyCategory.Name.ToLower().Contains("rent"))
+                                                {
+                                                    <span>For Rent</span>
+                                                }
+
+                                            </a>
                                         </h3>
                                     </div>
                                     <!-- Car Key Features  -->
@@ -212,7 +229,7 @@
                     <div class="grid-panel margin-top-30">
                         <div class="heading-panel">
                             <div class="col-xs-12 col-md-12 col-sm-12">
-                                <h3 class="main-title text-left">
+                                <h3 class="" style="font-family: 'Berlin Sans FB Demi Bold' !important;text-align:center;">
                                     Related Properties
                                 </h3>
                             </div>
@@ -258,7 +275,26 @@
                                             <!-- Ad Desc -->
                                             <div class="ad-archive-desc">
                                                 <a asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")">
-                                                    <h3>@item.Title </h3>
+                                                    <h3 style="font-family: 'Berlin Sans FB Demi Bold' !important;">
+                                                        @item.Title
+
+
+                                                                                                        <a class="btn btn-success" style="float: right;color: #fff;background-color: #396739;border-color: grey;width: 25%;padding: 5px;">
+                                                                                                            @if (item.Category.ToLower().Contains("sale"))
+                                                                                                            {
+                                                                                                                <span>For Sale</span>
+                                                                                                            }
+                                                                                                            else if (item.Category.ToLower().Contains("lease"))
+                                                                                                            {
+                                                                                                                <span>Leasing</span>
+                                                                                                            }
+                                                                                                            else if (item.Category.ToLower().Contains("rent"))
+                                                                                                            {
+                                                                                                                <span>For Rent</span>
+                                                                                                            }
+
+                                                                                                        </a>
+                                                                                                    </h3>
                                                 </a>
                                                 <div class="clearfix visible-xs-block"></div>
                                                 <p class="hidden-sm">@item.Description</p>

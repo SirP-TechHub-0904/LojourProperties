@@ -167,15 +167,7 @@
                     <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">
                         Full Description
                     </a>
-                    <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">
-                        Area Guide
-                    </a>
-                    <a class="nav-item nav-link" id="product-usage-tab" data-toggle="tab" href="#product-usage" role="tab" aria-controls="product-usage" aria-selected="false">
-                        Property Possible Ussage
-                    </a>
-                    <a class="nav-item nav-link" id="product-map-tab" data-toggle="tab" href="#product-map" role="tab" aria-controls="product-map" aria-selected="false">
-                        Map
-                    </a>
+                    
                 </div>
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
@@ -198,26 +190,7 @@
                             <th>Last Updated </th>
                             <td>@Model.Property.LastUpdated</td>
                         </tr>
-
-                        <tr>
-                            <th>Street Number </th>
-                            <td>@Model.Property.StreetNumber</td>
-                        </tr>
-                        <tr>
-                            <th>Street Name </th>
-                            <td>@Model.Property.StreetName</td>
-                        </tr>
-
-
-                        <tr>
-                            <th>State </th>
-                            <td>@Model.Property.State</td>
-                        </tr>
-
-                        <tr>
-                            <th>Country </th>
-                            <td>@Model.Property.Country</td>
-                        </tr>
+ 
                         <tr>
                             <th>Activity </th>
                             <td>@Model.Property.ActivityStatus</td>
@@ -227,11 +200,7 @@
                             <th>Privacy </th>
                             <td>@Model.Property.PrivacyCategory.Name</td>
                         </tr>
-                        <tr>
-                            <th>Category </th>
-                            <td>@Model.Property.PropertyType.Name</td>
-                        </tr>
-
+                        
                         <tr>
                             <th>Status </th>
                             <td>@Model.Property.PropertyStatus</td>
@@ -247,15 +216,7 @@
                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
                     @Html.Raw(Model.Property.FullDescription)
                 </div>
-                <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
-                    @Html.Raw(Model.Property.AreaGuide)
-                </div>
-                <div class="tab-pane fade" id="product-usage" role="tabpanel" aria-labelledby="product-usage-tab">
-                    @Html.Raw(Model.Property.PropertyUsage)
-                </div>
-                <div class="tab-pane fade" id="product-map" role="tabpanel" aria-labelledby="product-map-tab">
-                    @Html.Raw(Model.Property.Map)
-                </div>
+                
             </div>
         </div>
     </div>

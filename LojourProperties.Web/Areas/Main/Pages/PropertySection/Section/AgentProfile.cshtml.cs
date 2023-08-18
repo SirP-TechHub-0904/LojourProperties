@@ -23,9 +23,7 @@ namespace LojourProperties.Web.Areas.Main.Pages.PropertySection.Section
         public async Task<IActionResult> OnGetAsync(string id)
         {
             Profile = await _userManager
-                .Users
-                .Include(x=>x.UserRegions)
-                .ThenInclude(x=>x.OperatingRegion)
+                .Users 
                 .FirstOrDefaultAsync(x=>x.Id == id);
             if(Profile == null)
             {

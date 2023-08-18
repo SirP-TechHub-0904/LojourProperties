@@ -33,7 +33,6 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                 .Include(x => x.Agent)
                 .Include(x => x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
-                .Include(x => x.PropertyType)
                                             select s;
             Property = await property.ToListAsync();
             List<PropertyDtoList> categoriesList = new List<PropertyDtoList>();
@@ -65,17 +64,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                     Query = "PrivacyCategory"
                 });
             }
-            var propertytype = _context.PropertyTypes.AsQueryable();
-            foreach (var item in propertytype)
-            {
-                propertyTypesList.Add(new PropertyDtoList
-                {
-                    Title = item.Name, // Assuming you have a "Title" property in the PropertyCategory class
-                    Count = property.Where(x => x.PropertyTypeId == item.Id).Count(), // You can set the count later based on your logic
-                    Query = "PropertyType"
-                });
-            }
-
+            
             var propertydistress = property.Where(x=>x.Distress == true).AsQueryable();
             
                 Distress.Add(new PropertyDtoList
@@ -104,6 +93,23 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                 });
             }
 
+                     var xpropertyTypesList = property
+   .GroupBy(p => p.Title)  // Group properties by PropertyLink
+   .Select(group => new
+   {
+       Title = group.Key,
+       Count = group.Count()
+   })
+   .ToList();
+            foreach (var item in xpropertyTypesList)
+            {
+                propertyTypesList.Add(new PropertyDtoList
+                {
+                    Title = item.Title.ToString(), // Assuming you have a "Title" property in the PropertyCategory class
+                    Count = item.Count, // You can set the count later based on your logic
+                    Query = "Title"
+                });
+            }
 
             iList.AddRange(categoriesList);
             iList.AddRange(activitiesList);

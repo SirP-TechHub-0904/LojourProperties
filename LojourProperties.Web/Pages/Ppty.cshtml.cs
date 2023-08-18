@@ -39,8 +39,7 @@ namespace LojourProperties.Web.Pages
                 .Include(x => x.PropertyImages)
                 .Include(x => x.PropertyVideos)
                 .Include(x => x.PropertyFeatures)
-                .ThenInclude(x => x.FeaturesCategory)
-                .Include(x => x.PropertyType).FirstOrDefaultAsync(m => m.Id == id && m.PropertyStatus == Domain.Models.Enum.PropertyStatus.Publish);
+                .ThenInclude(x => x.FeaturesCategory).FirstOrDefaultAsync(m => m.Id == id && m.PropertyStatus == Domain.Models.Enum.PropertyStatus.Publish);
 
             if (Property == null)
             {
@@ -53,8 +52,7 @@ namespace LojourProperties.Web.Pages
                 .Include(x => x.PropertyFeatures)
                 .ThenInclude(x => x.FeaturesCategory)
                 .Include(x => x.PropertyDocuments)
-                .Include(x => x.PropertyAgencies)
-                .Include(x => x.PropertyType)
+                .Include(x => x.PropertyAgencies) 
                 .Where(x => x.PropertyStatus == Domain.Models.Enum.PropertyStatus.Publish && x.PropertyCategory.Id == Property.PropertyCategoryId).OrderBy(x => x.SortOrder)
                 .Take(5).AsQueryable();
 
@@ -65,8 +63,6 @@ namespace LojourProperties.Web.Pages
                 Title = x.Title,
                 SortOrder = x.SortOrder,
                 Amount = string.Format("₦{0:N0}", x.Amount),
-                State = x.State,
-                Country = x.Country,
                 Privacy = x.PrivacyCategory.Name,
                 Category = x.PropertyCategory.Name,
                 Activity = x.ActivityStatus,

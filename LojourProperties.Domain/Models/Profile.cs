@@ -75,8 +75,6 @@ namespace LojourProperties.Domain.Models
         public string? PhotoUrl { get; set; }
         public string? PhotoKey { get; set; }
 
-        [Display(Name = "Operating Regions")]
-        public ICollection<UserRegion> UserRegions { get; set; }
         
         [Display(Name = "Lojour Id")]
         public string LojourId { get; set; }

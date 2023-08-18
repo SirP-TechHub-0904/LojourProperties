@@ -41,7 +41,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                 .ThenInclude(x=>x.Agency)
                 .Include(x=>x.Agent)
                 .Include(x=>x.PropertyFeatures).ThenInclude(x=>x.FeaturesCategory)
-                .Include(x => x.PropertyType).FirstOrDefaultAsync(m => m.Id == id);
+               .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Property == null)
             {

@@ -35,7 +35,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             Property = await _context.Properties
                 .Include(x => x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
-                .Include(x => x.PropertyType).FirstOrDefaultAsync(m => m.Id == id);
+                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Property == null)
             {

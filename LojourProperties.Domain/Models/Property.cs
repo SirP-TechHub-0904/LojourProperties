@@ -42,29 +42,7 @@ namespace LojourProperties.Domain.Models
         [Display(Name = "Last Updated")]
         public DateTime LastUpdated { get; set; }
 
-        [Display(Name = "Map Location")]
-        public string? Map { get; set; }
-
-        [Display(Name = "Area Guide")]
-        public string? AreaGuide { get; set; }
-
-        [Display(Name = "Property Possible Ussage")]
-        public string? PropertyUsage { get; set; }
-
-        [Display(Name = "Street Number")]
-        public string? StreetNumber { get; set; }
-
-        [Display(Name = "Street Name")]
-        public string? StreetName { get; set; }
-
-        [Display(Name = "Full Address")]
-        public string? FullAddress { get; set; }
-
-        [Display(Name = "State")]
-        public string? State { get; set; }
-
-        [Display(Name = "Country")]
-        public string? Country { get; set; }
+        
 
         [Display(Name = "Activity")]
         public long PropertyCategoryId { get; set; }
@@ -77,14 +55,7 @@ namespace LojourProperties.Domain.Models
 
         [Display(Name = "Privacy Category")]
         public PrivacyCategory PrivacyCategory { get; set; }
-
-        [Display(Name = "Property Type")]
-        public long PropertyTypeId { get; set; }
-
-        [Display(Name = "Property Type")]
-        public PropertyType PropertyType { get; set; }
-
-       
+ 
         [Display(Name = "Property Agent")]
         public string AgentId { get; set; }
 
@@ -94,8 +65,7 @@ namespace LojourProperties.Domain.Models
         public long? CityLocationId { get;set;}
         public CityLocation CityLocation { get;set;}
 
-        [Display(Name = "land Area")]
-        public string? landArea { get; set; }
+       
 
         [Display(Name = "Property Status")]
         public PropertyStatus PropertyStatus { get; set; }

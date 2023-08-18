@@ -53,63 +53,7 @@
                         <span asp-validation-for="Property.FullDescription" class="text-danger"></span>
                     </div>
 
-
-                    <div class="form-group">
-                        <label asp-for="Property.Map" class="control-label"></label><br />
-                        <label class="control-label">
-                            <i class=""><a href="https://www.google.com/maps" target="_blank">click to set up Map</a></i><br />
-                            <a target="_blank" asp-page="./Guide">Google Map Guide/Help</a>
-
-                        </label>
-
-                        <textarea asp-for="Property.Map" class="form-control"></textarea>
-                        <span asp-validation-for="Property.Map" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Property.AreaGuide" class="control-label">
-                            Area Guide <br />
-                            Specify things that makes the area marketable and attractive.
-                        </label>
-
-                        <textarea id=" " asp-for="Property.AreaGuide" class="form-control summernote">
-
-                         </textarea>
-
-                        <span asp-validation-for="Property.AreaGuide" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Property.PropertyUsage" class="control-label"></label>
-                        <textarea id="" asp-for="Property.PropertyUsage" class="form-control summernote">
-
-                         </textarea>                        <span asp-validation-for="Property.PropertyUsage" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Property.StreetNumber" class="control-label"></label>
-                        <input asp-for="Property.StreetNumber" class="form-control" />
-                        <span asp-validation-for="Property.StreetNumber" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Property.StreetName" class="control-label"></label>
-                        <input asp-for="Property.StreetName" class="form-control" />
-                        <span asp-validation-for="Property.StreetName" class="text-danger"></span>
-                    </div>
-                   
-                    <div class="form-group">
-                        <label asp-for="Property.State" class="control-label"></label>
-                        <select asp-for="Property.State" class="form-control" asp-items="ViewBag.StateId"></select>
-                        <span asp-validation-for="Property.State" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Property.Country" class="control-label"></label>
-                        <input asp-for="Property.Country" class="form-control" value="NIGERIA" />
-                        <span asp-validation-for="Property.Country" class="text-danger"></span>
-                    </div>
-                    @* <div class="form-group">
-                    <label asp-for="Property.OperatingRegionId" class="control-label"></label>
-                    <select asp-for="Property.OperatingRegionId" class="form-control" asp-items="ViewBag.OperatingRegionId"></select>
-                    </div>*@
+ 
                     <div class="form-group">
                         <label asp-for="Property.PropertyCategoryId" class="control-label"></label>
                         <select asp-for="Property.PropertyCategoryId" class="form-control" asp-items="ViewBag.PropertyCategoryId"></select>
@@ -118,17 +62,7 @@
                         <label asp-for="Property.PrivacyCategoryId" class="control-label"></label>
                         <select asp-for="Property.PrivacyCategoryId" class="form-control" asp-items="ViewBag.PrivacyCategoryId"></select>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Property.PropertyTypeId" class="control-label"></label>
-                        <select asp-for="Property.PropertyTypeId" class="form-control" asp-items="ViewBag.PropertyTypeId"></select>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Property.landArea" class="control-label"></label>
-                        <textarea id="summernote" asp-for="Property.landArea" class="form-control">
-
-                         </textarea>
-                        <span asp-validation-for="Property.landArea" class="text-danger"></span>
-                    </div>
+                    
 
                     <div class="form-group">
                         <label asp-for="Property.PropertyStatus" class="control-label"></label>

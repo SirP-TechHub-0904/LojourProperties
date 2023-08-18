@@ -35,9 +35,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.AgentsPage
         {
 
             IQueryable<Profile> profilex = from s in _context.Users
-                                           .Include(x=>x.UserRegions)
-                                           .ThenInclude(x=>x.OperatingRegion)
-                                           .Where(x => x.Email != "admin@lojour.com" && x.Email != "m@lojour.com")
+                                            .Where(x => x.Email != "admin@lojour.com" && x.Email != "m@lojour.com")
                                            select s;
             Profile = await profilex.ToListAsync();
 

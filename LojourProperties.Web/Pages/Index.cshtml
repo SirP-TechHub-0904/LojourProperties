@@ -18,44 +18,39 @@
 
     @await Component.InvokeAsync("HomeCategory")
 
-
-
-    <div class="funfacts custom-padding parallex" style="padding: 40px 0 30px 0; background: rgba(0, 0, 0, 0) url(../img/Float-banner-lojour.jpg) no-repeat scroll center center; ">
-        <div class="container">
+    <section class="custom-padding">
+        <!-- Main Container -->
+        <div class="container-fluid" style="margin:0 10%;">
+            <!-- Row -->
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                    <div class="icons">
-                        <i class="fas fa-home"></i>
+                <div class="clearfix"></div>
+                <!-- Heading Area -->
+                <div class="heading-panel">
+                    <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <!-- Main Title -->
+                        <h1 style="font-family: 'Berlin Sans FB Demi Bold' !important;">PROPERTIES</h1>
                     </div>
-                    <div class="number"><span class="timer" data-from="0" data-to="1238" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                    <h4>Total <span>Properties</span></h4>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                    <div class="icons">
-                        <i class="fas fa-users"></i>
+                <!-- Middle Content Box -->
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+
+                        <div class="posts-masonry">
+                            @await Component.InvokeAsync("HomeProperty")
+
+
+                        </div>
                     </div>
-                    <div class="number"><span class="timer" data-from="0" data-to="234" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                    <h4>Verified <span>Agents</span></h4>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                    <div class="icons">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="number"><span class="timer" data-from="0" data-to="742" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                    <h4>Active <span>Users</span></h4>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                    <div class="icons">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="number"><span class="timer" data-from="0" data-to="84" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                    <h4>Locations <span></span></h4>
-                </div>
+
             </div>
-            <!-- /.row -->
+            <!-- Row End -->
         </div>
-        <!-- /.container -->
-    </div>
+        <!-- Main Container End -->
+    </section>
+
+    @await Component.InvokeAsync("HomeCount")
+
 
 
     <section class="custom-padding">
@@ -67,13 +62,13 @@
                 <!-- Heading Area -->
                 <div class="">
                     <div class="col-xs-4 col-md-4 col-sm-12 text-center">
-                        <a asp-page="/Property" asp-route-category="Rent" class="btn btn-primary" style="width:100%;">I Want To Rent</a>
+                        <a asp-page="/Property" asp-route-category="Rent" class="btn btn-theme btn-primary" style="width:100%;">Click To Rent</a>
                     </div>
                     <div class="col-xs-4 col-md-4 col-sm-12 text-center">
-                        <a asp-page="/Property" asp-route-category="Sale" class="btn btn-danger" style="width:100%;">For Sale</a>
+                        <a asp-page="/Property" asp-route-category="Sale" class="btn btn-theme btn-danger" style="width:100%;">Click To Sale</a>
                     </div>
                     <div class="col-xs-4 col-md-4 col-sm-12 text-center">
-                        <a asp-page="/Property" asp-route-category="Lease" class="btn btn-warning" style="width:100%;">I Want To Lease</a>
+                        <a asp-page="/Property" asp-route-category="Lease" class="btn btn-theme btn-warning" style="width:100%;">Click To Lease</a>
                     </div>
                 </div>
             </div>
@@ -97,8 +92,7 @@
                     <div class="col-md-12 col-xs-12 col-sm-12">
 
                         <div class="posts-masonry">
-                            @await Component.InvokeAsync("HomeProperty")
-
+                            @await Component.InvokeAsync("DistressProperty")
 
                         </div>
                     </div>
@@ -109,6 +103,29 @@
         </div>
         <!-- Main Container End -->
     </section>
+    <section class="custom-padding">
+        <!-- Main Container -->
+        <div class="container-fluid" style="margin:0 10%;">
+            <!-- Row -->
+            <div class="row">
+                <div class="clearfix"></div>
+                <!-- Heading Area -->
+                <div class="heading-panel">
+                    <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <div>
+                            <a asp-page="/Property" class="btn-theme btn-lg btn">Properties in other States <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- Main Container End -->
+    </section>
+
+
     @await Component.InvokeAsync("Footer")
 
 

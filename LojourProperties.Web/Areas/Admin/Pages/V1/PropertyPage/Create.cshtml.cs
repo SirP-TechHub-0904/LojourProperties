@@ -30,7 +30,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
 
             ViewData["PropertyCategoryId"] = new SelectList(_context.PropertyCategories, "Id", "Name");
 
-            ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
+            ViewData["PropertyTypeId"] = new SelectList(_context.PropertyTypes, "Name", "Name");
 
             ViewData["OperatingRegionId"] = new SelectList(_context.OperatingRegions, "Id", "RegionOfOperation");
 
@@ -39,7 +39,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             ViewData["CityLocationId"] = new SelectList(_context.CityLocations.OrderBy(x => x.Name), "Id", "Name");
 
 
-            var data = _context.Users.Include(x => x.UserRegions).Where(x => x.Email != "admin@lojour.com" && x.Email != "m@lojour.com").OrderBy(x => x.SurName).AsQueryable();
+            var data = _context.Users.Where(x => x.Email != "admin@lojour.com" && x.Email != "m@lojour.com").OrderBy(x => x.SurName).AsQueryable();
             var output = data.Select(x => new AgentInfo
             {
                 Id = x.Id,
@@ -67,13 +67,15 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             Property.DateAdded = DateTime.UtcNow.AddHours(1);
             Property.LastUpdated = DateTime.UtcNow.AddHours(1);
             Property.PropertyRefID = "X";
+
+             
             Property.ActivityStatus = Domain.Models.Enum.ActivityStatus.Available;
 
             _context.Properties.Add(Property);
             await _context.SaveChangesAsync();
             ///
             var updateid = await _context.Properties.FindAsync(Property.Id);
-            updateid.PropertyRefID = "LOJ" + updateid.Id.ToString("0000");
+            updateid.PropertyRefID = "L1" + updateid.Id;
             _context.Attach(updateid).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();

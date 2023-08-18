@@ -17,11 +17,11 @@ using System.Xml.Linq;
 
 namespace NirsalProject.Pages.Shared.ViewComponents
 {
-    public class HomePropertyViewComponent : ViewComponent
+    public class DistressPropertyViewComponent : ViewComponent
     {
         private readonly ApplicationDbContext _context;
 
-        public HomePropertyViewComponent(
+        public DistressPropertyViewComponent(
             ApplicationDbContext context)
         {
             _context = context;
@@ -38,7 +38,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 .Include(x => x.PropertyFeatures)
                 .ThenInclude(x=>x.FeaturesCategory)
                 .Include(x => x.PropertyDocuments)
-                .Include(x => x.PropertyAgencies).Where(x=>x.PropertyStatus == LojourProperties.Domain.Models.Enum.PropertyStatus.Publish).OrderBy(x=>x.SortOrder).Take(6).AsQueryable();
+                .Include(x => x.PropertyAgencies) .Where(x=>x.Distress == true && x.PropertyStatus == LojourProperties.Domain.Models.Enum.PropertyStatus.Publish).OrderBy(x=>x.SortOrder).Take(6).AsQueryable();
 
             var outcome = Property.Select(x => new HomePropertyDto
             {
@@ -47,7 +47,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 Title = x.Title,
                 SortOrder = x.SortOrder,
                 Amount = string.Format("₦{0:N0}", x.Amount), 
-                Privacy = x.PrivacyCategory.Name,
+                  Privacy = x.PrivacyCategory.Name,
                 Category = x.PropertyCategory.Name,
                 Activity = x.ActivityStatus,
                 Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "default-image-url",

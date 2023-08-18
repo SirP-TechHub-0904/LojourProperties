@@ -17,7 +17,7 @@ namespace LojourProperties.Domain.Dtos
 
         [Display(Name = "Title")]
         public string Title { get; set; }
-         
+
         [Display(Name = "Description")]
         public string? Description { get; set; }
         [Display(Name = "Sort Order")]
@@ -25,13 +25,7 @@ namespace LojourProperties.Domain.Dtos
 
         [Display(Name = "Amount")]
         public string Amount { get; set; }
-
-        
-        [Display(Name = "City")]
-        public string? City { get; set; }
-
-        [Display(Name = "State")]
-        public string? State { get; set; }
+        public string? LojourID { get; set; }
 
         [Display(Name = "Country")]
         public string? Country { get; set; }

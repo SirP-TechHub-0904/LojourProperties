@@ -36,7 +36,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             Property = await _context.Properties
                 .Include(x => x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
-                .Include(x => x.PropertyType).FirstOrDefaultAsync(m => m.Id == id);
+            .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Property == null)
             {
@@ -55,7 +55,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
             ViewData["StateId"] = new SelectList(_context.States.OrderBy(x => x.StateName), "StateName", "StateName");
 
 
-            var data = _context.Users.Include(x => x.UserRegions).Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
+            var data = _context.Users.Where(x => x.Email != "admin@lojour.com").OrderBy(x => x.SurName).AsQueryable();
             var output = data.Select(x => new AgentInfo
             {
                 Id = x.Id,
