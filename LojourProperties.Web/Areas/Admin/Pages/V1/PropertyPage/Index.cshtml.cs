@@ -31,6 +31,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
 
             IQueryable<Property> property = from s in _context.Properties
                 .Include(x => x.Agent)
+                .Include(x => x.CityLocation)
                 .Include(x => x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
                                             select s;

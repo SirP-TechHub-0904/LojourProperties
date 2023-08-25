@@ -32,7 +32,7 @@
                                                 <!-- Img Block -->
                                                 <div class="ad-archive-img">
                                                      
-                                                    <a asp-page="./Property" asp-route-region="@list.Id">
+                                                    <a asp-page="./Property" asp-route-region="@list.Id" asp-route-location="@list.Name">
                                                         <img class="img-responsive" src="@list.ImageUrl" alt="@list.Name">
                                                     </a>
                                                 </div>

@@ -25,7 +25,7 @@ namespace LojourProperties.Web.Pages
         public int PageSize { get; set; } = 21; // Number of items to display per page
 
         public IList<HomePropertyDto> PropertyDtoLists { get; set; }
-        public async Task OnGetAsync(int? pg, string category, long? region, bool distress, string searchString, string find)
+        public async Task OnGetAsync(int? pg, string category, long? region, bool distress, string searchString, string find, string? location)
         {
 
             if (String.IsNullOrEmpty(find))
@@ -56,12 +56,13 @@ namespace LojourProperties.Web.Pages
                 CurrentPage = pg ?? 1;
                 var Property = _context.Properties
                     .Include(x => x.PrivacyCategory)
+                    .Include(x => x.CityLocation)
                     .Include(x => x.PropertyCategory)
                     .Include(x => x.PropertyImages)
                     .Include(x => x.PropertyFeatures)
                     .ThenInclude(x => x.FeaturesCategory)
                     .Include(x => x.PropertyDocuments)
-                    .Include(x => x.PropertyAgencies)  
+                    .Include(x => x.PropertyAgencies)
                     .Where(x => x.PropertyStatus == Domain.Models.Enum.PropertyStatus.Publish).OrderBy(x => x.SortOrder)
                     .AsQueryable();
 
@@ -73,7 +74,10 @@ namespace LojourProperties.Web.Pages
                     }
                     if (region != null)
                     {
-                        Property = Property.Where(x => x.CityLocationId == region).AsQueryable();
+                        var r = await _context.CategoryLocations.Include(x => x.Locations).FirstOrDefaultAsync(x => x.Id == region);
+                        var locations = r.Locations.Where(x => x.Id > 0).ToList();
+                        var locationlist = locations.Select(x => x.Id).ToList();
+                        Property = Property.Where(x => locationlist.Contains(x.CityLocationId.Value)).AsQueryable();
                     }
                     if (!String.IsNullOrEmpty(category))
                     {
@@ -82,19 +86,15 @@ namespace LojourProperties.Web.Pages
                 }
                 else
                 {
+                    string searchKeyword = searchString;
+                    var searchResults = Property.Where(item =>
+            //item.PrivacyCategory.Name.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase) ||
+            //item.CityLocation.Name.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase) ||
+            item.Title.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase) 
+            //item.ShortDescription.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase) ||
+            //item.FullDescription.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase)
+        ).ToList();
 
-                    string[] searchWords = searchString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    var searchResults = Property.Where(prop =>
-                        searchWords.Any(word =>
-                            prop.Title.Contains(word, StringComparison.OrdinalIgnoreCase) ||
-                            prop.ShortDescription.Contains(word, StringComparison.OrdinalIgnoreCase) ||
-                            prop.FullDescription.Contains(word, StringComparison.OrdinalIgnoreCase) || 
-                            prop.PropertyCategory.Name.Contains(word, StringComparison.OrdinalIgnoreCase) || 
-                            (prop.CityLocation != null && prop.CityLocation.Name.Contains(word, StringComparison.OrdinalIgnoreCase)) ||
-                            prop.Amount.ToString().Contains(word, StringComparison.OrdinalIgnoreCase)
-                        )
-                    ).Distinct();
                 }
                 var outcome = Property.Select(x => new HomePropertyDto
                 {
@@ -103,7 +103,7 @@ namespace LojourProperties.Web.Pages
                     Title = x.Title,
                     SortOrder = x.SortOrder,
                     Amount = string.Format("₦{0:N0}", x.Amount),
-                  
+
                     Privacy = x.PrivacyCategory.Name,
                     Category = x.PropertyCategory.Name,
                     Activity = x.ActivityStatus,
@@ -142,10 +142,10 @@ namespace LojourProperties.Web.Pages
             }
             else
             {
-                Title ="FIND PROPERTIES OF YOUR CHOICE";
+                Title = "FIND PROPERTIES OF YOUR CHOICE";
                 Fine = true;
             }
-            
-            }
+
+        }
     }
 }
