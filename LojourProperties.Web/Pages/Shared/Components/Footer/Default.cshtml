@@ -22,10 +22,9 @@
                     <div class="widget socail-icons">
                         <h5>Follow Us</h5>
                         <ul>
-                            <li><a class="Facebook" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                            <li><a class="Twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                            <li><a class="Linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                            <li><a class="Google" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                            <li><a class="Facebook" target="_blank" href="https://www.facebook.com/lojourhomes"><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
+                            <li><a class="Twitter" target="_blank" href="https://x.com/lojour_p?t=1KZSETtPmhFp0qUnrJx5aw&s=09"><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
+                             
                         </ul>
                     </div>
                     <!-- Follow Us End -->
@@ -42,7 +41,7 @@
 
 
 
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a asp-page="/ContactUs" >Contact Us</a></li>
                         </ul>
                     </div>
                     <!-- Follow Us End -->
@@ -50,19 +49,19 @@
                 <div class="col-md-5  col-sm-6 col-xs-12">
                     <!-- Newslatter -->
                     <div class="widget widget-newsletter">
-                        <h5>Singup for latest updates on properties</h5>
+                        <h5>Sign up for latest updates on properties</h5>
                         <div class="fieldset">
                             <p>
                                 <br />
                             </p>
-                            <form>
-                                <input class="" value="Enter your email address" type="text">
+                            <form method="post" asp-page-handler="SubmitForm">
+                                <input class="" name="email" placeholder="Enter your email address" type="text">
                                 <input class="submit-btn" name="submit" value="Submit" type="submit">
                             </form>
                         </div>
                     </div>
                     <div class="copyright">
-                        <p>© 2023 LOJOUR PROPERTIES All rights reserved. Developed by <a href="https://www.exwhyzee.ng/" target="_blank">EXWHYZEE TECHNOLOGIES</a> </p>
+                        <p>© 2023 LOJOUR PROPERTIES All rights reserved. Developed by <a href="https://www.juray.ng/" target="_blank">JURAY SMART SOLUTIONS LIMITED</a> </p>
                     </div>
                     <!-- Newslatter -->
                 </div>

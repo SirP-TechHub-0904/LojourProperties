@@ -1,0 +1,66 @@
+﻿@page
+@model LojourProperties.Web.Areas.Main.Pages.IContactUs.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">NEW CONTACT US</h3>
+
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Subject" class="control-label"></label>
+                <input asp-for="ContactUs.Subject" class="form-control" />
+                <span asp-validation-for="ContactUs.Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Message" class="control-label"></label>
+                <input asp-for="ContactUs.Message" class="form-control" />
+                <span asp-validation-for="ContactUs.Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Fullname" class="control-label"></label>
+                <input asp-for="ContactUs.Fullname" class="form-control" />
+                <span asp-validation-for="ContactUs.Fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Date" class="control-label"></label>
+                <input asp-for="ContactUs.Date" class="form-control" />
+                <span asp-validation-for="ContactUs.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Phone" class="control-label"></label>
+                <input asp-for="ContactUs.Phone" class="form-control" />
+                <span asp-validation-for="ContactUs.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Email" class="control-label"></label>
+                <input asp-for="ContactUs.Email" class="form-control" />
+                <span asp-validation-for="ContactUs.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+            </div>
+        </form>
+    </div>
+
+
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

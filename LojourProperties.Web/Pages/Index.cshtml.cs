@@ -21,5 +21,16 @@ namespace LojourProperties.Web.Pages
         {
             Testimonies = await _context.Testimonies.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostSubmitForm(string email)
+        {
+            Newsletter n = new Newsletter();
+            n.Email = email;
+            n.Date = DateTime.Now;
+                 _context.Newsletters.Add(n);
+            await _context.SaveChangesAsync();
+            TempData["ccsuccess"] = "Successful";
+            return Page();
+        }
     }
 }

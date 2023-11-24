@@ -128,6 +128,49 @@
 
     @await Component.InvokeAsync("Footer")
 
-
+    <style>
+        /* Style for the floating alert */
+        #floatingAlert {
+            display: none;
+            position: fixed;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3e6737c7;
+            color: black;
+            padding: 15px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+    <div id="floatingAlert"></div>
 </section>
+@if (TempData["ccsuccess"] != null)
+{
+    <script>
+        // Function to show the floating alert
+        function showFloatingAlert() {
+            // Get the alert element
+            var alertElement = document.getElementById("floatingAlert");
 
+            // Set the content of the alert
+            alertElement.innerHTML = "Thanks for subscribing! We're excited to share exclusive content and updates with you. Stay tuned for our upcoming newsletters!";
+
+            // Show the alert
+            alertElement.style.display = "block";
+
+            // Hide the alert after 3 seconds (adjust as needed)
+            setTimeout(function () {
+                alertElement.style.display = "none";
+            }, 5000);
+        }
+
+        // Show the floating alert when the page is loaded
+        window.onload = function () {
+            showFloatingAlert();
+        };
+    </script>
+
+}

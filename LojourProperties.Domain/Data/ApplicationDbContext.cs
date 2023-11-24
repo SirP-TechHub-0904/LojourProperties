@@ -41,7 +41,9 @@ namespace LojourProperties.Domain.Data
 
         public DbSet<CityLocation> CityLocations { get; set; }
         public DbSet<CategoryLocation> CategoryLocations { get; set; }
-        
+        public DbSet<ContactUs> ContactUs { get; set; }
+        public DbSet<Newsletter> Newsletters { get; set; }
+
     }
     //public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     //{
