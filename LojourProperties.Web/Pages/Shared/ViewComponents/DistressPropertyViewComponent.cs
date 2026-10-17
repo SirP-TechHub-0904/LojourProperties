@@ -50,7 +50,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                   Privacy = x.PrivacyCategory.Name,
                 Category = x.PropertyCategory.Name,
                 Activity = x.ActivityStatus,
-                Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "default-image-url",
+                Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "/default.png",
                 PropertyAgencies = x.PropertyAgencies,
                 PropertyDocuments = x.PropertyDocuments,
                 PropertyFeatures = x.PropertyFeatures,

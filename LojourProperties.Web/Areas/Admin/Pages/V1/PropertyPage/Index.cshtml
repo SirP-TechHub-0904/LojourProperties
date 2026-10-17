@@ -16,18 +16,36 @@
     </div>
     <div class="card-header">
         <div class="row">
-            @foreach(var item in Model.PropertyDtoLists) { 
-            <div class="col-md-2">
-                <a asp-route="" class="btn btn-primary" style="width:100%;margin-bottom:5px;">
-                     
-                        <span>@item.Title</span><br />
+            @foreach (var item in Model.PropertyDtoLists)
+            {
+                <div class="col-md-2 mb-2">
+                    <a asp-route="" class="btn btn-primary d-flex flex-column align-items-center justify-content-center text-center"
+                       style="width:100%; min-height:70px; height:100%;">
+                        <span>@item.Title</span>
                         <span>@item.Count</span>
-                   
-                </a>
-            </div>
+                    </a>
+                </div>
             }
         </div>
     </div>
+    <style>
+        .card-header .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .card-header .row > [class*="col-"] {
+                display: flex;
+            }
+
+                .card-header .row > [class*="col-"] a.btn {
+                    flex: 1;
+                    min-height: 70px; /* consistent minimum height */
+                    white-space: normal; /* allows text to wrap instead of overflow */
+                    word-break: break-word; /* breaks long words if needed */
+                }
+    </style>
+
     <!-- /.card-header -->
     <div class="card-body">
         <div class="table-responsive">
@@ -42,7 +60,7 @@
                             ID
                         </th>
                         <th>
- Location
+                            Location
                         </th>
                         <th>
                             Date
@@ -71,12 +89,13 @@
                         <th></th>
                     </tr>
                 </thead>
-                
+
                 @{
                     int sn = 0;
                 }
-    <tbody>
-@foreach (var item in Model.Property) {
+                <tbody>
+                    @foreach (var item in Model.Property)
+                    {
                         <tr>
 
                             <td>

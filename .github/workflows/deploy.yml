@@ -1,0 +1,76 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy to Hostinger
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Publish Self-Contained Web Application
+        run: |
+          dotnet publish LojourProperties.Web/LojourProperties.Web.csproj \
+            -c Release \
+            -r linux-x64 \
+            --self-contained true \
+            -p:PublishSingleFile=false \
+            -o ./publish
+
+      - name: Copy Deploy Script into Package
+        run: |
+          cp deploy.sh ./publish/deploy.sh
+          chmod +x ./publish/deploy.sh
+
+      - name: Package Artifact
+        run: |
+          tar -czf app-package.tar.gz -C ./publish .
+
+      - name: Deploy to Hostinger VPS
+        env:
+          HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
+          USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          PORT: ${{ secrets.HOSTINGER_SSH_PORT }}
+        run: |
+          # Setup SSH Directory
+          mkdir -p ~/.ssh
+          echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # SSH Options
+          SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=30"
+
+          echo ">>> Transferring package to Hostinger ($HOST)..."
+          scp $SSH_OPTS -P $PORT app-package.tar.gz $USER@$HOST:/tmp/app-package.tar.gz
+
+          echo ">>> Executing deployment on Hostinger..."
+          ssh $SSH_OPTS -p $PORT $USER@$HOST "bash -s" < deploy.sh
+
+          # Fetch chosen port and display testing URL
+          ASSIGNED_PORT=$(ssh $SSH_OPTS -p $PORT $USER@$HOST "cat /var/www/lojour/.port 2>/dev/null || echo '5000'")
+
+          echo "================================================================"
+          echo "APPLICATION DEPLOYED SUCCESSFULLY!"
+          echo "Direct IP & Port URL: http://$HOST:$ASSIGNED_PORT"
+          echo "================================================================"
+
+          # Output to GitHub Actions Summary
+          echo "### 🚀 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Host:** \`$HOST\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Active Port:** \`$ASSIGNED_PORT\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test URL:** [http://$HOST:$ASSIGNED_PORT](http://$HOST:$ASSIGNED_PORT)" >> $GITHUB_STEP_SUMMARY

@@ -35,7 +35,7 @@ namespace LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage
                 .Include(x => x.PrivacyCategory)
                 .Include(x => x.PropertyCategory)
                                             select s;
-            Property = await property.ToListAsync();
+            Property = await property.OrderByDescending(x=>x.DateAdded).ToListAsync();
             List<PropertyDtoList> categoriesList = new List<PropertyDtoList>();
             List<PropertyDtoList> activitiesList = new List<PropertyDtoList>();
             List<PropertyDtoList> propertyTypesList = new List<PropertyDtoList>();

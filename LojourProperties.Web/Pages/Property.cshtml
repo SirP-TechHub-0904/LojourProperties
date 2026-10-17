@@ -25,6 +25,61 @@
 <section class="custom-padding">
     <!-- Main Container -->
     <div class="container-fluid" style="margin:0 10%;">
+
+        @if (Model.Find)
+        {
+            <div class="search-find-box">
+                <h4>Search Properties</h4>
+                <form method="get">
+
+                    <!-- Search Text -->
+                    <div class="form-group">
+                        <input type="text"
+                               name="searchString"
+                               class="form-control"
+                               placeholder="Search by title, description..."
+                               value="@Model.Query" />
+                    </div>
+
+                    <!-- Category Dropdown -->
+                    <div class="form-group">
+                        <select name="category" class="form-control">
+                            <option value="">-- All Categories --</option>
+                            @foreach (var cat in Model.Categories)
+                            {
+                                <option value="@cat.Name">@cat.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Location Dropdown with search -->
+                    <div class="form-group">
+                        <select name="location" class="form-control" id="locationSelect">
+                            <option value="">-- All Locations --</option>
+                            @foreach (var loc in Model.CityLocations)
+                            {
+                                <option value="@loc.Name">@loc.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Distress Toggle -->
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="distress" value="true" />
+                            Distress Properties Only
+                        </label>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-success btn-block">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+
+                </form>
+            </div>
+        }
+
         <!-- Row -->
         <div class="row">
             @if (!String.IsNullOrEmpty(Model.Query) || Model.Fine == true)
@@ -115,7 +170,7 @@
 
                 </div>
 
-                 
+
             }
             <div class="clearfix"></div>
             <!-- Heading Area -->
@@ -208,7 +263,7 @@
                                                             <div class="ad-meta">
                                                                 <a class="btn btn-success" asp-page="./Ppty" asp-route-id="@item.Id" asp-route-ppy="@item.Title.Replace(",", "-").Replace(" ", "-").Replace("/", "-").Replace("@", "-").Replace("&", "-").Replace("#", "-").Replace("_", "-").Replace("--", "-").Replace("--", "-")" style="width: 70%;"><i class="fa fa-phone"></i> Details</a>
 
-                                                                <a class="btn btn-success" href="#" style="float: right;color: #fff;background-color: grey;border-color: grey;">ID: @item.LojourID</a>
+                                                                <a class="btn btn-success" href="#">ID: @item.LojourID</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -253,3 +308,42 @@
     </div>
 </section>
 @await Component.InvokeAsync("Footer")
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Convert location select to searchable
+        document.addEventListener('DOMContentLoaded', function () {
+            const select = document.getElementById('locationSelect');
+            if (!select) return;
+
+            // Create search input above the select
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'relative';
+            select.parentNode.insertBefore(wrapper, select);
+            wrapper.appendChild(select);
+
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.className = 'form-control';
+            searchInput.placeholder = 'Type to filter locations...';
+            searchInput.style.marginBottom = '4px';
+            wrapper.insertBefore(searchInput, select);
+
+            // Filter options as user types
+            searchInput.addEventListener('input', function () {
+                const filter = this.value.toLowerCase();
+                Array.from(select.options).forEach(opt => {
+                    if (opt.value === '') return; // keep the default option
+                    opt.style.display = opt.text.toLowerCase().includes(filter) ? '' : 'none';
+                });
+            });
+        });</script>
+
+}
+
+                                        

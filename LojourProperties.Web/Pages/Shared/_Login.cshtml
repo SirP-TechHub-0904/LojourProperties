@@ -10,7 +10,25 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/JurayUniversal.Website.styles.css" asp-append-version="true" />
     <style>
-        
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background-radial-gradient {
+            min-height: 100vh; /* Full viewport height */
+            background-attachment: fixed; /* Parallax-style, stays fixed */
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+        }
+
+        @@media (max-width: 768px) {
+            .background-radial-gradient {
+                background-attachment: scroll;
+            }
+        }
     </style>
 
 </head>

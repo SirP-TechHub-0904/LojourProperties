@@ -341,23 +341,24 @@
                 flex-direction: column; /* Stack video on top of controls on smaller screens */
             }
         }
+
         .btn-warning {
             color: #fff;
             background-color: #f0ad4e;
             border-color: #eea236;
         }
+
         .btn-danger {
             color: #fff;
             background-color: #d9534f;
             border-color: #d43f3a;
         }
+
         .btn-primary {
             color: #fff;
             background-color: #337ab7;
             border-color: #2e6da4;
         }
-
-
 
     </style>
 
@@ -400,9 +401,9 @@
             float: right;
             color: #fff;
             background-color: #396739;
-            border-color: grey;  
+            border-color: grey;
             border-radius: 5px;
-            margin:4px;
+            margin: 4px;
         }
 
         .ad-archive-img {
@@ -415,11 +416,222 @@
             padding: 12px 18px !important;
             border-radius: 5px;
         }
-        .ad-archive-desc ul.short-meta {
-             height: 60px;
-         }
-    </style>
 
+        .ad-archive-desc ul.short-meta {
+            height: 60px;
+        }
+
+        .img-cover-fit {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+    <style>
+        /* Fix the FOR SALE/RENT badge clipping */
+        .ad-archive-desc h3 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+        }
+
+            .ad-archive-desc h3 a.btn {
+                white-space: nowrap;
+                width: auto !important; /* override the hardcoded 25% */
+                flex-shrink: 0;
+            }
+
+        /* Fix Details + ID row */
+        .ad-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+            .ad-meta a:first-child {
+                width: auto !important; /* override hardcoded 70% */
+                flex: 1;
+            }
+
+        /* Limit feature list height to keep cards uniform */
+        .short-meta {
+            min-height: 60px;
+            max-height: 60px;
+            overflow: hidden;
+        }
+        /* Lock description to 3 lines max */
+        .ad-archive-desc p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 60px;
+        }
+
+        /* Lock feature list height */
+        .short-meta {
+            min-height: 50px;
+            max-height: 50px;
+            overflow: hidden;
+        }
+
+        /* Fix title weight consistency */
+        .ad-archive-desc h3 {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+            /* Stop FOR SALE badge clipping */
+            .ad-archive-desc h3 .btn {
+                white-space: nowrap;
+                width: auto !important;
+                flex-shrink: 0;
+                font-size: 12px;
+            }
+
+        /* Fix Details + ID row */
+        .ad-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .ad-meta a.btn:first-child {
+                flex: 1;
+                width: auto !important;
+            }
+
+            /* Stop ID from clipping */
+            .ad-meta a.btn:last-child {
+                white-space: nowrap;
+                flex-shrink: 0;
+                overflow: visible;
+            }
+
+        .ad-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+            .ad-meta a:first-child {
+                flex: 1; /* Details takes all remaining space */
+                width: auto !important; /* kill the hardcoded 70% */
+                text-align: center;
+            }
+
+            .ad-meta a:last-child {
+                flex-shrink: 0; /* ID never shrinks or clips */
+                white-space: nowrap;
+                width: auto !important; /* kill the hardcoded float:right */
+                background-color: grey;
+                border-color: grey;
+                color: #fff;
+            }
+        /* ///////// */
+        .ad-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+            .ad-meta a:first-child {
+                flex: 1;
+                min-width: 0; /* allows flex child to shrink below content size */
+                width: auto !important;
+                text-align: center;
+            }
+
+            .ad-meta a:last-child {
+                flex-shrink: 0;
+                white-space: nowrap;
+                font-size: 11px; /* slightly smaller on tight screens */
+                padding: 5px 6px;
+                width: auto !important;
+            }
+
+        /* //////// */
+        /* Medium screens */
+        @@media (max-width: 992px) {
+            .ad-meta a {
+                font-size: 12px !important;
+                padding: 5px 8px !important;
+            }
+        }
+
+        /* Small screens */
+        @@media (max-width: 768px) {
+            .ad-meta a {
+                font-size: 11px !important;
+                padding: 4px 6px !important;
+            }
+        }
+
+        /* Extra small screens */
+        @@media (max-width: 480px) {
+            .ad-meta a {
+                font-size: 10px !important;
+                padding: 3px 5px !important;
+            }
+        }
+
+        .posts-masonry .row {
+            position: inherit !important;
+        }
+
+        .search-find-box {
+            padding: 30px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+            .search-find-box h4 {
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            .search-find-box .input-group {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+        .search-find-box {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+            .search-find-box h4 {
+                font-weight: 700;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .search-find-box .form-group {
+                margin-bottom: 15px;
+            }
+
+            .search-find-box .btn-block {
+                width: 100%;
+                margin-top: 10px;
+            }
+    </style>
 </head>
 <body>
     <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -455,13 +667,16 @@
                                 <li>
                                     <a asp-page="/Property" asp-route-category="Sale">Sale</a>
                                 </li>
+                                <li>
+                                    <a asp-page="/Property" asp-route-category="JV">JV</a>
+                                </li>
 
                                 <li>
                                     <a asp-page="/Property" asp-route-category="SmartHomes">SmartHomes</a>
                                 </li>
                                 <li>
                                     <a asp-page="/Property" asp-route-category="Serviced Apartment">
-                                        Serviced Apartment
+                                        Apartment
                                     </a>
                                 </li>
                                 <li>
@@ -580,7 +795,15 @@
     </script>
 
 
-
+    <script>
+        document.querySelectorAll('.featured-ribbon span').forEach(span => {
+            const text = span.textContent.trim();
+            if (text === 'Sold Out')    span.style.backgroundColor = '#c0392b';
+            if (text === 'Leased Out')  span.style.backgroundColor = '#2980b9';
+            if (text === 'Rented Out')  span.style.backgroundColor = '#e67e22';
+            if (text === 'Available')   span.style.backgroundColor = '#396739';
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 
 

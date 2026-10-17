@@ -1,4 +1,5 @@
 ﻿using LojourProperties.Domain.Dtos;
+using LojourProperties.Domain.Models;
 using LojourProperties.Web.Areas.Admin.Pages.V1.PropertyPage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -24,34 +25,68 @@ namespace LojourProperties.Web.Pages
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
         public int PageSize { get; set; } = 21; // Number of items to display per page
-
+        public bool Find { get; set; }
         public IList<HomePropertyDto> PropertyDtoLists { get; set; }
+
+        public List<PropertyCategory> Categories { get; set; }
+        public List<CityLocation> CityLocations { get; set; }
         public async Task OnGetAsync(int? pg, string category, long? region, bool distress, string searchString, string find, string? location)
         {
 
+            //if (String.IsNullOrEmpty(searchString))
+            //{
+            //    if (category != null) { Title = category; };
+            //    if (region != null)
+            //    {
+            //        var cat = await _context.CategoryLocations.FirstOrDefaultAsync(x => x.Id == region);
+            //        if (cat != null)
+            //        {
+            //            Title = Title + " " + cat.Name;
+            //        }
+
+            //    }
+            //    if (distress == true)
+            //    {
+            //        Title = Title + " Distress";
+            //    }
+            //    Title = Title + " Properties";
+            //}
+            //else
+            //{
+            //    Query = searchString;
+            //    Title = "Search Result for " + searchString;
+            //}
+
+            
             if (String.IsNullOrEmpty(searchString))
             {
-                if (category != null) { Title = category; };
+                var titleParts = new List<string>();
+
+                if (!String.IsNullOrEmpty(category))
+                    titleParts.Add(category);
+
                 if (region != null)
                 {
                     var cat = await _context.CategoryLocations.FirstOrDefaultAsync(x => x.Id == region);
-                    if (cat != null)
-                    {
-                        Title = Title + " " + cat.Name;
-                    }
+                    if (cat != null) titleParts.Add(cat.Name);
+                }
 
-                }
+                if (!String.IsNullOrEmpty(location))
+                    titleParts.Add(location);
+
                 if (distress == true)
-                {
-                    Title = Title + " Distress";
-                }
-                Title = Title + " Properties";
+                    titleParts.Add("Distress");
+
+                Title = titleParts.Any()
+                    ? string.Join(" ", titleParts) + " Properties"
+                    : "All Properties";
             }
             else
             {
                 Query = searchString;
                 Title = "Search Result for " + searchString;
             }
+
             CurrentPage = pg ?? 1;
             var Property = _context.Properties
                 .Include(x => x.PrivacyCategory)
@@ -77,7 +112,32 @@ namespace LojourProperties.Web.Pages
                 ).AsQueryable();
 
             }
+            // ADD THESE FILTERS
+            if (!String.IsNullOrEmpty(category))
+            {
+                Property = Property.Where(x => x.PropertyCategory.Name == category).AsQueryable();
+            }
+            if (region != null)
+            {
+                Property = Property.Where(x => x.CityLocationId == region).AsQueryable();
+            }
+            if (distress == true)
+            {
+                Property = Property.Where(x => x.Distress == true).AsQueryable();
+            }
 
+            if (!String.IsNullOrEmpty(location))
+            {
+                Property = Property.Where(x => x.CityLocation.Name.Contains(location)).AsQueryable();
+            }
+            if (!String.IsNullOrEmpty(find))
+            {
+                Find = true;
+                Property = Property.Where(x => x.Id == -1); // returns empty
+                                                            // inside OnGetAsync, load them
+                Categories = await _context.PropertyCategories.ToListAsync();
+                CityLocations = await _context.CityLocations.ToListAsync();
+            }
             var outcome = Property.Select(x => new HomePropertyDto
             {
                 Id = x.Id,
@@ -89,7 +149,7 @@ namespace LojourProperties.Web.Pages
                 Privacy = x.PrivacyCategory.Name,
                 Category = x.PropertyCategory.Name,
                 Activity = x.ActivityStatus,
-                Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "default-image-url",
+                Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "/default.png",
                 PropertyAgencies = x.PropertyAgencies,
                 PropertyDocuments = x.PropertyDocuments,
                 PropertyFeatures = x.PropertyFeatures,

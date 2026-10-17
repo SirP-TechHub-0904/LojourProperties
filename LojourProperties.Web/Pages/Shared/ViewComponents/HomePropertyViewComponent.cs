@@ -38,7 +38,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 .Include(x => x.PropertyFeatures)
                 .ThenInclude(x=>x.FeaturesCategory)
                 .Include(x => x.PropertyDocuments)
-                .Include(x => x.PropertyAgencies).Where(x=>x.PropertyStatus == LojourProperties.Domain.Models.Enum.PropertyStatus.Publish).OrderBy(x=>x.SortOrder).Take(6).AsQueryable();
+                .Include(x => x.PropertyAgencies).Where(x=>x.PropertyStatus == LojourProperties.Domain.Models.Enum.PropertyStatus.Publish).OrderByDescending(x=>x.DateAdded).ThenBy(x=>x.SortOrder).Take(6).AsQueryable();
 
             var outcome = Property.Select(x => new HomePropertyDto
             {
@@ -50,7 +50,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
                 Privacy = x.PrivacyCategory.Name,
                 Category = x.PropertyCategory.Name,
                 Activity = x.ActivityStatus,
-                Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "default-image-url",
+                Image = x.PropertyImages.FirstOrDefault(img => img.Default == true).ImageUrl ?? "/default.png",
                 PropertyAgencies = x.PropertyAgencies,
                 PropertyDocuments = x.PropertyDocuments,
                 PropertyFeatures = x.PropertyFeatures,
@@ -63,7 +63,7 @@ namespace NirsalProject.Pages.Shared.ViewComponents
 
 
 
-            return View(outcome.Take(6).ToList());
+            return View(outcome/*.Take(6)*/.ToList());
         }
     }
 }
