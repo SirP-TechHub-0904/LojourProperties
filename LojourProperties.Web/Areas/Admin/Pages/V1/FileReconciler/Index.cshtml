@@ -1,0 +1,168 @@
+@page
+@model LojourProperties.Web.Areas.Admin.Pages.V1.FileReconciler.IndexModel
+@{
+    ViewData["Title"] = "AWS S3 File Reconciler";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 font-weight-bold"><i class="fas fa-sync-alt text-primary mr-2"></i>AWS S3 File Reconciler</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-page="/V1/Dashboard/Index" asp-area="Admin">Dashboard</a></li>
+                    <li class="breadcrumb-item active">File Reconciler</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle mr-2"></i> @Model.SuccessMessage
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle mr-2"></i> @Model.ErrorMessage
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="row">
+        <!-- Reconcile All Card -->
+        <div class="col-12 mb-4">
+            <div class="card card-primary card-outline shadow-sm">
+                <div class="card-header">
+                    <h3 class="card-title font-weight-bold">
+                        <i class="fas fa-tools mr-1"></i> Quick Action: Re-sign & Fix All Expired URLs
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">
+                        This utility reads the S3 key for each image/file in the database, generates a fresh AWS S3 pre-signed URL (valid for 3 years), and updates the database records. Use this whenever images show <code>Request has expired</code> errors.
+                    </p>
+                    <form method="post" asp-page-handler="ReconcileAll" onsubmit="return confirm('Are you sure you want to re-sign and update ALL file URLs across the entire database?');">
+                        <button type="submit" class="btn btn-primary btn-lg shadow">
+                            <i class="fas fa-play-circle mr-2"></i> Re-sign & Update All Database Images/Files
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section breakdown -->
+    <div class="row">
+        <!-- Property Images -->
+        <div class="col-md-4 col-sm-6">
+            <div class="card card-outline card-info shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-images fa-3x text-info"></i>
+                    </div>
+                    <h5 class="font-weight-bold">Property Images</h5>
+                    <p class="text-muted mb-2">Total Records: <span class="badge badge-info font-weight-bold" style="font-size: 1rem;">@Model.PropertyImagesCount</span></p>
+                    <small class="text-muted d-block mb-3">Re-signs Main, Full, and Small size URLs</small>
+                    <form method="post" asp-page-handler="ReconcilePropertyImages">
+                        <button type="submit" class="btn btn-outline-info btn-block">
+                            <i class="fas fa-sync-alt mr-1"></i> Fix Property Images
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sliders -->
+        <div class="col-md-4 col-sm-6">
+            <div class="card card-outline card-success shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-sliders-h fa-3x text-success"></i>
+                    </div>
+                    <h5 class="font-weight-bold">Web Sliders</h5>
+                    <p class="text-muted mb-2">Total Records: <span class="badge badge-success font-weight-bold" style="font-size: 1rem;">@Model.SlidersCount</span></p>
+                    <small class="text-muted d-block mb-3">Re-signs homepage slide banners</small>
+                    <form method="post" asp-page-handler="ReconcileSliders">
+                        <button type="submit" class="btn btn-outline-success btn-block">
+                            <i class="fas fa-sync-alt mr-1"></i> Fix Sliders
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Locations -->
+        <div class="col-md-4 col-sm-6">
+            <div class="card card-outline card-warning shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-map-marked-alt fa-3x text-warning"></i>
+                    </div>
+                    <h5 class="font-weight-bold">Category Locations</h5>
+                    <p class="text-muted mb-2">Total Records: <span class="badge badge-warning font-weight-bold" style="font-size: 1rem;">@Model.CategoryLocationsCount</span></p>
+                    <small class="text-muted d-block mb-3">Re-signs location category cover images</small>
+                    <form method="post" asp-page-handler="ReconcileCategoryLocations">
+                        <button type="submit" class="btn btn-outline-warning btn-block">
+                            <i class="fas fa-sync-alt mr-1"></i> Fix Category Locations
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents, Agencies, Videos -->
+        <div class="col-md-6 col-sm-6">
+            <div class="card card-outline card-secondary shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-file-pdf fa-3x text-secondary"></i>
+                    </div>
+                    <h5 class="font-weight-bold">Documents, Agencies & Videos</h5>
+                    <p class="text-muted mb-2">
+                        Docs: <span class="badge badge-secondary">@Model.PropertyDocumentsCount</span> |
+                        Agencies: <span class="badge badge-secondary">@Model.PropertyAgenciesCount</span> |
+                        Videos: <span class="badge badge-secondary">@Model.PropertyVideosCount</span>
+                    </p>
+                    <small class="text-muted d-block mb-3">Re-signs document attachments, agency licenses, and property videos</small>
+                    <form method="post" asp-page-handler="ReconcileDocuments">
+                        <button type="submit" class="btn btn-outline-secondary btn-block">
+                            <i class="fas fa-sync-alt mr-1"></i> Fix Docs, Agencies & Videos
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profiles -->
+        <div class="col-md-6 col-sm-6">
+            <div class="card card-outline card-dark shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-user-circle fa-3x text-dark"></i>
+                    </div>
+                    <h5 class="font-weight-bold">User Profile Photos</h5>
+                    <p class="text-muted mb-2">Total Users with Photos: <span class="badge badge-dark font-weight-bold" style="font-size: 1rem;">@Model.ProfilesCount</span></p>
+                    <small class="text-muted d-block mb-3">Re-signs user profile avatars and passport photos</small>
+                    <form method="post" asp-page-handler="ReconcileProfiles">
+                        <button type="submit" class="btn btn-outline-dark btn-block">
+                            <i class="fas fa-sync-alt mr-1"></i> Fix User Profiles
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
