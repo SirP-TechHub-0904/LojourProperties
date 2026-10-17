@@ -82,6 +82,43 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 
 var app = builder.Build();
 
+if (args.Contains("--reconcile-all"))
+{
+    Console.WriteLine("==================================================");
+    Console.WriteLine("STARTING DATABASE FILE & IMAGE S3 RECONCILER");
+    Console.WriteLine("==================================================");
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+        var reconciler = new LojourProperties.Web.Areas.Admin.Pages.V1.FileReconciler.IndexModel(db, config);
+
+        Console.WriteLine("[1/5] Reconciling Property Images...");
+        await reconciler.OnPostReconcilePropertyImagesAsync();
+        Console.WriteLine(">>> " + (reconciler.SuccessMessage ?? reconciler.ErrorMessage));
+
+        Console.WriteLine("[2/5] Reconciling Web Sliders...");
+        await reconciler.OnPostReconcileSlidersAsync();
+        Console.WriteLine(">>> " + (reconciler.SuccessMessage ?? reconciler.ErrorMessage));
+
+        Console.WriteLine("[3/5] Reconciling Category Locations...");
+        await reconciler.OnPostReconcileCategoryLocationsAsync();
+        Console.WriteLine(">>> " + (reconciler.SuccessMessage ?? reconciler.ErrorMessage));
+
+        Console.WriteLine("[4/5] Reconciling Documents, Agencies, Videos...");
+        await reconciler.OnPostReconcileDocumentsAsync();
+        Console.WriteLine(">>> " + (reconciler.SuccessMessage ?? reconciler.ErrorMessage));
+
+        Console.WriteLine("[5/5] Reconciling User Profiles...");
+        await reconciler.OnPostReconcileProfilesAsync();
+        Console.WriteLine(">>> " + (reconciler.SuccessMessage ?? reconciler.ErrorMessage));
+    }
+    Console.WriteLine("==================================================");
+    Console.WriteLine("RECONCILIATION COMPLETED SUCCESSFULLY!");
+    Console.WriteLine("==================================================");
+    return;
+}
+
 app.UseForwardedHeaders();
 
 // Configure the HTTP request pipeline.
