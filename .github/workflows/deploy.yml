@@ -41,36 +41,59 @@ jobs:
 
       - name: Deploy to Hostinger VPS
         env:
-          HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
-          USER: ${{ secrets.HOSTINGER_SSH_USER }}
-          KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
-          PORT: ${{ secrets.HOSTINGER_SSH_PORT }}
+          TARGET_HOST: ${{ secrets.HOSTINGER_SERVER_IP || vars.HOSTINGER_SERVER_IP }}
+          TARGET_USER: ${{ secrets.HOSTINGER_SSH_USER || vars.HOSTINGER_SSH_USER }}
+          TARGET_KEY: ${{ secrets.HOSTINGER_SSH_KEY || vars.HOSTINGER_SSH_KEY }}
+          TARGET_PORT: ${{ secrets.HOSTINGER_SSH_PORT || vars.HOSTINGER_SSH_PORT }}
         run: |
+          SERVER_HOST="${TARGET_HOST}"
+          SERVER_USER="${TARGET_USER:-root}"
+          SERVER_PORT="${TARGET_PORT:-22}"
+
+          echo ">>> Validating deployment parameters..."
+          if [ -z "$SERVER_HOST" ]; then
+            echo "::error::HOSTINGER_SERVER_IP is empty or not found in repository secrets/variables!"
+            echo "Please check: GitHub Repository -> Settings -> Secrets and variables -> Actions"
+            echo "Ensure 'HOSTINGER_SERVER_IP' is saved with your VPS IP address."
+            exit 1
+          fi
+
+          if [ -z "$TARGET_KEY" ]; then
+            echo "::error::HOSTINGER_SSH_KEY is empty or not found in repository secrets/variables!"
+            echo "Please check: GitHub Repository -> Settings -> Secrets and variables -> Actions"
+            echo "Ensure 'HOSTINGER_SSH_KEY' contains your private SSH key."
+            exit 1
+          fi
+
+          echo ">>> Target Host: $SERVER_HOST"
+          echo ">>> Target User: $SERVER_USER"
+          echo ">>> Target SSH Port: $SERVER_PORT"
+
           # Setup SSH Directory
           mkdir -p ~/.ssh
-          echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
+          echo "$TARGET_KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
           # SSH Options
           SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=30"
 
-          echo ">>> Transferring package to Hostinger ($HOST)..."
-          scp $SSH_OPTS -P $PORT app-package.tar.gz $USER@$HOST:/tmp/app-package.tar.gz
+          echo ">>> Transferring package to Hostinger ($SERVER_HOST:$SERVER_PORT)..."
+          scp $SSH_OPTS -P "$SERVER_PORT" -i ~/.ssh/id_rsa app-package.tar.gz "$SERVER_USER@$SERVER_HOST:/tmp/app-package.tar.gz"
 
           echo ">>> Executing deployment on Hostinger..."
-          ssh $SSH_OPTS -p $PORT $USER@$HOST "bash -s" < deploy.sh
+          ssh $SSH_OPTS -p "$SERVER_PORT" -i ~/.ssh/id_rsa "$SERVER_USER@$SERVER_HOST" "bash -s" < deploy.sh
 
-          # Fetch chosen port and display testing URL
-          ASSIGNED_PORT=$(ssh $SSH_OPTS -p $PORT $USER@$HOST "cat /var/www/lojour/.port 2>/dev/null || echo '5000'")
+          # Fetch chosen application port and display testing URL
+          ASSIGNED_PORT=$(ssh $SSH_OPTS -p "$SERVER_PORT" -i ~/.ssh/id_rsa "$SERVER_USER@$SERVER_HOST" "cat /var/www/lojour/.port 2>/dev/null || echo '5000'")
 
           echo "================================================================"
           echo "APPLICATION DEPLOYED SUCCESSFULLY!"
-          echo "Direct IP & Port URL: http://$HOST:$ASSIGNED_PORT"
+          echo "Direct IP & Port URL: http://$SERVER_HOST:$ASSIGNED_PORT"
           echo "================================================================"
 
           # Output to GitHub Actions Summary
           echo "### 🚀 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Host:** \`$HOST\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Active Port:** \`$ASSIGNED_PORT\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Test URL:** [http://$HOST:$ASSIGNED_PORT](http://$HOST:$ASSIGNED_PORT)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Host:** \`$SERVER_HOST\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Active Web Port:** \`$ASSIGNED_PORT\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test URL:** [http://$SERVER_HOST:$ASSIGNED_PORT](http://$SERVER_HOST:$ASSIGNED_PORT)" >> $GITHUB_STEP_SUMMARY
